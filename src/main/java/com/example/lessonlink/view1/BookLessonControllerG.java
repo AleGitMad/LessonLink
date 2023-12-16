@@ -1,4 +1,4 @@
-package com.example.lessonlink;
+package com.example.lessonlink.view1;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,9 +11,9 @@ import java.util.Objects;
 public class BookLessonControllerG extends Application {
         @Override
         public void start(Stage stage) throws IOException {
-            FXMLLoader fxmlLoader = new FXMLLoader(BookLessonControllerG.class.getResource("views/home.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(BookLessonControllerG.class.getResource("home.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 450);
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("css/styles.css")).toExternalForm());
+            //scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("css/styles.css")).toExternalForm());
             stage.setTitle("LessonLink");
             stage.setScene(scene);
             stage.show();

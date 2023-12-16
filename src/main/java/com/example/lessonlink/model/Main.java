@@ -1,4 +1,4 @@
-package model;
+package com.example.lessonlink.model;
 
 public class Main {
     public static void main(String[] args) {

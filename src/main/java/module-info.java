@@ -1,6 +1,7 @@
-module LessonLink {
-    requires javafx.graphics;
-    requires javafx.fxml;
+module com.example.lessonlink {
+        requires javafx.controls;
+        requires javafx.fxml;
 
-    exports com.example.lessonlink;
+        opens com.example.lessonlink.view1 to javafx.fxml;
+        exports com.example.lessonlink.view1;
 }
