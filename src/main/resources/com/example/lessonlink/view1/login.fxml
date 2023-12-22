@@ -39,7 +39,7 @@
          </children></Pane>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1220.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/home.png" />
+            <Image url="@../images/HomeButton.png" />
          </image>
       </ImageView>
    </children>
