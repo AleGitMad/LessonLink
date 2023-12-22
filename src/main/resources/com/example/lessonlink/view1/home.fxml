@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lessonlink.view1.BookLessonControllerG">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lessonlink.view1.BookLessonControllerG">
    <children>
-      <Button layoutX="259.0" layoutY="187.0" mnemonicParsing="false" style="-fx-background-color: dodgerblue; -fx-border-radius: 15; -fx-background-radius: 15; -fx-text-fill: white;" text="Book Lesson" textFill="WHITE" />
-      <Button layoutX="534.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: dodgerblue; -fx-text-fill: white; -fx-background-radius: 5;" text="Button" />
-      <Button layoutX="274.0" layoutY="361.0" mnemonicParsing="false" text="Button" />
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Darken_background.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="442.0" layoutY="255.0" mnemonicParsing="false" prefHeight="209.0" prefWidth="395.0" style="-fx-background-color: #3C64B1; -fx-border-radius: 26; -fx-background-radius: 26; -fx-text-fill: white;" text="Book a Lesson" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="44.0" />
+         </font></Button>
+      <Button layoutX="1179.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="85.0" style="-fx-background-color: #3C64B1; -fx-text-fill: white; -fx-background-radius: 5;" text="Log In" textFill="WHITE">
+         <font>
+            <Font name="Calibri" size="18.0" />
+         </font></Button>
+      <Button layoutX="569.0" layoutY="630.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="140.0" style="-fx-background-color: #3C64B1;" text="History" textFill="WHITE">
+         <font>
+            <Font name="Calibri" size="18.0" />
+         </font></Button>
+      <Label layoutX="505.0" layoutY="109.0" text="LessonLink">
+         <font>
+            <Font name="Calibri Bold" size="60.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
