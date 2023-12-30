@@ -3,13 +3,16 @@ package com.example.lessonlink.view1;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class LoginControllerG {
+public class HomeControllerG {
     @FXML
-    private Button loginButton;
+    private Button studentloginButton;
+
+    @FXML
+    private Button adminloginButton;
 
     @FXML
     void setLoginPage() {
-        FxmlLoader.setPage("studentPage");
+        FxmlLoader.setPage("login");
     }
 
 }
