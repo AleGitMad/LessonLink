@@ -17,7 +17,7 @@ public class FxmlLoader extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Stage stage;
-        FXMLLoader fxmlloader = new FXMLLoader(FxmlLoader.class.getResource("home.fxml"));
+        FXMLLoader fxmlloader = new FXMLLoader(FxmlLoader.class.getResource("Home.fxml"));
         Scene scene = new Scene(fxmlloader.load(), 1280, 720);
         stage = primaryStage;
         stage.setTitle("LessonLink");

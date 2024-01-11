@@ -5,10 +5,10 @@ import javafx.scene.control.Button;
 
 public class HomeControllerG {
     @FXML
-    private Button studentloginButton;
+    private Button studentLoginButton;
 
     @FXML
-    private Button adminloginButton;
+    private Button adminLoginButton;
 
     @FXML
     void setLoginPage() {
