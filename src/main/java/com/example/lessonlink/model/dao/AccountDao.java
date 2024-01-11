@@ -1,6 +1,8 @@
 package com.example.lessonlink.model.dao;
 
 import com.example.lessonlink.model.Account;
+import com.example.lessonlink.model.service.Connector;
+import com.example.lessonlink.model.service.Query;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

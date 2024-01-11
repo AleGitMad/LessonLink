@@ -4,6 +4,7 @@ import com.example.lessonlink.model.Account;
 import com.example.lessonlink.model.Admin;
 import com.example.lessonlink.model.Student;
 import com.example.lessonlink.model.dao.AccountDao;
+import com.example.lessonlink.model.dao.AccountFSDao;
 import com.example.lessonlink.model.dao.LoginFSDao;
 import com.example.lessonlink.model.factories.UserFactory;
 import com.example.lessonlink.view1.bean.AccountHomepageBean;
@@ -57,8 +58,8 @@ public class LoginController {
             LoggedUser.getInstance().setRole(role);
 
             if(fsAuth.equals(fs_on)){
-                AccountFileSystemDao accountFileSystemDao = new AccountFileSystemDao();
-                accountFileSystemDao.setAccount(admin, loginBean.getEmail());
+                AccountFSDao accountFSDao = new AccountFSDao();
+                accountFSDao.setAccount(admin, loginBean.getEmail());
             }else {
                 AccountDao accountDao = myFactory.createDAO();
                 accountDao.setAccount(admin, loginBean.getEmail());
