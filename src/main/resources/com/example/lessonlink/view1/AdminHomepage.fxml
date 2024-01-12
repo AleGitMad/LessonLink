@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lessonlink.view1.AdminHomePageControllerG">
+    <children>
+        <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/HomeBack.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="addTeacherButton" layoutX="200.0" layoutY="270.0" mnemonicParsing="false" onAction="#addTeacher" prefHeight="327.0" prefWidth="377.0" style="-fx-background-color: #3C64B1; -fx-border-radius: 26; -fx-background-radius: 26; -fx-text-fill: white;" text="Add a teacher" textFill="WHITE">
+            <font>
+                <Font name="Calibri Bold" size="44.0" />
+            </font></Button>
+        <Button fx:id="activeBookingsButton" layoutX="550.0" layoutY="640.0" mnemonicParsing="false" onAction="#activeBookings" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #3c64b1;" text="Active bookings" textFill="WHITE">
+            <font>
+                <Font name="Calibri" size="18.0" />
+            </font></Button>
+        <Label layoutX="505.0" layoutY="109.0" text="LessonLink">
+            <font>
+                <Font name="Calibri Bold" size="60.0" />
+            </font>
+        </Label>
+      <Button fx:id="ButtonLogout" layoutX="705.0" layoutY="270.0" mnemonicParsing="false" onAction="#logout" prefHeight="327.0" prefWidth="377.0" style="-fx-background-color: #3C64B1; -fx-border-radius: 26; -fx-background-radius: 26; -fx-text-fill: white;" text="Modify teacher &#10;profile" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="44.0" />
+         </font>
+      </Button>
+      <Rectangle fill="#2a4476" height="40.0" layoutX="1111.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="2.0" />
+      <Rectangle fill="#3c64b1" height="40.0" layoutX="1113.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="105.0" />
+      <Label fx:id="Username" layoutX="1120.0" layoutY="29.0" prefHeight="23.0" prefWidth="92.0" text="Username" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Label>
+      <Rectangle fill="#2a4476" height="40.0" layoutX="1218.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="2.0" />
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1071.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/adminIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="logoutButton" fitHeight="40.0" fitWidth="40.0" layoutX="1220.0" layoutY="20.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/logoutIcon.png" />
+         </image>
+      </ImageView>
+    </children>
+</Pane>

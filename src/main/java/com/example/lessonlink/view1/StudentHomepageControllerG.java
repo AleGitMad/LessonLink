@@ -16,4 +16,8 @@ public class StudentHomepageControllerG {
     void logout(ActionEvent event) {
         FxmlLoader.setPage("Homepage");
     }
+    @FXML
+    void history(ActionEvent event) {
+        FxmlLoader.setPage("Homepage");
+    }
 }
