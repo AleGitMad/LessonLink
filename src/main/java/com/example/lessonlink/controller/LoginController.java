@@ -12,7 +12,6 @@ import com.example.lessonlink.view1.bean.LoginBean;
 
 import javax.security.auth.login.FailedLoginException;
 import java.sql.SQLException;
-import java.util.Objects;
 
 public class LoginController {
     public AccountHomepageBean login(LoginBean loginBean) throws FailedLoginException, SQLException {

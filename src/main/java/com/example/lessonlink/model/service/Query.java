@@ -21,5 +21,28 @@ public class Query {
         String selectStatement = String.format("SELECT * FROM user WHERE email = '%s'", email);
         return stmt.executeQuery(selectStatement);
     }
+    public static ResultSet findTeacher(Statement stmt, String brand, String startingPrice, String maxPrice, String startingMileage, String maxMileage) throws SQLException {
+        String selectedStatement = "SELECT * FROM ad WHERE sold = '0' ";
+
+        if(!startingPrice.isEmpty()){
+            selectedStatement += " AND cost > " + startingPrice;
+        }
+        if(!maxPrice.isEmpty()){
+            selectedStatement += " AND cost < " + maxPrice;
+        }
+        selectedStatement += " AND idcar IN (SELECT idcar FROM car WHERE true = true ";
+
+        if(!brand.isEmpty()){
+            selectedStatement += " AND brand = '" + brand + "'";
+        }
+        if(!startingMileage.isEmpty()){
+            selectedStatement += " AND mileage > " + startingMileage;
+        }
+        if(!maxMileage.isEmpty()){
+            selectedStatement += " AND mileage < " + maxMileage;
+        }
+        selectedStatement += ")";
+        return stmt.executeQuery(selectedStatement);
+    }
 
 }

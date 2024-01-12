@@ -24,14 +24,14 @@ public abstract class AccountDao {
 
             rs.first(); // LoginDao ha già controllato la password
 
-            account.setFirstName(rs.getString("firstName" )); // settiamo lo stato dell'istanza di Seller/Buyer a runtime
+            account.setFirstName(rs.getString("firstName" )); // settiamo lo stato dell'istanza di Admin/Student a runtime
             account.setLastName(rs.getString("lastName"));
             account.setEmail(rs.getString("email"));
             account.setIdAccount(rs.getString("userId"));
 
 
         } catch (SQLException e) {
-            //not handled. to write
+            //TODO: not handled. to write
         } finally {
             if(stmt!=null){
                 stmt.close();

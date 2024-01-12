@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class Connector {
     private static Connector instance = null;
-    private Connection connection = null;
+    private Connection conn = null;
     private Connector() throws SQLException {
         try (InputStream input = new FileInputStream("resources/db.properties")) {
             Properties properties = new Properties();
@@ -20,7 +20,7 @@ public class Connector {
             String user = properties.getProperty("LOGIN_USER");
             String pass = properties.getProperty("LOGIN_PASS");
 
-            connection = DriverManager.getConnection(connectionUrl, user, pass);
+            conn = DriverManager.getConnection(connectionUrl, user, pass);
         }catch(IOException | SQLException e){
             e.printStackTrace();
             //TODO: logging for exception
@@ -42,6 +42,6 @@ public class Connector {
 
     public Connection getConnection(){
 
-        return connection;
+        return conn;
     }
 }
