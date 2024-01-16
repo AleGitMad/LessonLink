@@ -2,6 +2,7 @@ package com.example.lessonlink.controller;
 
 import com.example.lessonlink.model.Account;
 import com.example.lessonlink.model.Admin;
+import com.example.lessonlink.model.LoggedUser;
 import com.example.lessonlink.model.Student;
 import com.example.lessonlink.model.dao.AccountDao;
 import com.example.lessonlink.model.dao.AccountFSDao;
@@ -53,6 +54,7 @@ public class LoginController {
         if (role.equals("Admin")) {
             myFactory = UserFactory.getFactory(UserFactory.ROLE_ADMIN);
             admin = (Admin) myFactory.createAccount();
+            //TODO: capire se lasciare il loggeduser o no
             LoggedUser.getInstance().setAccount(admin);
             LoggedUser.getInstance().setRole(role);
 

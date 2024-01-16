@@ -1,5 +1,7 @@
 package com.example.lessonlink.model.service;
 
+import com.example.lessonlink.model.Teacher;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,36 +14,21 @@ public class Query {
         return stmt.executeQuery(selectStatement);
     }
 
-    public static void addProfile(Statement stmt, String firstName, String lastName, String email, String password, String role) throws SQLException {
-        String insertStatement = String.format("INSERT INTO `user`(firstname,lastname,email,password,role) VALUES ('%s','%s','%s','%s','%s')", firstName,lastName,email,password,role);
-        stmt.executeUpdate(insertStatement);
+
+
+    public static ResultSet findTeachers(Statement stmt, String subject, String city, boolean isOnline) throws SQLException {
+        String selectedStatement = String.format("SELECT * FROM teachers WHERE subject = '%s'", subject);
+
+        if(isOnline){
+            selectedStatement += " AND availableOnline == true";
+        } else {
+            selectedStatement += " AND city = '" + city + "'";
+        }
+        return stmt.executeQuery(selectedStatement);
     }
 
-    public static ResultSet isEmailExisting(Statement stmt, String email) throws  SQLException{
-        String selectStatement = String.format("SELECT * FROM user WHERE email = '%s'", email);
-        return stmt.executeQuery(selectStatement);
-    }
-    public static ResultSet findTeacher(Statement stmt, String brand, String startingPrice, String maxPrice, String startingMileage, String maxMileage) throws SQLException {
-        String selectedStatement = "SELECT * FROM ad WHERE sold = '0' ";
-
-        if(!startingPrice.isEmpty()){
-            selectedStatement += " AND cost > " + startingPrice;
-        }
-        if(!maxPrice.isEmpty()){
-            selectedStatement += " AND cost < " + maxPrice;
-        }
-        selectedStatement += " AND idcar IN (SELECT idcar FROM car WHERE true = true ";
-
-        if(!brand.isEmpty()){
-            selectedStatement += " AND brand = '" + brand + "'";
-        }
-        if(!startingMileage.isEmpty()){
-            selectedStatement += " AND mileage > " + startingMileage;
-        }
-        if(!maxMileage.isEmpty()){
-            selectedStatement += " AND mileage < " + maxMileage;
-        }
-        selectedStatement += ")";
+    public static ResultSet findReviews(Statement stmt, int teacherId) throws SQLException {
+        String selectedStatement = "SELECT * FROM reviews WHERE teacherId = " + teacherId;
         return stmt.executeQuery(selectedStatement);
     }
 

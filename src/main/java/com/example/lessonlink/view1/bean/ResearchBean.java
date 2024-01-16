@@ -4,10 +4,10 @@ public class ResearchBean {
 
         private String subject;
         private String where;
+        private boolean isOnline;
 
-        public ResearchBean(String subject, String where) {
+        public ResearchBean(String subject) {
             this.subject = subject;
-            this.where = where;
         }
 
         public String getSubject() {
@@ -24,6 +24,12 @@ public class ResearchBean {
 
         public void setWhere(String startingMileage) {
             this.where = startingMileage;
+        }
+        public boolean getIsOnline() {
+            return isOnline;
+        }
+        public void setIsOnline() {
+            this.isOnline = true;
         }
 
 }
