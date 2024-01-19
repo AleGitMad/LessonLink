@@ -1,7 +1,7 @@
 package com.example.lessonlink.controller;
 
 import com.example.lessonlink.exceptions.FailedResearchException;
-import com.example.lessonlink.model.Teacher;
+import com.example.lessonlink.model.decorator.Teacher;
 import com.example.lessonlink.model.dao.TeacherDao;
 import com.example.lessonlink.view1.bean.ResearchBean;
 import com.example.lessonlink.view1.bean.TeacherBean;

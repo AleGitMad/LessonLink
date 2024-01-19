@@ -1,7 +1,5 @@
 package com.example.lessonlink.model.service;
 
-import com.example.lessonlink.model.Teacher;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
