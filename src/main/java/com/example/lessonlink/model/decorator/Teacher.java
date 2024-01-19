@@ -1,6 +1,6 @@
-package com.example.lessonlink.model;
+package com.example.lessonlink.model.decorator;
 
-public class Teacher {
+public class Teacher extends Educator {
 
     private int teacherId;
     private String name;
@@ -32,4 +32,11 @@ public class Teacher {
         return averageRating;
     }
 
+    @Override
+    public int setAddFare() {
+        return this.fare;
+    }
+
+    @Override
+    public String setDecoration() { return this.decorations; }
 }
