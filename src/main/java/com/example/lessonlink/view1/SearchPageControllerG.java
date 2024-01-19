@@ -1,6 +1,5 @@
 package com.example.lessonlink.view1;
 
-import com.example.lessonlink.controller.ResearchController;
 import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.view1.bean.ResearchBean;
 import com.example.lessonlink.view1.bean.TeacherBean;
@@ -11,7 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-
+/*
 public class SearchPageControllerG {
     @FXML
     private ComboBox<String> subjectBox;
@@ -57,3 +56,4 @@ public class SearchPageControllerG {
 
 
 }
+*/

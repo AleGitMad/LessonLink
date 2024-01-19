@@ -1,4 +1,4 @@
 package com.example.lessonlink.model.dao;
 
-public class StudentDao extends AccountDao{
+public class StudentDao extends UserDao{
 }
