@@ -1,7 +1,7 @@
 package com.example.lessonlink.model.factories;
 
-import com.example.lessonlink.model.Account;
-import com.example.lessonlink.model.dao.AccountDao;
+import com.example.lessonlink.model.User;
+import com.example.lessonlink.model.dao.UserDao;
 
 public abstract class UserFactory {
     public static final String ROLE_ADMIN = "Admin";
@@ -17,7 +17,7 @@ public abstract class UserFactory {
         }
     }
 
-    public abstract Account createAccount();
+    public abstract User createUser();
 
-    public abstract AccountDao createDAO();
+    public abstract UserDao createDAO();
 }

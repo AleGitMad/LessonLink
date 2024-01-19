@@ -1,7 +1,7 @@
 package com.example.lessonlink.model;
 
 public class LoggedUser {
-    private Account account;
+    private User user;
     private Student student;
     private Admin admin;
 
@@ -15,12 +15,12 @@ public class LoggedUser {
         this.role = role;
     }
 
-    public Account getAccount() {
-        return account;
+    public User getUser() {
+        return user;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Student getStudent() {
@@ -53,9 +53,9 @@ public class LoggedUser {
     @Override
     public String toString() {
         return "LoggedUser{" +
-                "account=" + account +
-                ", buyer=" + student +
-                ", seller=" + admin +
+                "user=" + user +
+                ", student=" + student +
+                ", admin=" + admin +
                 ", role='" + role + '\'' +
                 '}';
     }

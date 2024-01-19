@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LessonDao {
-    public List<Lesson> findStudentLessons(int teacherId) throws FailedResearchException {
+    public List<Lesson> findStudentLessons(int studentId) throws FailedResearchException {
         Statement stmt = null;
         Connection conn = null;
         List<Lesson> lessons = new ArrayList<>();
@@ -22,13 +22,13 @@ public class LessonDao {
         try {
             conn = Connector.getInstance().getConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = Query.findReviews(stmt, teacherId);
+            ResultSet rs = Query.findLessons(stmt, studentId);
             while (rs.next()) {
-                lessons.add(extractReview(conn, rs));
+                lessons.add(extractLesson(conn, rs));
             }
         } catch (Exception se) {
             se.printStackTrace();
-            throw new FailedResearchException("An error during research occurred, wrong filters or no car corresponding to what you are searching for.");
+            throw new FailedResearchException("An error during research occurred.");
         } finally {
             try {
                 if (stmt != null)
@@ -40,11 +40,11 @@ public class LessonDao {
         return lessons;
     }
 
-    private Review extractReview(Connection conn, ResultSet rs) throws SQLException, FailedResearchException {
-        return new Review(rs.getInt("reviewId"),
-                rs.getInt("stars"),
-                rs.getDate("date"),
-                rs.getString("comment"),
-                rs.getInt("teacherId"));
+    private Lesson extractLesson(Connection conn, ResultSet rs) throws SQLException {
+        return new Lesson(rs.getInt("lessonId"),
+                rs.getTimestamp("dateTime").toLocalDateTime(),
+                rs.getBoolean("isOnline"),
+                rs.getInt("teacherId"),
+                rs.getInt("studentId"));
     }
 }

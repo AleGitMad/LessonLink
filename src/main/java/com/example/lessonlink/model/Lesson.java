@@ -1,14 +1,19 @@
 package com.example.lessonlink.model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Lesson {
-    private int idLesson;
-    private Student student;
-    private Teacher teacher;
+    private int lessonId;
     private LocalDateTime dateTime;
-    private String place;
+    private boolean isOnline;
+    private int teacherId;
+    private int studentId;
 
-
+    public Lesson(int lessonId, LocalDateTime dateTime, boolean isOnline, int teacherId, int studentId) {
+        this.lessonId = lessonId;
+        this.dateTime = dateTime;
+        this.isOnline = isOnline;
+        this.teacherId = teacherId;
+        this.studentId = studentId;
+    }
 }

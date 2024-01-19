@@ -2,20 +2,13 @@ package com.example.lessonlink.view1.bean;
 
 //TODO: capire se usare questo o il bean di AccountBean
 public class AccountHomepageBean {
-    private String firstName;
-    private String lastName;
+    private String name;
     private String role;
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    public void setName(String name) { this.name = name; }
     public String getRole() {
         return role;
     }

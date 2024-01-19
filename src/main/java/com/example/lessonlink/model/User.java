@@ -1,7 +1,7 @@
 package com.example.lessonlink.model;
 
-public class Account {
-    protected String userId;
+public class User {
+    protected int userId;
     protected String name;
     protected String email;
 
@@ -10,7 +10,7 @@ public class Account {
         this.name = name;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -22,7 +22,7 @@ public class Account {
         return name;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 

@@ -11,7 +11,7 @@ public class Teacher {
     private String city;
     private String qualification;
     private boolean availableOnline;
-    private int averageRating;
+    private float averageRating;
 
     public Teacher(int teacherId, String name, String subject1, String subject2, String subject3, int fare, String city, String qualification, boolean availableOnline) {
         this.teacherId = teacherId;
@@ -25,10 +25,10 @@ public class Teacher {
         this.availableOnline = availableOnline;
     }
 
-    public void setAverageRating(int averageRating) {
+    public void setAverageRating(float averageRating) {
         this.averageRating = averageRating;
     }
-    public int getAverageRating() {
+    public float getAverageRating() {
         return averageRating;
     }
 

@@ -28,7 +28,7 @@ public class TeacherDao {
             }
         } catch (Exception se) {
             se.printStackTrace();
-            throw new FailedResearchException("An error during research occurred, wrong filters or no car corresponding to what you are searching for.");
+            throw new FailedResearchException("An error during research occurred.");
         } finally {
             try {
                 if (stmt != null)
@@ -50,7 +50,8 @@ public class TeacherDao {
                 rs.getString("city"),
                 rs.getString("qualification"),
                 rs.getBoolean("availableOnline"));
-        teacher.setAverageRating(ReviewDao.getAverageRating(conn, rs.getInt("teacherId")));
+        ReviewDao reviewDao = new ReviewDao();
+        teacher.setAverageRating(reviewDao.getAverageRating(rs.getInt("teacherId")));
         return teacher;
     }
 

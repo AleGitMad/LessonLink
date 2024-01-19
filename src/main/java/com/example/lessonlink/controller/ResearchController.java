@@ -7,7 +7,7 @@ import com.example.lessonlink.view1.bean.ResearchBean;
 import com.example.lessonlink.view1.bean.TeacherBean;
 
 import java.util.List;
-
+/*
 public class ResearchController {
 
     public TeacherBean search(ResearchBean researchBean) throws FailedResearchException {
@@ -19,3 +19,4 @@ public class ResearchController {
     }
 
 }
+*/

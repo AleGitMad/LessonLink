@@ -1,12 +1,11 @@
 package com.example.lessonlink.model.dao;
 
-import com.example.lessonlink.model.Account;
+import com.example.lessonlink.model.User;
 
 import javax.security.auth.login.FailedLoginException;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class UserFSDao {
     public String checkCredentials(String email, String password) throws FailedLoginException {
@@ -39,7 +38,7 @@ public class UserFSDao {
         }
     }
 
-    public void setAccount(Account account, String email) {
+    public void setUser(User user, String email) {
 
         String url = "C:\\Users\\alexs\\Desktop\\Users.txt";
 
@@ -51,12 +50,10 @@ public class UserFSDao {
             while ((str = br.readLine()) != null) {
 
                 if (str.equals(email)) {
-                    account.setEmail(email);
-                    str = br.readLine();
-                    str = br.readLine();
-                    account.setName(br.readLine());
-                    account.setLastName(br.readLine());
-                    account.setUserId(br.readLine().substring(3));
+                    user.setEmail(br.readLine());
+                    str = br.readLine(); //skip password line
+                    user.setUserId(Integer.parseInt(br.readLine()));
+                    user.setName(br.readLine());
                 }
             }
 
@@ -64,4 +61,42 @@ public class UserFSDao {
             //unhandled
         }
     }
+
+    /*
+    public void registerNewAccount(String name, String email, String password, String role) throws FailedRegistrationException{
+
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\alexs\\Desktop\\Users.txt", true))){
+            String content  = Files.readString(Path.of("C:\\Users\\alexs\\Desktop\\Users.txt"));
+
+            int occurrences = countOccurrences(content, "id");
+            occurrences = occurrences + 1;
+
+            if(!content.contains(email)) {
+                if (occurrences != 1) {
+                    writer.newLine();
+                }
+
+                writer.write(email);
+                writer.newLine();
+                writer.write(password);
+                writer.newLine();
+                writer.write(role);
+                writer.newLine();
+                writer.write(firstName);
+                writer.newLine();
+                writer.write(lastName);
+                writer.newLine();
+                writer.write("id:" + occurrences);
+                writer.newLine();
+                writer.write("//");
+
+            }else {
+                throw new FailedRegistrationException("email already registered");
+            }
+
+        }catch (IOException e){
+            //unhandled
+        }
+    }
+    */
 }

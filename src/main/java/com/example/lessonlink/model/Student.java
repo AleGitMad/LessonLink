@@ -2,7 +2,7 @@ package com.example.lessonlink.model;
 
 import java.util.List;
 
-public class Student extends Account{
+public class Student extends User {
     private List<Lesson> lessons;
 
     public List<Lesson> getLessons() {

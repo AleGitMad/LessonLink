@@ -32,8 +32,8 @@ public class Query {
         return stmt.executeQuery(selectedStatement);
     }
 
-    public static ResultSet findLessons(Statement stmt, int teacherId) throws SQLException {
-        String selectedStatement = "SELECT * FROM lessons WHERE teacherId = " + teacherId;
+    public static ResultSet findLessons(Statement stmt, int studentId) throws SQLException {
+        String selectedStatement = "SELECT * FROM lessons WHERE studentId = " + studentId;
         return stmt.executeQuery(selectedStatement);
     }
 

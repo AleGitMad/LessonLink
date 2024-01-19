@@ -30,7 +30,7 @@ public class ReviewDao {
             averageRating = averageRating/reviews;
         } catch (Exception se) {
             se.printStackTrace();
-            throw new FailedResearchException("An error during research occurred, wrong filters or no car corresponding to what you are searching for.");
+            throw new FailedResearchException("An error during research occurred.");
         } finally {
             try {
                 if (stmt != null)
@@ -56,7 +56,7 @@ public class ReviewDao {
             }
         } catch (Exception se) {
             se.printStackTrace();
-            throw new FailedResearchException("An error during research occurred, wrong filters or no car corresponding to what you are searching for.");
+            throw new FailedResearchException("An error during research occurred.");
         } finally {
             try {
                 if (stmt != null)

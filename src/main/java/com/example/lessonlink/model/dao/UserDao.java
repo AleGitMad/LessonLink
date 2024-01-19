@@ -1,5 +1,6 @@
 package com.example.lessonlink.model.dao;
 
+import com.example.lessonlink.model.User;
 import com.example.lessonlink.model.service.Connector;
 import com.example.lessonlink.model.service.Query;
 
@@ -32,5 +33,32 @@ public class UserDao {
             }
         }
         return role;
+    }
+
+    public void setUser(User user, String email) throws SQLException {
+        Statement stmt = null;
+        Connection conn = null;
+        String role = null;
+
+        try {
+            conn = Connector.getInstance().getConnection();
+
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = Query.checkSignedUserByEmail(stmt, email);
+
+            rs.first(); // LoginDao ha già controllato la password
+
+            user.setUserId(rs.getInt("userId"));
+            user.setName(rs.getString("name" )); // settiamo lo stato dell'istanza di Admin/Student a runtime
+            user.setEmail(rs.getString("email"));
+
+
+        } catch (SQLException e) {
+            //TODO: not handled. to write
+        } finally {
+            if(stmt!=null){
+                stmt.close();
+            }
+        }
     }
 }

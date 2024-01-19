@@ -1,6 +1,7 @@
 package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.LoginController;
+import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.view1.bean.AccountHomepageBean;
 import com.example.lessonlink.view1.bean.LoginBean;
 import javafx.fxml.FXML;
@@ -37,7 +38,6 @@ public class LoginControllerG {
     void setStudentPage() {
         FxmlLoader.setPage("studentPage");
     }
-    //TODO: set login function
 
     @FXML
     void login() {
@@ -54,23 +54,26 @@ public class LoginControllerG {
                     StudentHomepageControllerG studentHomepageControllerG;
                     fxmlLoader = FxmlLoader.setPage("StudentHomepage");
                     studentHomepageControllerG = fxmlLoader.getController();
-                    studentHomepageControllerG.setUsername(accountHomepageBean.getFirstName());
+                    studentHomepageControllerG.setUsername(accountHomepageBean.getName());
 
                 }else if(accountHomepageBean.getRole().equals("Admin")) {
                     AdminHomePageControllerG adminHomepageControllerG;
                     fxmlLoader = FxmlLoader.setPage("AdminHomepage");
                     adminHomepageControllerG = fxmlLoader.getController();
-                    adminHomepageControllerG.setUsername(accountHomepageBean.getFirstName());
+                    adminHomepageControllerG.setUsername(accountHomepageBean.getName());
                 }
 
             } catch (FailedLoginException e) {
                 showErrorMessage(e.getMessage());
             } catch (SQLException e) {
                 //not handled
+            } catch (FailedResearchException e) {
+                throw new RuntimeException(e);
             }
+            //TODO: exception handling
 
         } else{
-            showErrorMessage("Email or password format are not correct. Insert again");
+            showErrorMessage("Incorrect email or password. Try again");
         }
     }
 
