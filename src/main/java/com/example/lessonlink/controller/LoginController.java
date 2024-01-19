@@ -4,9 +4,10 @@ import com.example.lessonlink.model.Account;
 import com.example.lessonlink.model.Admin;
 import com.example.lessonlink.model.LoggedUser;
 import com.example.lessonlink.model.Student;
-import com.example.lessonlink.model.dao.AccountDao;
 import com.example.lessonlink.model.dao.AccountFSDao;
-import com.example.lessonlink.model.dao.LoginFSDao;
+import com.example.lessonlink.model.dao.LessonDao;
+import com.example.lessonlink.model.dao.UserFSDao;
+import com.example.lessonlink.model.dao.UserDao;
 import com.example.lessonlink.model.factories.UserFactory;
 import com.example.lessonlink.view1.bean.AccountHomepageBean;
 import com.example.lessonlink.view1.bean.LoginBean;
@@ -18,34 +19,19 @@ public class LoginController {
     public AccountHomepageBean login(LoginBean loginBean) throws FailedLoginException, SQLException {
 
         Account account;
-
         Admin admin;
-
         Student student;
-
-        //ResearchDAO researchDAO = new ResearchDAO();
-
         String fsAuth = System.getenv("FS_AUTH");
-
         String role;
-
         final String fs_on = "on";
 
-        //if(fsAuth.equals(fs_on)){
-
-            LoginFSDao loginDao = new LoginFSDao();
-
-            role = loginDao.checkCredentials(loginBean.getEmail(), loginBean.getPassword());
-
-        //}else {
-            //TODO: loginDAO
-            /*
-            LoginDao loginDao = new LoginDao(); // creazione loginDao per trovare role
-
-            role = loginDao.checkCredentials(loginBean.getEmail(), loginBean.getPassword());
-            */
-        //}
-
+        if(fsAuth.equals(fs_on)){
+            UserFSDao userDao = new UserFSDao();
+            role = userDao.checkCredentials(loginBean.getEmail(), loginBean.getPassword());
+        }else {
+            UserDao userDao = new UserDao();
+            role = userDao.checkCredentials(loginBean.getEmail(), loginBean.getPassword());
+        }
 
         UserFactory myFactory;
 
@@ -54,7 +40,6 @@ public class LoginController {
         if (role.equals("Admin")) {
             myFactory = UserFactory.getFactory(UserFactory.ROLE_ADMIN);
             admin = (Admin) myFactory.createAccount();
-            //TODO: capire se lasciare il loggeduser o no
             LoggedUser.getInstance().setAccount(admin);
             LoggedUser.getInstance().setRole(role);
 
@@ -65,8 +50,7 @@ public class LoginController {
                 AccountDao accountDao = myFactory.createDAO();
                 accountDao.setAccount(admin, loginBean.getEmail());
             }
-
-            LoggedUser.getInstance().setSeller(admin);
+            LoggedUser.getInstance().setAdmin(admin);
             account = admin;
 
         } else {
@@ -75,23 +59,24 @@ public class LoginController {
             LoggedUser.getInstance().setAccount(student);
             LoggedUser.getInstance().setRole(role);
 
-            if(fsAuth.equals(fs_on)){
-                AccountFileSystemDao accountFileSystemDao = new AccountFileSystemDao();
-                accountFileSystemDao.setAccount(student, loginBean.getEmail());
-            }else {
+            //if(fsAuth.equals(fs_on)){
+                AccountFSDao accountFSDao = new AccountFSDao();
+                accountFSDao.setAccount(student, loginBean.getEmail());
+            /*
+        }else {
                 AccountDao accountDao = myFactory.createDAO();
                 accountDao.setAccount(student, loginBean.getEmail());
             }
+            */
 
 
-            LoggedUser.getInstance().setBuyer(student);
-            student.setFavourites(researchDAO.findFavoriteAds(LoggedUser.getInstance().getAccount().getIdAccount()));
-            student.setOrders(researchDAO.findBuyerOrders(LoggedUser.getInstance().getAccount().getIdAccount()));
+            LoggedUser.getInstance().setStudent(student);
+            student.setLessons(LessonDao.findBuyerOrders(LoggedUser.getInstance().getAccount().getUserId()));
             account = student;
         }
 
         AccountHomepageBean accountHomepageBean = new AccountHomepageBean();
-        accountHomepageBean.setFirstName(account.getFirstName());
+        accountHomepageBean.setFirstName(account.getName());
         accountHomepageBean.setLastName(account.getLastName());
         accountHomepageBean.setRole(role);
 

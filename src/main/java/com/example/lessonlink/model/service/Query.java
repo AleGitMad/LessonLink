@@ -32,4 +32,14 @@ public class Query {
         return stmt.executeQuery(selectedStatement);
     }
 
+    public static ResultSet findLessons(Statement stmt, int teacherId) throws SQLException {
+        String selectedStatement = "SELECT * FROM lessons WHERE teacherId = " + teacherId;
+        return stmt.executeQuery(selectedStatement);
+    }
+
+    public static ResultSet checkCredentials(Statement stmt, String email, String password) throws SQLException {
+        String query = "SELECT role FROM Users WHERE email = '" + email + "' AND password = '" + password + "'";
+        return stmt.executeQuery(query);
+    }
+
 }

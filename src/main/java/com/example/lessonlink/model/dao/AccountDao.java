@@ -24,10 +24,10 @@ public abstract class AccountDao {
 
             rs.first(); // LoginDao ha già controllato la password
 
-            account.setFirstName(rs.getString("firstName" )); // settiamo lo stato dell'istanza di Admin/Student a runtime
+            account.setName(rs.getString("firstName" )); // settiamo lo stato dell'istanza di Admin/Student a runtime
             account.setLastName(rs.getString("lastName"));
             account.setEmail(rs.getString("email"));
-            account.setIdAccount(rs.getString("userId"));
+            account.setUserId(rs.getString("userId"));
 
 
         } catch (SQLException e) {

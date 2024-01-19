@@ -1,12 +1,14 @@
 package com.example.lessonlink.model.dao;
 
+import com.example.lessonlink.model.Account;
+
 import javax.security.auth.login.FailedLoginException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LoginFSDao {
+public class UserFSDao {
     public String checkCredentials(String email, String password) throws FailedLoginException {
         String url = "C:\\Users\\alexs\\Desktop\\Users.txt";
 
@@ -34,6 +36,32 @@ public class LoginFSDao {
         }catch (IOException e){
 
             throw new FailedLoginException("Failed Login");
+        }
+    }
+
+    public void setAccount(Account account, String email) {
+
+        String url = "C:\\Users\\alexs\\Desktop\\Users.txt";
+
+        File file = new File(url);
+        String str;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+
+            while ((str = br.readLine()) != null) {
+
+                if (str.equals(email)) {
+                    account.setEmail(email);
+                    str = br.readLine();
+                    str = br.readLine();
+                    account.setName(br.readLine());
+                    account.setLastName(br.readLine());
+                    account.setUserId(br.readLine().substring(3));
+                }
+            }
+
+        } catch (IOException e) {
+            //unhandled
         }
     }
 }

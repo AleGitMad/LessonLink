@@ -1,6 +1,7 @@
 package com.example.lessonlink.model.dao;
 
 import com.example.lessonlink.exceptions.FailedResearchException;
+import com.example.lessonlink.model.Lesson;
 import com.example.lessonlink.model.Review;
 import com.example.lessonlink.model.service.Connector;
 import com.example.lessonlink.model.service.Query;
@@ -12,47 +13,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReviewDao {
-    public float getAverageRating(int teacherId) throws FailedResearchException {
+public class LessonDao {
+    public List<Lesson> findStudentLessons(int teacherId) throws FailedResearchException {
         Statement stmt = null;
         Connection conn = null;
-        float averageRating = 0;
-        int reviews = 0;
+        List<Lesson> lessons = new ArrayList<>();
 
         try {
             conn = Connector.getInstance().getConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = Query.findReviews(stmt, teacherId);
             while (rs.next()) {
-                averageRating += rs.getInt("stars");
-                reviews++;
-            }
-            averageRating = averageRating/reviews;
-        } catch (Exception se) {
-            se.printStackTrace();
-            throw new FailedResearchException("An error during research occurred, wrong filters or no car corresponding to what you are searching for.");
-        } finally {
-            try {
-                if (stmt != null)
-                    stmt.close();
-            } catch (SQLException e) {
-                //not handled
-            }
-        }
-        return averageRating;
-    }
-
-    public List<Review> findTeacherReviews(int teacherId) throws FailedResearchException {
-        Statement stmt = null;
-        Connection conn = null;
-        List<Review> reviews = new ArrayList<>();
-
-        try {
-            conn = Connector.getInstance().getConnection();
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = Query.findReviews(stmt, teacherId);
-            while (rs.next()) {
-                reviews.add(extractReview(conn, rs));
+                lessons.add(extractReview(conn, rs));
             }
         } catch (Exception se) {
             se.printStackTrace();
@@ -65,7 +37,7 @@ public class ReviewDao {
                 //not handled
             }
         }
-        return reviews;
+        return lessons;
     }
 
     private Review extractReview(Connection conn, ResultSet rs) throws SQLException, FailedResearchException {
@@ -75,6 +47,4 @@ public class ReviewDao {
                 rs.getString("comment"),
                 rs.getInt("teacherId"));
     }
-    //TODO: meccanismo di visualizzazione delle reviews
-
 }
