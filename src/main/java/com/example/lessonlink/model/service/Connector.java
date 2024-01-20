@@ -12,7 +12,8 @@ public class Connector {
     private static Connector instance = null;
     private Connection conn = null;
     private Connector() throws SQLException {
-        try (InputStream input = new FileInputStream("resources/db.properties")) {
+        //Class.forName("com.mysql.cj.jdbc.Driver");
+        try (InputStream input = new FileInputStream("src/main/resources/com/example/lessonlink/db.properties")) {
             Properties properties = new Properties();
             properties.load(input);
 
