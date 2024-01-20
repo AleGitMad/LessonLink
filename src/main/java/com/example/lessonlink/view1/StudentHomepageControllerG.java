@@ -6,18 +6,23 @@ import javafx.scene.control.Label;
 
 public class StudentHomepageControllerG {
     @FXML
-    private Label Username;
+    private Label userNameLabel;
 
-    public void setUsername(String username) {
-        Username.setText(username);
+    public void setUserName(String userName) {
+        userNameLabel.setText(userName);
     }
 
     @FXML
     void logout(ActionEvent event) {
-        FxmlLoader.setPage("Homepage");
+        FxmlLoader.setPage("Home");
     }
     @FXML
     void history(ActionEvent event) {
-        FxmlLoader.setPage("Homepage");
+        FxmlLoader.setPage("Home");
+    }
+
+    @FXML
+    void bookLesson(ActionEvent event) {
+        FxmlLoader.setPage("SearchPage");
     }
 }

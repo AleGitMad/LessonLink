@@ -9,7 +9,15 @@ import java.nio.file.Path;
 
 public class UserFSDao {
     public String checkCredentials(String email, String password) throws FailedLoginException {
-        String url = "C:\\Users\\alexs\\Desktop\\Users.txt";
+        String utente = System.getenv("UTENTE");
+        final String utente_alexs = "alexs";
+        String url = null;
+
+        if(utente.equals(utente_alexs)) {
+            url = "C:\\Users\\alexs\\Desktop\\Users.txt";
+        }else {
+            url = "C:\\Users\\Leonardo\\Desktop\\Users.txt";
+        }
 
         File file = new File(url);
         String str;

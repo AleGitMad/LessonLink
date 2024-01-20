@@ -6,14 +6,14 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lessonlink.view1.StudentHomepageControllerG">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lessonlink.view1.StudentHomepageControllerG">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/HomeBack.png" />
          </image>
       </ImageView>
-      <Button fx:id="bookLessonButton" layoutX="442.0" layoutY="255.0" mnemonicParsing="false" prefHeight="209.0" prefWidth="395.0" style="-fx-background-color: #3C64B1; -fx-border-radius: 26; -fx-background-radius: 26; -fx-text-fill: white;" text="Book a Lesson" textFill="WHITE">
+      <Button fx:id="bookLessonButton" layoutX="442.0" layoutY="255.0" mnemonicParsing="false" onAction="#bookLesson" prefHeight="209.0" prefWidth="395.0" style="-fx-background-color: #3C64B1; -fx-border-radius: 26; -fx-background-radius: 26; -fx-text-fill: white;" text="Book a Lesson" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="44.0" />
          </font></Button>
@@ -38,7 +38,7 @@
       </ImageView>
       <Rectangle fill="#2a4476" height="40.0" layoutX="1218.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="2.0" />
       <Rectangle fill="#3c64b1" height="40.0" layoutX="1113.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="105.0" />
-      <Label fx:id="Username" layoutX="1120.0" layoutY="29.0" prefHeight="23.0" prefWidth="92.0" text="Username" textFill="WHITE">
+      <Label fx:id="userNameLabel" layoutX="1120.0" layoutY="29.0" prefHeight="23.0" prefWidth="92.0" text="userName" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="18.0" />
          </font>

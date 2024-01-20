@@ -33,12 +33,6 @@ public class LoginControllerG {
     void setHomePage() {
         FxmlLoader.setPage("home");
     }
-
-    @FXML
-    void setStudentPage() {
-        FxmlLoader.setPage("studentPage");
-    }
-
     @FXML
     void login() {
         LoginBean loginBean = new LoginBean();              // settaggio parametri LoginBean
@@ -52,9 +46,10 @@ public class LoginControllerG {
 
                 if (accountHomepageBean.getRole().equals("Student")) {
                     StudentHomepageControllerG studentHomepageControllerG;
+                    System.out.println(accountHomepageBean.getName());
                     fxmlLoader = FxmlLoader.setPage("StudentHomepage");
                     studentHomepageControllerG = fxmlLoader.getController();
-                    studentHomepageControllerG.setUsername(accountHomepageBean.getName());
+                    studentHomepageControllerG.setUserName(accountHomepageBean.getName());
 
                 }else if(accountHomepageBean.getRole().equals("Admin")) {
                     AdminHomePageControllerG adminHomepageControllerG;
