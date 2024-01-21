@@ -4,8 +4,6 @@ import com.example.lessonlink.model.User;
 
 import javax.security.auth.login.FailedLoginException;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class UserFSDao {
     public String checkCredentials(String email, String password) throws FailedLoginException {

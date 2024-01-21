@@ -8,7 +8,7 @@ public class Query {
     private Query() {}
 
     public static ResultSet checkSignedUserByEmail(Statement stmt, String credential) throws SQLException {
-        String selectStatement = String.format("SELECT * FROM user WHERE (email = '%s')", credential);
+        String selectStatement = String.format("SELECT * FROM Users WHERE (email = '%s')", credential);
         return stmt.executeQuery(selectStatement);
     }
 

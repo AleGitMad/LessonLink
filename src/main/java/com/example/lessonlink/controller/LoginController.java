@@ -1,7 +1,6 @@
 package com.example.lessonlink.controller;
 
 import com.example.lessonlink.exceptions.FailedResearchException;
-import com.example.lessonlink.model.User;
 import com.example.lessonlink.model.Admin;
 import com.example.lessonlink.model.LoggedUser;
 import com.example.lessonlink.model.Student;
@@ -18,9 +17,9 @@ import java.sql.SQLException;
 public class LoginController {
     public AccountHomepageBean login(LoginBean loginBean) throws FailedLoginException, SQLException, FailedResearchException {
 
-        User user;
         Admin admin;
         Student student;
+        LoggedUser loggedUser = new LoggedUser();
         String fsAuth = System.getenv("FS_AUTH");
         String role;
         final String fs_on = "on";
@@ -34,14 +33,15 @@ public class LoginController {
         }
 
         UserFactory myFactory;
+        AccountHomepageBean accountHomepageBean = new AccountHomepageBean();
 
         // sezione di codice polimorfo per istanziare oggetti di tipo student/admin e i rispettivi Dao
 
         if (role.equals("Admin")) {
             myFactory = UserFactory.getFactory(UserFactory.ROLE_ADMIN);
             admin = (Admin) myFactory.createUser();
-            LoggedUser.getInstance().setUser(admin);
-            LoggedUser.getInstance().setRole(role);
+            loggedUser.setAdmin(admin);
+            loggedUser.setRole(role);
 
             if(fsAuth.equals(fs_on)){
                 UserFSDao userDao = new UserFSDao();
@@ -50,14 +50,14 @@ public class LoginController {
                 UserDao userDao = myFactory.createDAO();
                 userDao.setUser(admin, loginBean.getEmail());
             }
-            LoggedUser.getInstance().setAdmin(admin);
-            user = admin;
+            accountHomepageBean.setName(admin.getName());
+            accountHomepageBean.setRole(role);
 
         } else {
             myFactory = UserFactory.getFactory(UserFactory.ROLE_STUDENT);
             student = (Student) myFactory.createUser();
-            LoggedUser.getInstance().setUser(student);
-            LoggedUser.getInstance().setRole(role);
+            loggedUser.setStudent(student);
+            loggedUser.setRole(role);
 
             if(fsAuth.equals(fs_on)){
                 UserFSDao userDao = new UserFSDao();
@@ -66,17 +66,12 @@ public class LoginController {
                 UserDao userDao = myFactory.createDAO();
                 userDao.setUser(student, loginBean.getEmail());
             }
-
-
-            LoggedUser.getInstance().setStudent(student);
+            //TODO: check se polimorfismo vuole nome classe variabile uguale
             LessonDao lessonDao = new LessonDao();
-            student.setLessons(lessonDao.findStudentLessons(LoggedUser.getInstance().getUser().getUserId()));
-            user = student;
+            student.setLessons(lessonDao.findStudentLessons(loggedUser.getStudent().getUserId()));
+            accountHomepageBean.setName(student.getName());
+            accountHomepageBean.setRole(role);
         }
-
-        AccountHomepageBean accountHomepageBean = new AccountHomepageBean();
-        accountHomepageBean.setName(user.getName());
-        accountHomepageBean.setRole(role);
 
         return accountHomepageBean;
     }

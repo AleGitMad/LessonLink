@@ -13,15 +13,15 @@ public class AdminHomePageControllerG {
     }
 
     @FXML
-    void logout(ActionEvent event) {
-        FxmlLoader.setPage("Homepage");
+    void logout() {
+        FxmlLoader.setPage("Home");
     }
     @FXML
     void addTeacher(ActionEvent event) {
-        FxmlLoader.setPage("Homepage");
+        FxmlLoader.setPage("Home");
     }
     @FXML
     void activeBookings(ActionEvent event) {
-        FxmlLoader.setPage("Homepage");
+        FxmlLoader.setPage("Home");
     }
 }

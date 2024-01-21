@@ -13,7 +13,7 @@ public class StudentHomepageControllerG {
     }
 
     @FXML
-    void logout(ActionEvent event) {
+    void logout() {
         FxmlLoader.setPage("Home");
     }
     @FXML

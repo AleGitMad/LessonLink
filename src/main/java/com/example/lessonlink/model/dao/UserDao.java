@@ -38,7 +38,6 @@ public class UserDao {
     public void setUser(User user, String email) throws SQLException {
         Statement stmt = null;
         Connection conn = null;
-        String role = null;
 
         try {
             conn = Connector.getInstance().getConnection();
@@ -49,12 +48,12 @@ public class UserDao {
             rs.first(); // LoginDao ha già controllato la password
 
             user.setUserId(rs.getInt("userId"));
-            user.setName(rs.getString("name" )); // settiamo lo stato dell'istanza di Admin/Student a runtime
+            user.setName(rs.getString("name")); // settiamo lo stato dell'istanza di Admin/Student a runtime
             user.setEmail(rs.getString("email"));
 
 
         } catch (SQLException e) {
-            //TODO: not handled. to write
+            e.printStackTrace();
         } finally {
             if(stmt!=null){
                 stmt.close();

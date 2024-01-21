@@ -46,7 +46,6 @@ public class LoginControllerG {
 
                 if (accountHomepageBean.getRole().equals("Student")) {
                     StudentHomepageControllerG studentHomepageControllerG;
-                    System.out.println(accountHomepageBean.getName());
                     fxmlLoader = FxmlLoader.setPage("StudentHomepage");
                     studentHomepageControllerG = fxmlLoader.getController();
                     studentHomepageControllerG.setUserName(accountHomepageBean.getName());
