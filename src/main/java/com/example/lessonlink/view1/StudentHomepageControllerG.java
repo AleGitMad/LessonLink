@@ -19,6 +19,7 @@ public class StudentHomepageControllerG {
     @FXML
     void history(ActionEvent event) {
         FxmlLoader.setPage("Home");
+        //TODO: history
     }
 
     @FXML
