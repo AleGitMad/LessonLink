@@ -32,6 +32,14 @@ public class Teacher extends Educator {
         return averageRating;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getFare() {
+        return fare;
+    }
+
     @Override
     public int setAddFare() {
         return this.fare;

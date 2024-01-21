@@ -36,7 +36,12 @@
             </font>
         </Label>
         <Rectangle fill="#2a4476" height="40.0" layoutX="1111.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="2.0" />
-      <Pane layoutX="130.0" layoutY="197.0" prefHeight="327.0" prefWidth="1021.0" style="-fx-background-color: #BDCFE2;">
+        <ImageView fx:id="homeButton" fitHeight="40.0" fitWidth="40.0" layoutX="1024.0" layoutY="20.0" onMouseClicked="#setHomePage" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/HomeButton.png" />
+            </image>
+        </ImageView>
+        <Pane layoutX="130.0" layoutY="197.0" prefHeight="327.0" prefWidth="1021.0" style="-fx-background-color: #BDCFE2;">
          <children>
             <Pane layoutX="34.0" layoutY="135.0" prefHeight="100.0" prefWidth="953.0" style="-fx-background-color: #FFFFFF;">
                <children>
@@ -66,7 +71,7 @@
                   <Font name="Calibri" size="29.0" />
                </font>
             </Label>
-            <Button fx:id="searchButton1" layoutX="153.0" layoutY="308.0" mnemonicParsing="false" onAction="#search" prefHeight="97.0" prefWidth="197.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Make a new research" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="newSearchButton" layoutX="153.0" layoutY="308.0" mnemonicParsing="false" onAction="#newSearch" prefHeight="97.0" prefWidth="197.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Make a new research" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="23.0" />
                </font>

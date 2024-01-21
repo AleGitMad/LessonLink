@@ -2,20 +2,15 @@ package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.BookLessonController;
 import com.example.lessonlink.exceptions.FailedResearchException;
-import com.example.lessonlink.model.decorator.Teacher;
 import com.example.lessonlink.view1.bean.ResearchBean;
-import com.example.lessonlink.view1.bean.ResultsBean;
 import com.example.lessonlink.view1.bean.TeacherBean;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SearchPageControllerG {
     @FXML
@@ -33,9 +28,11 @@ public class SearchPageControllerG {
 
     @FXML
     private Label userNameLabel;
+    @FXML
+    private Button newSearchButton;
 
     BookLessonController bookLessonController = new BookLessonController();
-    ResultsBean resultsBean;
+    TeacherBean teacherBean;
 
     @FXML
     public void initialize() {
@@ -51,13 +48,13 @@ public class SearchPageControllerG {
         } else {
             researchBean.setWhere(whereBox.getValue());
         }
-        //no need to validate data as chosen from combobox
+        //TODO: validate (no null fields)
         //TeacherBean teacherBean = new TeacherBean();
         //List<Teacher> teachers = new ArrayList<>();
         try {
-            resultsBean = bookLessonController.search(researchBean);
-            if (!resultsBean.isEmpty()) {
-                setResultsPage(resultsBean);
+            teacherBean = bookLessonController.search(researchBean);
+            if (!teacherBean.isEmpty()) {
+                setResultsPage(teacherBean);
             } else {
                 notFoundPane.setVisible(true);
             }
@@ -67,13 +64,22 @@ public class SearchPageControllerG {
         }
     }
 
-    private void setResultsPage(ResultsBean resultsBean) {
+    private void setResultsPage(TeacherBean teacherBean) {
         FXMLLoader loader = FxmlLoader.setPage("ResultsPage");
         ResultsPageControllerG resultsPageControllerG = loader.getController();
-        resultsPageControllerG.setTeachers(resultsBean.getTeachers());
+        resultsPageControllerG.setResultsPage(teacherBean);
+    }
+
+    @FXML
+    void newSearch(ActionEvent event) {
+        notFoundPane.setVisible(false);
     }
     @FXML
     void logout() {
         FxmlLoader.setPage("Home");
+    }
+    @FXML
+    void setHomePage() {
+        FxmlLoader.setPage("StudentHomepage");
     }
 }

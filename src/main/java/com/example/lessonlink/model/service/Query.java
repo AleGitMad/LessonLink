@@ -15,7 +15,7 @@ public class Query {
 
 
     public static ResultSet findTeachers(Statement stmt, String subject, String city, boolean isOnline) throws SQLException {
-        String selectedStatement = String.format("SELECT * FROM teachers WHERE subject = '%s'", subject);
+        String selectedStatement = String.format("SELECT * FROM teachers WHERE subject1 = '%s' OR subject2 = '%s' OR subject3 = '%s'", subject, subject, subject);
 
         if(isOnline){
             selectedStatement += " AND availableOnline == true";

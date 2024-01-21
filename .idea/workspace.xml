@@ -4,16 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d42552c3-a5e8-42b2-8c10-4931408d8bad" name="Changes" comment="update gitignore">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/BookLessonControllerG.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/lessonlink/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/lessonlink/views/home.fxml" afterDir="false" />
+    <list default="true" id="d42552c3-a5e8-42b2-8c10-4931408d8bad" name="Changes" comment="first research commit, using researchBean">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/controller/BookLessonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/controller/BookLessonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/model/decorator/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/model/decorator/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/model/service/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/model/service/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/view1/ResultsPageControllerG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/view1/ResultsPageControllerG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/view1/SearchPageControllerG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/view1/SearchPageControllerG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/view1/bean/ResultsBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/view1/bean/TeacherBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lessonlink/view1/bean/TeacherBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/lessonlink/view1/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/lessonlink/view1/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/lessonlink/view1/ResultsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/lessonlink/view1/ResultsPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/lessonlink/view1/SearchPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/lessonlink/view1/SearchPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,10 +28,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="CSS File" />
         <option value="module-info" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -38,6 +43,20 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AleGitMad&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="81702eba-e7b8-4902-bb67-42fd22245793" />
+        <option name="url" value="https://github.com/AleGitMad/LessonLink.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -51,51 +70,101 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.BookLessonControllerG.executor": "Run",
-    "Application.DesktopLayoutController.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/alexs/.jdks/javafx-sdk-21.0.1/lib",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "show.migrate.to.gradle.popup": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.BookLessonControllerG.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CalcApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DesktopLayoutController.executor&quot;: &quot;Run&quot;,
+    &quot;Application.FxmlLoader.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LoginControllerG.executor&quot;: &quot;Run&quot;,
+    &quot;Application.View1 FS.executor&quot;: &quot;Run&quot;,
+    &quot;Application.View1 SQL.executor&quot;: &quot;Run&quot;,
+    &quot;Application.View1.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/alexs/OneDrive - Universita' degli Studi di Roma Tor Vergata/ISPW/Progetti di altri/AroundTheWorld-master&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.43218392&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexs\IdeaProjects\LessonLink\src\main\resources\com\example\calcolatrice\css" />
+      <recent name="C:\Users\alexs\IdeaProjects\LessonLink\src\main\resources\com\example\calcolatrice" />
+      <recent name="C:\Users\alexs\IdeaProjects\LessonLink\src\main\java\com\example\calcolatrice" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\alexs\IdeaProjects\LessonLink\src\main\resources\com\example\lessonlink" />
-      <recent name="C:\Users\alexs\IdeaProjects\LessonLink\src\main\resources\com.example.lessonlink" />
-      <recent name="C:\Users\alexs\IdeaProjects\LessonLink\src\main\resources\com.example.lessonlink\css" />
-      <recent name="C:\Users\Leonardo\IdeaProjects\LessonLink\src\main\java" />
+      <recent name="C:\Users\alexs\IdeaProjects\LessonLink\src\main\resources\com\example\lessonlink\" />
+      <recent name="C:\Users\alexs\IdeaProjects\LessonLink\src\main\resources\com\example\lessonlink\views" />
+      <recent name="C:\Users\alexs\IdeaProjects\LessonLink\src\main\resources" />
+      <recent name="C:\Users\alexs\IdeaProjects\LessonLink\src\main\resources\com\example\" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.lessonlink.model" />
+      <recent name="com.example.lessonlink.view1" />
+      <recent name="com.example.lessonlink" />
       <recent name="lessonlink" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.calcolatrice" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.View1 SQL">
+    <configuration name="View1 FS" type="Application" factoryName="Application">
+      <envs>
+        <env name="FS_AUTH" value="on, UTENTE=alexs" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.example.lessonlink.view1.FxmlLoader" />
+      <module name="LessonLink" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="View1 SQL" type="Application" factoryName="Application">
+      <envs>
+        <env name="FS_AUTH" value="off" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.example.lessonlink.view1.FxmlLoader" />
+      <module name="LessonLink" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.View1 FS" />
+      <item itemvalue="Application.View1 SQL" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-20.0.2-corretto-20.0.2.1-3183f394aec4-907a2361" />
         <option value="jdk-21.0.1-openjdk-21.0.1-3183f394aec4-7d648f2c" />
       </set>
     </attachedChunks>
@@ -118,7 +187,27 @@
       <workItem from="1702396491215" duration="634000" />
       <workItem from="1702397207628" duration="2634000" />
       <workItem from="1702400649457" duration="93000" />
-      <workItem from="1702400919385" duration="4146000" />
+      <workItem from="1702400919385" duration="6114000" />
+      <workItem from="1702744481754" duration="84000" />
+      <workItem from="1702744583311" duration="2256000" />
+      <workItem from="1703157492602" duration="395000" />
+      <workItem from="1703243254570" duration="5637000" />
+      <workItem from="1703273612961" duration="18000" />
+      <workItem from="1703348748311" duration="2409000" />
+      <workItem from="1703610155932" duration="2374000" />
+      <workItem from="1703615655998" duration="8833000" />
+      <workItem from="1704469213535" duration="116000" />
+      <workItem from="1704473287663" duration="304000" />
+      <workItem from="1704473687349" duration="65000" />
+      <workItem from="1704477173685" duration="878000" />
+      <workItem from="1704478110068" duration="3099000" />
+      <workItem from="1704556407348" duration="30930000" />
+      <workItem from="1705070120977" duration="2132000" />
+      <workItem from="1705073430172" duration="33768000" />
+      <workItem from="1705747772696" duration="4403000" />
+      <workItem from="1705763142441" duration="4832000" />
+      <workItem from="1705773768384" duration="1927000" />
+      <workItem from="1705831077251" duration="16571000" />
     </task>
     <task id="LOCAL-00001" summary="Commit/Push test">
       <option name="closed" value="true" />
@@ -160,7 +249,119 @@
       <option name="project" value="LOCAL" />
       <updated>1701799689031</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="initial interface push">
+      <option name="closed" value="true" />
+      <created>1702406535920</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1702406535920</updated>
+    </task>
+    <task id="LOCAL-00007" summary="working interface">
+      <option name="closed" value="true" />
+      <created>1702757543847</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702757543847</updated>
+    </task>
+    <task id="LOCAL-00008" summary="working homePage">
+      <option name="closed" value="true" />
+      <created>1703947909969</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1703947909969</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Incomplete login function">
+      <option name="closed" value="true" />
+      <created>1704968360975</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1704968360975</updated>
+    </task>
+    <task id="LOCAL-00010" summary="SQL management classes (connector/query).">
+      <option name="closed" value="true" />
+      <created>1704971970383</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1704971970384</updated>
+    </task>
+    <task id="LOCAL-00011" summary="incomplete research mechanism, some fxml pages">
+      <option name="closed" value="true" />
+      <created>1705081612673</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1705081612674</updated>
+    </task>
+    <task id="LOCAL-00012" summary="teacher and review dao with some operations">
+      <option name="closed" value="true" />
+      <created>1705404190345</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705404190346</updated>
+    </task>
+    <task id="LOCAL-00013" summary="commit before renamings (only user things, no more accounts)">
+      <option name="closed" value="true" />
+      <created>1705685451783</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1705685451783</updated>
+    </task>
+    <task id="LOCAL-00014" summary="login logic (to test), commented research functions, everything relying on user entity (no more account)">
+      <option name="closed" value="true" />
+      <created>1705692150751</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1705692150751</updated>
+    </task>
+    <task id="LOCAL-00015" summary="login logic (to test), commented research functions, everything relying on user entity (no more account)">
+      <option name="closed" value="true" />
+      <created>1705692315107</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1705692315107</updated>
+    </task>
+    <task id="LOCAL-00016" summary="login logic working">
+      <option name="closed" value="true" />
+      <created>1705749590568</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1705749590568</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fs dao path based on environment variable.">
+      <option name="closed" value="true" />
+      <created>1705767560302</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1705767560302</updated>
+    </task>
+    <task id="LOCAL-00018" summary="working login/logout and label in homepage">
+      <option name="closed" value="true" />
+      <created>1705833853192</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1705833853192</updated>
+    </task>
+    <task id="LOCAL-00019" summary="first research commit, using researchBean">
+      <option name="closed" value="true" />
+      <created>1705857280809</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1705857280809</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +382,19 @@
     <MESSAGE value="Commit/Push test" />
     <MESSAGE value="Main created" />
     <MESSAGE value="update gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="update gitignore" />
+    <MESSAGE value="initial interface push" />
+    <MESSAGE value="working interface" />
+    <MESSAGE value="working homePage" />
+    <MESSAGE value="Incomplete login function" />
+    <MESSAGE value="SQL management classes (connector/query)." />
+    <MESSAGE value="incomplete research mechanism, some fxml pages" />
+    <MESSAGE value="teacher and review dao with some operations" />
+    <MESSAGE value="commit before renamings (only user things, no more accounts)" />
+    <MESSAGE value="login logic (to test), commented research functions, everything relying on user entity (no more account)" />
+    <MESSAGE value="login logic working" />
+    <MESSAGE value="fs dao path based on environment variable." />
+    <MESSAGE value="working login/logout and label in homepage" />
+    <MESSAGE value="first research commit, using researchBean" />
+    <option name="LAST_COMMIT_MESSAGE" value="first research commit, using researchBean" />
   </component>
 </project>
