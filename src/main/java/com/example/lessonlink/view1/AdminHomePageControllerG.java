@@ -18,7 +18,7 @@ public class AdminHomePageControllerG {
     }
     @FXML
     void addTeacher(ActionEvent event) {
-        FxmlLoader.setPage("Home");
+        FxmlLoader.setPage("CreateTeacherProfile");
     }
     @FXML
     void activeBookings(ActionEvent event) {

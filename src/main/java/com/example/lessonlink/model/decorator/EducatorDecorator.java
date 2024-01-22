@@ -7,10 +7,13 @@ public abstract class EducatorDecorator extends Educator implements DecorateFare
         this.educator = educator;
     }
 
+    @Override
     public int setAddFare(){
         return educator.setAddFare();
     }
+
+    @Override
     public String setDecoration(){
-        return educator.setDecoration();
+        return this.educator.setDecoration();
     }
 }

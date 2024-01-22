@@ -5,7 +5,7 @@ import com.example.lessonlink.model.decorator.Educator;
 import com.example.lessonlink.model.decorator.EducatorDecorator;
 
 public class Math extends EducatorDecorator implements DecorateFare {
-    private int fare;
+    private int myFare;
     private int idx;
     public Math(Educator educator){
         super(educator);
@@ -14,14 +14,14 @@ public class Math extends EducatorDecorator implements DecorateFare {
     }
 
     public void setFare(int fare){
-        this.fare = fare;
+        this.myFare = fare;
     }
     public void setIdx(int idx){
         this.idx = idx;
     }
 
     private int applyFare(int input) {
-        return this.fare + input;
+        return this.myFare + input;
     }
 
     private String applyDecoration(String input) {

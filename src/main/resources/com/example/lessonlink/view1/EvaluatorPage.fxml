@@ -31,7 +31,7 @@
                 <Image url="@../images/adminIcon.png" />
             </image>
         </ImageView>
-        <ImageView fx:id="logoutButton" fitHeight="40.0" fitWidth="40.0" layoutX="1220.0" layoutY="20.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1220.0" layoutY="20.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/logoutIcon.png" />
             </image>
@@ -52,13 +52,13 @@
                 <Font size="20.0" />
             </font>
         </TextField>
-        <Button fx:id="goToEvaluatorButton" layoutX="730.0" layoutY="521.0" mnemonicParsing="false" onAction="#logout" prefHeight="72.0" prefWidth="370.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Use your fare" textAlignment="CENTER" textFill="WHITE">
+        <Button layoutX="730.0" layoutY="521.0" mnemonicParsing="false" onAction="#logout" prefHeight="72.0" prefWidth="370.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Use your fare" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
         </Button>
         <Line endX="640.0" endY="621.0" startX="640.0" startY="219.0" stroke="#d9d9d9" />
-      <Button fx:id="goToEvaluatorButton1" layoutX="180.0" layoutY="521.0" mnemonicParsing="false" onAction="#logout" prefHeight="72.0" prefWidth="370.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Use evaluated fare" textAlignment="CENTER" textFill="WHITE">
+      <Button layoutX="180.0" layoutY="521.0" mnemonicParsing="false" onAction="#logout" prefHeight="72.0" prefWidth="370.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Use evaluated fare" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>

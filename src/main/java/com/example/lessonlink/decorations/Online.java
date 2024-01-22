@@ -4,14 +4,13 @@ import com.example.lessonlink.model.decorator.DecorateFare;
 import com.example.lessonlink.model.decorator.Educator;
 import com.example.lessonlink.model.decorator.EducatorDecorator;
 
-public class Physics extends EducatorDecorator implements DecorateFare {
+public class Online extends EducatorDecorator implements DecorateFare {
     private int myFare;
     private int idx;
-
-    public Physics(Educator educator){
+    public Online(Educator educator){
         super(educator);
-        this.setIdx(PHYSICS_IDX);
-        this.setFare(PHYSICS_FARE);
+        this.setIdx(ONLINE_IDX);
+        this.setFare(ONLINE_FARE);
     }
 
     public void setFare(int fare){
