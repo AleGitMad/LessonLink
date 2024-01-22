@@ -18,7 +18,7 @@ public class Query {
         String selectedStatement = String.format("SELECT * FROM teachers WHERE subject1 = '%s' OR subject2 = '%s' OR subject3 = '%s'", subject, subject, subject);
 
         if(isOnline){
-            selectedStatement += " AND availableOnline == true";
+            selectedStatement += " AND availableOnline = 1"; // 1 = true, sql tinyint
         } else {
             selectedStatement += " AND city = '" + city + "'";
         }

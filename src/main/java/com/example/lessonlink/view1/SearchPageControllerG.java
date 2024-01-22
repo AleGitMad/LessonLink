@@ -42,13 +42,14 @@ public class SearchPageControllerG {
 
     @FXML
     void search() {
-        ResearchBean researchBean = new ResearchBean(subjectBox.getValue());
+        ResearchBean researchBean = new ResearchBean(subjectBox.getValue(), whereBox.getValue());
         if (researchBean.validate()) {
             if (whereBox.getValue().equals("Online")) {
                 researchBean.setIsOnline();
-            } else {
+            } /* else {
                 researchBean.setWhere(whereBox.getValue());
             }
+            */
                 try {
                     teacherBean = bookLessonController.search(researchBean);
                     if (!teacherBean.isEmpty()) {
