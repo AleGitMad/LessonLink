@@ -20,11 +20,15 @@ public class LoginController {
         Admin admin;
         Student student;
         LoggedUser loggedUser = new LoggedUser();
-        String fsAuth = System.getenv("FS_AUTH");
-        String role;
-        final String fs_on = "on";
+        //String fsAuth = System.getenv("FS_AUTH");
 
-        if(fsAuth.equals(fs_on)){
+        //usiamo una variabile d'ambiente per discriminare il dao da utilizzare per il login
+        int fsAuth = Integer.parseInt(System.getenv("PROCESSOR_LEVEL"));
+        String role;
+        //final String fs_on = "on";
+
+        //if(fsAuth.equals(fs_on)){
+        if(fsAuth < 12){
             UserFSDao userDao = new UserFSDao();
             role = userDao.checkCredentials(loginBean.getEmail(), loginBean.getPassword());
         }else {
@@ -43,7 +47,8 @@ public class LoginController {
             loggedUser.setAdmin(admin);
             loggedUser.setRole(role);
 
-            if(fsAuth.equals(fs_on)){
+            if(fsAuth < 12){
+            //if(fsAuth.equals(fs_on)){
                 UserFSDao userDao = new UserFSDao();
                 userDao.setUser(admin, loginBean.getEmail());
             }else {
@@ -59,7 +64,7 @@ public class LoginController {
             loggedUser.setStudent(student);
             loggedUser.setRole(role);
 
-            if(fsAuth.equals(fs_on)){
+            if(fsAuth < 12){
                 UserFSDao userDao = new UserFSDao();
                 userDao.setUser(student, loginBean.getEmail());
             }else {

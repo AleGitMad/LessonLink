@@ -37,30 +37,33 @@ public class SearchPageControllerG {
     @FXML
     public void initialize() {
         subjectBox.getItems().addAll("Math", "History", "English", "Physics", "Geography");
-        whereBox.getItems().addAll("Rome", "Milan", "Bergamo", "Tivoli");
+        whereBox.getItems().addAll("Rome", "Milan", "Bergamo", "Tivoli", "Online");
     }
 
     @FXML
     void search() {
         ResearchBean researchBean = new ResearchBean(subjectBox.getValue());
-        if (whereBox.getValue().equals("Online")) {
-            researchBean.setIsOnline();
-        } else {
-            researchBean.setWhere(whereBox.getValue());
-        }
-        //TODO: validate (no null fields)
-        //TeacherBean teacherBean = new TeacherBean();
-        //List<Teacher> teachers = new ArrayList<>();
-        try {
-            teacherBean = bookLessonController.search(researchBean);
-            if (!teacherBean.isEmpty()) {
-                setResultsPage(teacherBean);
+        if (researchBean.validate()) {
+            if (whereBox.getValue().equals("Online")) {
+                researchBean.setIsOnline();
             } else {
-                notFoundPane.setVisible(true);
+                researchBean.setWhere(whereBox.getValue());
             }
-        } catch (FailedResearchException e) {
+                try {
+                    teacherBean = bookLessonController.search(researchBean);
+                    if (!teacherBean.isEmpty()) {
+                        setResultsPage(teacherBean);
+                    } else {
+                        notFoundPane.setVisible(true);
+                    }
+                } catch (FailedResearchException e) {
+                    errorPane.setVisible(true);
+                    errorLabel.setText(e.getMessage());
+                }
+        }
+        else {
             errorPane.setVisible(true);
-            errorLabel.setText(e.getMessage());
+            errorLabel.setText("Please select all the fields");
         }
     }
 
@@ -73,6 +76,10 @@ public class SearchPageControllerG {
     @FXML
     void newSearch(ActionEvent event) {
         notFoundPane.setVisible(false);
+    }
+    @FXML
+    void newSearchE(ActionEvent event) {
+        errorPane.setVisible(false);
     }
     @FXML
     void logout() {

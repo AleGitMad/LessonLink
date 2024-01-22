@@ -5,6 +5,7 @@ import com.example.lessonlink.view1.bean.TeacherBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
 import java.util.List;
@@ -47,6 +48,15 @@ public class ResultsPageControllerG {
     @FXML
     private Rectangle resultHighlight4;
 
+    @FXML
+    private Pane result1;
+    @FXML
+    private Pane result2;
+    @FXML
+    private Pane result3;
+    @FXML
+    private Pane result4;
+
 
     private List<Teacher> teachers;
     public void setTeachers(List<Teacher> teachers) {
@@ -61,6 +71,9 @@ public class ResultsPageControllerG {
                 teacherNameLabel1.setText(teachers.get(0).getName());
                 reviewScoreLabel1.setText(String.valueOf(teachers.get(0).getAverageRating()) + "/10");
                 fareInt1.setText(String.valueOf(teachers.get(0).getFare()));
+                result2.setVisible(false);
+                result3.setVisible(false);
+                result4.setVisible(false);
                 break;
             case 2:
                 teacherNameLabel1.setText(teachers.get(0).getName());
@@ -69,6 +82,8 @@ public class ResultsPageControllerG {
                 reviewScoreLabel2.setText(String.valueOf(teachers.get(1).getAverageRating()) + "/10");
                 fareInt1.setText(String.valueOf(teachers.get(0).getFare()));
                 fareInt2.setText(String.valueOf(teachers.get(1).getFare()));
+                result3.setVisible(false);
+                result4.setVisible(false);
                 break;
             case 3:
                 teacherNameLabel1.setText(teachers.get(0).getName());
@@ -80,6 +95,7 @@ public class ResultsPageControllerG {
                 fareInt1.setText(String.valueOf(teachers.get(0).getFare()));
                 fareInt2.setText(String.valueOf(teachers.get(1).getFare()));
                 fareInt3.setText(String.valueOf(teachers.get(2).getFare()));
+                result4.setVisible(false);
                 break;
         }
         if (numberOfTeachers==4 || numberOfTeachers>4) {

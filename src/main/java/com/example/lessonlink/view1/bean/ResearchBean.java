@@ -32,4 +32,8 @@ public class ResearchBean {
             this.isOnline = true;
         }
 
+        public boolean validate() {
+            return (subject != null) && where != null;
+        }
+
 }
