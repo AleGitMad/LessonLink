@@ -69,8 +69,12 @@ public class ResultsPageControllerG {
         switch (numberOfTeachers) {
             case 1:
                 teacherNameLabel1.setText(teachers.get(0).getName());
-                reviewScoreLabel1.setText(String.valueOf(teachers.get(0).getAverageRating()) + "/10");
-                fareInt1.setText(String.valueOf(teachers.get(0).getFare()));
+                if (teachers.get(0).getHasReviews()) {
+                    reviewScoreLabel1.setText(teachers.get(0).getAverageRating() + "/10");
+                } else {
+                    reviewScoreLabel1.setText("");
+                }
+                fareInt1.setText(teachers.get(0).getFare() + "€/h");
                 result2.setVisible(false);
                 result3.setVisible(false);
                 result4.setVisible(false);
@@ -78,10 +82,18 @@ public class ResultsPageControllerG {
             case 2:
                 teacherNameLabel1.setText(teachers.get(0).getName());
                 teacherNameLabel2.setText(teachers.get(1).getName());
-                reviewScoreLabel1.setText(String.valueOf(teachers.get(0).getAverageRating()) + "/10");
-                reviewScoreLabel2.setText(String.valueOf(teachers.get(1).getAverageRating()) + "/10");
-                fareInt1.setText(String.valueOf(teachers.get(0).getFare()));
-                fareInt2.setText(String.valueOf(teachers.get(1).getFare()));
+                if (teachers.get(0).getHasReviews()) {
+                    reviewScoreLabel1.setText(teachers.get(0).getAverageRating() + "/10");
+                } else {
+                    reviewScoreLabel1.setText("");
+                }
+                if (teachers.get(1).getHasReviews()) {
+                    reviewScoreLabel2.setText(teachers.get(1).getAverageRating() + "/10");
+                } else {
+                    reviewScoreLabel2.setText("");
+                }
+                fareInt1.setText(teachers.get(0).getFare() + "€/h");
+                fareInt2.setText(teachers.get(1).getFare() + "€/h");
                 result3.setVisible(false);
                 result4.setVisible(false);
                 break;
@@ -89,12 +101,24 @@ public class ResultsPageControllerG {
                 teacherNameLabel1.setText(teachers.get(0).getName());
                 teacherNameLabel2.setText(teachers.get(1).getName());
                 teacherNameLabel3.setText(teachers.get(2).getName());
-                reviewScoreLabel1.setText(String.valueOf(teachers.get(0).getAverageRating()) + "/10");
-                reviewScoreLabel2.setText(String.valueOf(teachers.get(1).getAverageRating()) + "/10");
-                reviewScoreLabel3.setText(String.valueOf(teachers.get(2).getAverageRating()) + "/10");
-                fareInt1.setText(String.valueOf(teachers.get(0).getFare()));
-                fareInt2.setText(String.valueOf(teachers.get(1).getFare()));
-                fareInt3.setText(String.valueOf(teachers.get(2).getFare()));
+                if (teachers.get(0).getHasReviews()) {
+                    reviewScoreLabel1.setText(teachers.get(0).getAverageRating() + "/10");
+                } else {
+                    reviewScoreLabel1.setText("");
+                }
+                if (teachers.get(1).getHasReviews()) {
+                    reviewScoreLabel2.setText(teachers.get(1).getAverageRating() + "/10");
+                } else {
+                    reviewScoreLabel2.setText("");
+                }
+                if (teachers.get(2).getHasReviews()) {
+                    reviewScoreLabel3.setText(teachers.get(2).getAverageRating() + "/10");
+                } else {
+                    reviewScoreLabel3.setText("");
+                }
+                fareInt1.setText(teachers.get(0).getFare() + "€/h");
+                fareInt2.setText(teachers.get(1).getFare() + "€/h");
+                fareInt3.setText(teachers.get(2).getFare() + "€/h");
                 result4.setVisible(false);
                 break;
         }
@@ -103,20 +127,30 @@ public class ResultsPageControllerG {
             teacherNameLabel2.setText(teachers.get(1).getName());
             teacherNameLabel3.setText(teachers.get(2).getName());
             teacherNameLabel4.setText(teachers.get(3).getName());
-            reviewScoreLabel1.setText(String.valueOf(teachers.get(0).getAverageRating()) + "/10");
-            reviewScoreLabel2.setText(String.valueOf(teachers.get(1).getAverageRating()) + "/10");
-            reviewScoreLabel3.setText(String.valueOf(teachers.get(2).getAverageRating()) + "/10");
-            reviewScoreLabel4.setText(String.valueOf(teachers.get(3).getAverageRating()) + "/10");
-            /*
-            fareInt1 = teachers.get(0).getFare();
-            fareInt2 = teachers.get(1).getFare();
-            fareInt3 = teachers.get(2).getFare();
-            fareInt4 = teachers.get(3).getFare();
-            */
-            fareInt1.setText(String.valueOf(teachers.get(0).getFare()));
-            fareInt2.setText(String.valueOf(teachers.get(1).getFare()));
-            fareInt3.setText(String.valueOf(teachers.get(2).getFare()));
-            fareInt4.setText(String.valueOf(teachers.get(3).getFare()));
+            if (teachers.get(0).getHasReviews()) {
+                reviewScoreLabel1.setText(teachers.get(0).getAverageRating() + "/10");
+            } else {
+                reviewScoreLabel1.setText("");
+            }
+            if (teachers.get(1).getHasReviews()) {
+                reviewScoreLabel2.setText(teachers.get(1).getAverageRating() + "/10");
+            } else {
+                reviewScoreLabel2.setText("");
+            }
+            if (teachers.get(2).getHasReviews()) {
+                reviewScoreLabel3.setText(teachers.get(2).getAverageRating() + "/10");
+            } else {
+                reviewScoreLabel3.setText("");
+            }
+            if (teachers.get(3).getHasReviews()) {
+                reviewScoreLabel4.setText(teachers.get(3).getAverageRating() + "/10");
+            } else {
+                reviewScoreLabel4.setText("");
+            }
+            fareInt1.setText(teachers.get(0).getFare() + "€/h");
+            fareInt2.setText(teachers.get(1).getFare() + "€/h");
+            fareInt3.setText(teachers.get(2).getFare() + "€/h");
+            fareInt4.setText(teachers.get(3).getFare() + "€/h");
         }
     }
 

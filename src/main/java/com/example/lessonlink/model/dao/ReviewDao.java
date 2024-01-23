@@ -27,7 +27,11 @@ public class ReviewDao {
                 averageRating += rs.getInt("stars");
                 reviews++;
             }
-            averageRating = averageRating/reviews;
+            if (reviews != 0) {
+                averageRating = averageRating / reviews;
+            } else {
+                averageRating = -1;
+            }
         } catch (Exception se) {
             se.printStackTrace();
             throw new FailedResearchException("An error during research occurred.");

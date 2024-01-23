@@ -46,10 +46,7 @@ public class SearchPageControllerG {
         if (researchBean.validate()) {
             if (whereBox.getValue().equals("Online")) {
                 researchBean.setIsOnline();
-            } /* else {
-                researchBean.setWhere(whereBox.getValue());
             }
-            */
                 try {
                     teacherBean = bookLessonController.search(researchBean);
                     if (!teacherBean.isEmpty()) {

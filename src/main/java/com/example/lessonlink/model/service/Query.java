@@ -15,12 +15,12 @@ public class Query {
 
 
     public static ResultSet findTeachers(Statement stmt, String subject, String city, boolean isOnline) throws SQLException {
-        String selectedStatement = String.format("SELECT * FROM teachers WHERE subject1 = '%s' OR subject2 = '%s' OR subject3 = '%s'", subject, subject, subject);
+        String selectedStatement = String.format("SELECT * FROM teachers WHERE (subject1 = '%s' OR subject2 = '%s' OR subject3 = '%s'", subject, subject, subject);
 
         if(isOnline){
-            selectedStatement += " AND availableOnline = 1"; // 1 = true, sql tinyint
+            selectedStatement += ") AND availableOnline = 1"; // 1 = true, sql tinyint
         } else {
-            selectedStatement += " AND city = '" + city + "'";
+            selectedStatement += ") AND city = '" + city + "'";
         }
         return stmt.executeQuery(selectedStatement);
     }

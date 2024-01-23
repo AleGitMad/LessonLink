@@ -5,6 +5,7 @@ public class Teacher extends Educator {
     private int teacherId;
     private String name;
     private float averageRating;
+    private boolean hasReviews;
 
     public Teacher(int teacherId, String name, String subject1, String subject2, String subject3, int fare, String city, String qualification, boolean availableOnline) {
         this.teacherId = teacherId;
@@ -42,5 +43,12 @@ public class Teacher extends Educator {
     }
     public void setAverageRating(float averageRating) {
         this.averageRating = averageRating;
+    }
+    public boolean getHasReviews() {
+        return hasReviews;
+    }
+
+    public void setHasReviews(boolean hasReviews) {
+        this.hasReviews = hasReviews;
     }
 }

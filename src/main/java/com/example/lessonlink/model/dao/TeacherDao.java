@@ -51,7 +51,13 @@ public class TeacherDao {
                 rs.getString("qualification"),
                 rs.getBoolean("availableOnline"));
         ReviewDao reviewDao = new ReviewDao();
-        teacher.setAverageRating(reviewDao.getAverageRating(rs.getInt("teacherId")));
+        if (reviewDao.getAverageRating(rs.getInt("teacherId")) != -1) {
+            teacher.setAverageRating(reviewDao.getAverageRating(rs.getInt("teacherId")));
+            teacher.setHasReviews(true);
+        } else {
+            teacher.setHasReviews(false);
+        }
+
         return teacher;
     }
 
