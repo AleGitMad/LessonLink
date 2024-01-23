@@ -10,10 +10,10 @@ public class Geography extends EducatorDecorator implements DecorateFare {
     public Geography(Educator educator){
         super(educator);
         this.setIdx(GEOGRAPHY_IDX);
-        this.setFare(GEOGRAPHY_FARE);
+        this.setMyFare(GEOGRAPHY_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

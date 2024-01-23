@@ -10,10 +10,10 @@ public class History extends EducatorDecorator implements DecorateFare {
     public History(Educator educator){
         super(educator);
         this.setIdx(HISTORY_IDX);
-        this.setFare(HISTORY_FARE);
+        this.setMyFare(HISTORY_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

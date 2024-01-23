@@ -10,10 +10,10 @@ public class Online extends EducatorDecorator implements DecorateFare {
     public Online(Educator educator){
         super(educator);
         this.setIdx(ONLINE_IDX);
-        this.setFare(ONLINE_FARE);
+        this.setMyFare(ONLINE_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

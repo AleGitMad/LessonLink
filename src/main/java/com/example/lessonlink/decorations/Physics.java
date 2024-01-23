@@ -11,10 +11,10 @@ public class Physics extends EducatorDecorator implements DecorateFare {
     public Physics(Educator educator){
         super(educator);
         this.setIdx(PHYSICS_IDX);
-        this.setFare(PHYSICS_FARE);
+        this.setMyFare(PHYSICS_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

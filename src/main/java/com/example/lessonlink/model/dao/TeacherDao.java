@@ -61,6 +61,4 @@ public class TeacherDao {
         return teacher;
     }
 
-
-
 }

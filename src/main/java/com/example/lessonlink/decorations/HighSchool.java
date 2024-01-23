@@ -10,10 +10,10 @@ public class HighSchool extends EducatorDecorator implements DecorateFare {
     public HighSchool(Educator educator){
         super(educator);
         this.setIdx(HIGH_SCHOOL_IDX);
-        this.setFare(HIGH_SCHOOL_FARE);
+        this.setMyFare(HIGH_SCHOOL_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

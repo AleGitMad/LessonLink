@@ -10,10 +10,10 @@ public class English extends EducatorDecorator implements DecorateFare {
     public English(Educator educator){
         super(educator);
         this.setIdx(ENGLISH_IDX);
-        this.setFare(ENGLISH_FARE);
+        this.setMyFare(ENGLISH_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

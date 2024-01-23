@@ -10,10 +10,10 @@ public class Math extends EducatorDecorator implements DecorateFare {
     public Math(Educator educator){
         super(educator);
         this.setIdx(MATH_IDX);
-        this.setFare(MATH_FARE);
+        this.setMyFare(MATH_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

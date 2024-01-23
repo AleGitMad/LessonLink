@@ -10,10 +10,10 @@ public class Milan extends EducatorDecorator implements DecorateFare {
     public Milan(Educator educator){
         super(educator);
         this.setIdx(MILAN_IDX);
-        this.setFare(MILAN_FARE);
+        this.setMyFare(MILAN_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

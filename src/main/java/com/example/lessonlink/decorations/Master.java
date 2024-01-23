@@ -10,10 +10,10 @@ public class Master extends EducatorDecorator implements DecorateFare {
     public Master(Educator educator){
         super(educator);
         this.setIdx(MASTER_IDX);
-        this.setFare(MASTER_FARE);
+        this.setMyFare(MASTER_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

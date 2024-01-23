@@ -4,19 +4,19 @@ import com.example.lessonlink.decorations.*;
 import com.example.lessonlink.decorations.Math;
 
 public interface DecorateFare {
-    int MATH_IDX = 1;
-    int PHYSICS_IDX = 2;
-    int ENGLISH_IDX = 3;
-    int HISTORY_IDX = 4;
-    int GEOGRAPHY_IDX = 5;
-    int ROME_IDX = 6;
-    int MILAN_IDX = 7;
-    int BERGAMO_IDX = 8;
-    int TIVOLI_IDX = 9;
-    int HIGH_SCHOOL_IDX = 10;
-    int BACHELOR_IDX = 11;
-    int MASTER_IDX = 12;
-    int ONLINE_IDX = 13;
+    int MATH_IDX = 0;
+    int PHYSICS_IDX = 1;
+    int ENGLISH_IDX = 2;
+    int HISTORY_IDX = 3;
+    int GEOGRAPHY_IDX = 4;
+    int ROME_IDX = 5;
+    int MILAN_IDX = 6;
+    int BERGAMO_IDX = 7;
+    int TIVOLI_IDX = 8;
+    int HIGH_SCHOOL_IDX = 9;
+    int BACHELOR_IDX = 10;
+    int MASTER_IDX = 11;
+    int ONLINE_IDX = 12;
 
     int MATH_FARE = 5;
     int PHYSICS_FARE = 5;

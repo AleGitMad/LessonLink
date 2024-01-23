@@ -1,9 +1,15 @@
 package com.example.lessonlink.view1;
 
+import com.example.lessonlink.controller.AddTeacherController;
+import com.example.lessonlink.model.decorator.Teacher;
+import com.example.lessonlink.view1.bean.ProfileTeacherBean;
+import com.example.lessonlink.view1.bean.TeacherBean;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 
 //This controller will control the CreateTeacher.fxml and EvaluatorPage.fxml files
 public class CreateTeacherControllerG {
@@ -24,6 +30,8 @@ public class CreateTeacherControllerG {
     @FXML
     private TextField nameField;
 
+    private ProfileTeacherBean profileTeacherBean;
+    private AddTeacherController addTeacherController;
 
     @FXML
     public void initialize() {
@@ -39,16 +47,34 @@ public class CreateTeacherControllerG {
     void logout() {
         FxmlLoader.setPage("Home");
     }
-//    @FXML
-//    public void setUserName(String userName) {
-//        username.setText(userName);
-//    }
+
     @FXML
-    void setHomePage(ActionEvent event) {
+    void setHomePage() {
         FxmlLoader.setPage("AdminHomepage");
     }
+
     @FXML
     void goToEvaluatorPage(ActionEvent event) {
-        FxmlLoader.setPage("EvaluatorPage");
+        profileTeacherBean = new ProfileTeacherBean();
+        addTeacherController = new AddTeacherController();
+
+        profileTeacherBean.setName(nameField.getText());
+        profileTeacherBean.setCity(cityBox.getValue());
+        profileTeacherBean.setQualification(qualificationBox.getValue());
+        profileTeacherBean.setSubject1(subjectBox1.getValue());
+        profileTeacherBean.setSubject2(subjectBox2.getValue());
+        profileTeacherBean.setSubject3(subjectBox3.getValue());
+        profileTeacherBean.setOnline(onlineBox.getValue());
+
+        if (profileTeacherBean.validate()) {
+            profileTeacherBean.setDecorations();
+            addTeacherController.addTeacher(profileTeacherBean);
+            //System.out.println(profileTeacherBean.getName());
+            FXMLLoader fxmlLoader = FxmlLoader.setPage("EvaluatorPage");
+            EvaluatorControllerG evaluatorControllerG = fxmlLoader.getController();
+            evaluatorControllerG.setController(addTeacherController);
+            evaluatorControllerG.setProfileTeacherBean(profileTeacherBean);
+            evaluatorControllerG.setFareToScreen(profileTeacherBean.getFare());
+        }
     }
 }

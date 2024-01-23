@@ -19,6 +19,18 @@ public class Teacher extends Educator {
         this.availableOnline = availableOnline;
     }
 
+    public Teacher() {
+        this.teacherId = 0;
+        this.name = "";
+        this.subject1 = "";
+        this.subject2 = "";
+        this.subject3 = "";
+        this.fare = 0;
+        this.city = "";
+        this.qualification = "";
+        this.availableOnline = false;
+    }
+
     @Override
     public int setAddFare() {
         return this.fare;

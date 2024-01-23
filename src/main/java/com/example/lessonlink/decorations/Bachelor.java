@@ -7,13 +7,14 @@ import com.example.lessonlink.model.decorator.EducatorDecorator;
 public class Bachelor extends EducatorDecorator implements DecorateFare {
     private int myFare;
     private int idx;
+
     public Bachelor(Educator educator){
         super(educator);
         this.setIdx(BACHELOR_IDX);
-        this.setFare(BACHELOR_FARE);
+        this.setMyFare(BACHELOR_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

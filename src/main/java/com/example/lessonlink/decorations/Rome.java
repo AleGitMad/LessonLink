@@ -10,10 +10,10 @@ public class Rome extends EducatorDecorator implements DecorateFare {
     public Rome(Educator educator){
         super(educator);
         this.setIdx(ROME_IDX);
-        this.setFare(ROME_FARE);
+        this.setMyFare(ROME_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

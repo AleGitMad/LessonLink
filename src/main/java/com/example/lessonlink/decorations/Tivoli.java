@@ -10,10 +10,10 @@ public class Tivoli extends EducatorDecorator implements DecorateFare {
     public Tivoli(Educator educator){
         super(educator);
         this.setIdx(TIVOLI_IDX);
-        this.setFare(TIVOLI_FARE);
+        this.setMyFare(TIVOLI_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

@@ -10,10 +10,10 @@ public class Bergamo extends EducatorDecorator implements DecorateFare {
     public Bergamo(Educator educator){
         super(educator);
         this.setIdx(BERGAMO_IDX);
-        this.setFare(BERGAMO_FARE);
+        this.setMyFare(BERGAMO_FARE);
     }
 
-    public void setFare(int fare){
+    public void setMyFare(int fare){
         this.myFare = fare;
     }
     public void setIdx(int idx){

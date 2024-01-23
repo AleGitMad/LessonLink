@@ -1,7 +1,7 @@
 package com.example.lessonlink.model.decorator;
 
 public abstract class EducatorDecorator extends Educator implements DecorateFare {
-    protected Educator educator;
+    private Educator educator;
 
     protected EducatorDecorator(Educator educator){
         this.educator = educator;
@@ -9,7 +9,7 @@ public abstract class EducatorDecorator extends Educator implements DecorateFare
 
     @Override
     public int setAddFare(){
-        return educator.setAddFare();
+        return this.educator.setAddFare();
     }
 
     @Override
