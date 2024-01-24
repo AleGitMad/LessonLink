@@ -12,6 +12,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
+import java.util.List;
+
 public class SearchPageControllerG {
     @FXML
     private ComboBox<String> subjectBox;
@@ -32,6 +34,8 @@ public class SearchPageControllerG {
     private Button newSearchButton;
 
     BookLessonController bookLessonController = new BookLessonController();
+
+    List<TeacherBean> teacherBeans;
     TeacherBean teacherBean;
 
     @FXML
@@ -48,9 +52,9 @@ public class SearchPageControllerG {
                 researchBean.setIsOnline();
             }
                 try {
-                    teacherBean = bookLessonController.search(researchBean);
-                    if (!teacherBean.isEmpty()) {
-                        setResultsPage(teacherBean);
+                    teacherBeans = bookLessonController.search(researchBean);
+                    if (!teacherBeans.isEmpty()) {
+                        setResultsPage(teacherBeans);
                     } else {
                         notFoundPane.setVisible(true);
                     }
@@ -65,10 +69,11 @@ public class SearchPageControllerG {
         }
     }
 
-    private void setResultsPage(TeacherBean teacherBean) {
+    private void setResultsPage(List<TeacherBean> teacherBeans) {
         FXMLLoader loader = FxmlLoader.setPage("ResultsPage");
         ResultsPageControllerG resultsPageControllerG = loader.getController();
-        resultsPageControllerG.setResultsPage(teacherBean);
+        resultsPageControllerG.setTeacherBeans(teacherBeans);
+        resultsPageControllerG.setResultsPage();
     }
 
     @FXML
