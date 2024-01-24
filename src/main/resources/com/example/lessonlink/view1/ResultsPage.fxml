@@ -210,5 +210,55 @@
                </font>
             </Button>
          </children></Pane>
+      <RadioButton fx:id="sortByRatingButton" layoutX="117.0" layoutY="74.0" mnemonicParsing="false" onAction="#changeSortingMethod" prefHeight="32.0" prefWidth="126.0" text="Rating">
+         <font>
+            <Font name="Calibri Bold" size="19.0" />
+         </font></RadioButton>
+      <Label layoutX="14.0" layoutY="74.0" prefHeight="32.0" prefWidth="76.0" text="Sort by:">
+         <font>
+            <Font name="Calibri Bold" size="23.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="sortByFareButton" layoutX="219.0" layoutY="74.0" mnemonicParsing="false" onAction="#changeSortingMethod" prefHeight="32.0" prefWidth="126.0" text="Fare">
+         <font>
+            <Font name="Calibri Bold" size="19.0" />
+         </font>
+      </RadioButton>
+      <Pane layoutX="1055.0" layoutY="113.0" prefHeight="173.0" prefWidth="173.0" style="-fx-background-color: #D9D9D9;">
+         <children>
+            <ImageView fx:id="teacherConfirmImage" fitHeight="153.0" fitWidth="153.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/profilePicturesDefault.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Pane layoutX="1055.0" layoutY="300.0" prefHeight="41.0" prefWidth="173.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <Label fx:id="teacherConfirmLabel" layoutX="17.0" layoutY="-7.0" prefHeight="56.0" prefWidth="140.0" text="Teacher Name" visible="false">
+               <font>
+                  <Font name="Calibri Bold" size="22.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <Pane layoutX="1055.0" layoutY="350.0" prefHeight="92.0" prefWidth="173.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <Label alignment="CENTER" layoutX="27.0" layoutY="12.0" prefHeight="30.0" prefWidth="120.0" text="Fare:">
+               <font>
+                  <Font name="Calibri Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="fareIntConfirm" alignment="CENTER" layoutX="48.0" layoutY="40.0" prefHeight="43.0" prefWidth="78.0" text="20€/h" visible="false">
+               <font>
+                  <Font name="Calibri Bold" size="27.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <DatePicker fx:id="lessonDate" layoutX="1055.0" layoutY="456.0" />
+      <Button fx:id="confirmLessonButton" layoutX="1055.0" layoutY="614.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="173.0" style="-fx-background-color: #646E81; -fx-line-spacing: -10;" text="Confirm Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="23.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -4,7 +4,8 @@ import com.example.lessonlink.model.decorator.Teacher;
 import com.example.lessonlink.view1.bean.TeacherBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
@@ -57,101 +58,85 @@ public class ResultsPageControllerG {
     @FXML
     private Pane result4;
 
+    @FXML
+    private RadioButton sortByRatingButton;
+    @FXML
+    private RadioButton sortByFareButton;
+    private boolean sortByRating;
 
-    private List<Teacher> teachers;
-    public void setTeachers(List<Teacher> teachers) {
-        this.teachers = teachers;
+    @FXML
+    private ImageView teacherConfirmImage;
+    @FXML
+    private Label teacherConfirmLabel;
+    @FXML
+    private Label fareIntConfirm;
+    @FXML
+    private DatePicker lessonDate;
+    @FXML
+    private Button confirmLessonButton;
+
+
+    private List<TeacherBean> teacherBeans;
+    public void setTeacherBeans(List<TeacherBean> teacherBeans) {
+        this.teacherBeans = teacherBeans;
     }
 
-    public void setResultsPage(TeacherBean teacherBean) {
-        teachers = teacherBean.getTeachers();
-        int numberOfTeachers = teachers.size();
-        switch (numberOfTeachers) {
-            case 1:
-                teacherNameLabel1.setText(teachers.get(0).getName());
-                if (teachers.get(0).getHasReviews()) {
-                    reviewScoreLabel1.setText(teachers.get(0).getAverageRating() + "/10");
-                } else {
-                    reviewScoreLabel1.setText("");
-                }
-                fareInt1.setText(teachers.get(0).getFare() + "€/h");
-                result2.setVisible(false);
-                result3.setVisible(false);
-                result4.setVisible(false);
-                break;
-            case 2:
-                teacherNameLabel1.setText(teachers.get(0).getName());
-                teacherNameLabel2.setText(teachers.get(1).getName());
-                if (teachers.get(0).getHasReviews()) {
-                    reviewScoreLabel1.setText(teachers.get(0).getAverageRating() + "/10");
-                } else {
-                    reviewScoreLabel1.setText("");
-                }
-                if (teachers.get(1).getHasReviews()) {
-                    reviewScoreLabel2.setText(teachers.get(1).getAverageRating() + "/10");
-                } else {
-                    reviewScoreLabel2.setText("");
-                }
-                fareInt1.setText(teachers.get(0).getFare() + "€/h");
-                fareInt2.setText(teachers.get(1).getFare() + "€/h");
-                result3.setVisible(false);
-                result4.setVisible(false);
-                break;
-            case 3:
-                teacherNameLabel1.setText(teachers.get(0).getName());
-                teacherNameLabel2.setText(teachers.get(1).getName());
-                teacherNameLabel3.setText(teachers.get(2).getName());
-                if (teachers.get(0).getHasReviews()) {
-                    reviewScoreLabel1.setText(teachers.get(0).getAverageRating() + "/10");
-                } else {
-                    reviewScoreLabel1.setText("");
-                }
-                if (teachers.get(1).getHasReviews()) {
-                    reviewScoreLabel2.setText(teachers.get(1).getAverageRating() + "/10");
-                } else {
-                    reviewScoreLabel2.setText("");
-                }
-                if (teachers.get(2).getHasReviews()) {
-                    reviewScoreLabel3.setText(teachers.get(2).getAverageRating() + "/10");
-                } else {
-                    reviewScoreLabel3.setText("");
-                }
-                fareInt1.setText(teachers.get(0).getFare() + "€/h");
-                fareInt2.setText(teachers.get(1).getFare() + "€/h");
-                fareInt3.setText(teachers.get(2).getFare() + "€/h");
-                result4.setVisible(false);
-                break;
+    public void initialize() {
+        //setup togglegroup (only one button can be selected at a time)
+        ToggleGroup sortingMethod = new ToggleGroup();
+        sortByRatingButton.setToggleGroup(sortingMethod);
+        sortByFareButton.setToggleGroup(sortingMethod);
+
+        //set default sorting method
+        sortByRatingButton.setSelected(true);
+        sortByRating = true;
+
+    }
+
+    public void changeSortingMethod(ActionEvent actionEvent) {
+        sortByRating = actionEvent.getSource().equals(sortByRatingButton);
+        setResultsPage();
+    }
+
+    public void setResultsPage() {
+
+        teacherBeans.sort((TeacherBean t1, TeacherBean t2) -> {
+            if (sortByRating) {
+                if (!t1.getTeacherHasReview()) return 1;
+                if (!t2.getTeacherHasReview()) return -1;
+                return Double.compare(t2.getTeacherAverageRating(), t1.getTeacherAverageRating());
+            } else {
+                return Double.compare(t1.getTeacherAverageRating(), t2.getTeacherAverageRating());
+            }
+        });
+
+        int numberOfTeachers = teacherBeans.size();
+
+        // Create arrays of labels and panes
+        Label[] teacherNameLabels = {teacherNameLabel1, teacherNameLabel2, teacherNameLabel3, teacherNameLabel4};
+        Label[] reviewScoreLabels = {reviewScoreLabel1, reviewScoreLabel2, reviewScoreLabel3, reviewScoreLabel4};
+        Label[] fareIntLabels = {fareInt1, fareInt2, fareInt3, fareInt4};
+        Pane[] resultPanes = {result1, result2, result3, result4};
+
+        // Set teacher details for each teacher
+        for (int i = 0; i < numberOfTeachers; i++) {
+            setTeacherDetails(teacherBeans.get(i), teacherNameLabels[i], reviewScoreLabels[i], fareIntLabels[i]);
         }
-        if (numberOfTeachers==4 || numberOfTeachers>4) {
-            teacherNameLabel1.setText(teachers.get(0).getName());
-            teacherNameLabel2.setText(teachers.get(1).getName());
-            teacherNameLabel3.setText(teachers.get(2).getName());
-            teacherNameLabel4.setText(teachers.get(3).getName());
-            if (teachers.get(0).getHasReviews()) {
-                reviewScoreLabel1.setText(teachers.get(0).getAverageRating() + "/10");
-            } else {
-                reviewScoreLabel1.setText("");
-            }
-            if (teachers.get(1).getHasReviews()) {
-                reviewScoreLabel2.setText(teachers.get(1).getAverageRating() + "/10");
-            } else {
-                reviewScoreLabel2.setText("");
-            }
-            if (teachers.get(2).getHasReviews()) {
-                reviewScoreLabel3.setText(teachers.get(2).getAverageRating() + "/10");
-            } else {
-                reviewScoreLabel3.setText("");
-            }
-            if (teachers.get(3).getHasReviews()) {
-                reviewScoreLabel4.setText(teachers.get(3).getAverageRating() + "/10");
-            } else {
-                reviewScoreLabel4.setText("");
-            }
-            fareInt1.setText(teachers.get(0).getFare() + "€/h");
-            fareInt2.setText(teachers.get(1).getFare() + "€/h");
-            fareInt3.setText(teachers.get(2).getFare() + "€/h");
-            fareInt4.setText(teachers.get(3).getFare() + "€/h");
+
+        // Set visibility of result panes
+        for (int i = 0; i < resultPanes.length; i++) {
+            resultPanes[i].setVisible(i < numberOfTeachers);
         }
+    }
+
+    private void setTeacherDetails(TeacherBean teacherBean, Label teacherNameLabel, Label reviewScoreLabel, Label fareIntLabel) {
+        teacherNameLabel.setText(teacherBean.getTeacherName());
+        if (teacherBean.getTeacherHasReview()) {
+            reviewScoreLabel.setText(teacherBean.getTeacherAverageRating() + "/10");
+        } else {
+            reviewScoreLabel.setText("");
+        }
+        fareIntLabel.setText(teacherBean.getTeacherFare() + "€/h");
     }
 
     @FXML
