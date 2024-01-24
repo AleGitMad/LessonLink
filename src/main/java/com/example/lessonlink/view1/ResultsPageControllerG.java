@@ -1,7 +1,9 @@
 package com.example.lessonlink.view1;
 
 import com.example.lessonlink.model.Teacher;
+import com.example.lessonlink.view1.bean.LessonBean;
 import com.example.lessonlink.view1.bean.TeacherBean;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -73,6 +75,8 @@ public class ResultsPageControllerG {
     private DatePicker lessonDate;
     @FXML
     private Button confirmLessonButton;
+    @FXML
+    private ComboBox<String> lessonTime;
 
 
     private List<TeacherBean> teacherBeans;
@@ -80,7 +84,11 @@ public class ResultsPageControllerG {
         this.teacherBeans = teacherBeans;
     }
 
+    @FXML
     public void initialize() {
+
+        lessonTime.getItems().addAll("8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00");
+
         //setup togglegroup (only one button can be selected at a time)
         ToggleGroup sortingMethod = new ToggleGroup();
         sortByRatingButton.setToggleGroup(sortingMethod);
@@ -89,7 +97,6 @@ public class ResultsPageControllerG {
         //set default sorting method
         sortByRatingButton.setSelected(true);
         sortByRating = true;
-
     }
 
     public void changeSortingMethod(ActionEvent actionEvent) {
@@ -144,8 +151,54 @@ public class ResultsPageControllerG {
     }
 
     @FXML
+    void showConfirmPanel(ActionEvent event) {
+        switch (((Button) event.getSource()).getId()) {
+            case "bookLessonButton1":
+                resultHighlight1.setVisible(true);
+                teacherConfirmImage.setVisible(true);
+                teacherConfirmLabel.setText(teacherBeans.getFirst().getTeacherName());
+                teacherConfirmLabel.setVisible(true);
+                fareIntConfirm.setText(teacherBeans.getFirst().getTeacherFare() + "€/h");
+                fareIntConfirm.setVisible(true);
+                break;
+            case "bookLessonButton2":
+                resultHighlight2.setVisible(true);
+                teacherConfirmImage.setVisible(true);
+                teacherConfirmLabel.setText(teacherBeans.get(1).getTeacherName());
+                teacherConfirmLabel.setVisible(true);
+                fareIntConfirm.setText(teacherBeans.get(1).getTeacherFare() + "€/h");
+                fareIntConfirm.setVisible(true);
+                break;
+            case "bookLessonButton3":
+                resultHighlight3.setVisible(true);
+                teacherConfirmImage.setVisible(true);
+                teacherConfirmLabel.setText(teacherBeans.get(2).getTeacherName());
+                teacherConfirmLabel.setVisible(true);
+                fareIntConfirm.setText(teacherBeans.get(2).getTeacherFare() + "€/h");
+                fareIntConfirm.setVisible(true);
+                break;
+            case "bookLessonButton4":
+                resultHighlight4.setVisible(true);
+                teacherConfirmImage.setVisible(true);
+                teacherConfirmLabel.setText(teacherBeans.get(3).getTeacherName());
+                teacherConfirmLabel.setVisible(true);
+                fareIntConfirm.setText(teacherBeans.get(3).getTeacherFare() + "€/h");
+                fareIntConfirm.setVisible(true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    @FXML
     void logout() {
         FxmlLoader.setPage("Home");
+    }
+
+    @FXML
+    void checkSlotAvailability(ActionEvent event) {
+        LessonBean lessonBean = new LessonBean();
+
     }
 
 

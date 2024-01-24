@@ -78,7 +78,7 @@
                   <Font name="Calibri Bold" size="27.0" />
                </font>
             </Label>
-            <Button fx:id="bookLessonButton1" layoutX="581.0" layoutY="113.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="143.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Book a Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="bookLessonButton1" layoutX="581.0" layoutY="113.0" mnemonicParsing="false" onAction="#showConfirmPanel" prefHeight="80.0" prefWidth="143.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Book a Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="23.0" />
                </font>
@@ -120,7 +120,7 @@
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Button fx:id="bookLessonButton2" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Book a Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="bookLessonButton2" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" onAction="#showConfirmPanel" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Book a Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="17.0" />
                </font>
@@ -162,7 +162,7 @@
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Button fx:id="bookLessonButton3" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Book a Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="bookLessonButton3" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" onAction="#showConfirmPanel" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Book a Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="17.0" />
                </font>
@@ -204,7 +204,7 @@
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Button fx:id="bookLessonButton4" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Book a Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="bookLessonButton4" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" onAction="#showConfirmPanel" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Book a Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="17.0" />
                </font>
@@ -255,10 +255,11 @@
          </children>
       </Pane>
       <DatePicker fx:id="lessonDate" layoutX="1055.0" layoutY="456.0" />
-      <Button fx:id="confirmLessonButton" layoutX="1055.0" layoutY="614.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="173.0" style="-fx-background-color: #646E81; -fx-line-spacing: -10;" text="Confirm Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="confirmLessonButton" layoutX="1055.0" layoutY="614.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="173.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Confirm Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="23.0" />
          </font>
       </Button>
+      <ComboBox fx:id="lessonTime" layoutX="1056.0" layoutY="494.0" prefHeight="25.0" prefWidth="173.0" promptText="Time" style="-fx-font-family: Calibri; -fx-font-size: 15px; -fx-background-color: #FFFFFF;" />
    </children>
 </AnchorPane>

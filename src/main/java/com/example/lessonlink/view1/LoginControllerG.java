@@ -44,6 +44,7 @@ public class LoginControllerG {
             try {
                 accountHomepageBean = loginController.login(loginBean);
 
+                //TODO: no need to pass accountHomepageBean, LoggedUser.getInstance().getStudent().getName is enough
                 if (accountHomepageBean.getRole().equals("Student")) {
                     StudentHomepageControllerG studentHomepageControllerG;
                     fxmlLoader = FxmlLoader.setPage("StudentHomepage");

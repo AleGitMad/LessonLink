@@ -6,6 +6,17 @@ public class LoggedUser {
 
     private String role;
 
+    private LoggedUser() {}
+
+    //singleton
+    public static LoggedUser getInstance() {
+
+        if(instance==null) {
+            instance = new LoggedUser();
+        }
+        return instance;
+    }
+
     public String getRole() {
         return role;
     }
@@ -30,18 +41,7 @@ public class LoggedUser {
         this.admin = admin;
     }
 
-    /*
     private static LoggedUser instance = null;
-    private LoggedUser() {}
-
-    public static LoggedUser getInstance() {
-
-        if(instance==null) {
-            instance = new LoggedUser();
-        }
-        return instance;
-    }
-    */
 
     @Override
     public String toString() {

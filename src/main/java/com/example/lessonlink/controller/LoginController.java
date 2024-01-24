@@ -19,7 +19,7 @@ public class LoginController {
 
         Admin admin;
         Student student;
-        LoggedUser loggedUser = new LoggedUser();
+        //LoggedUser loggedUser = new LoggedUser();
         //String fsAuth = System.getenv("FS_AUTH");
 
         //usiamo una variabile d'ambiente per discriminare il dao da utilizzare per il login
@@ -44,8 +44,8 @@ public class LoginController {
         if (role.equals("Admin")) {
             myFactory = UserFactory.getFactory(UserFactory.ROLE_ADMIN);
             admin = (Admin) myFactory.createUser();
-            loggedUser.setAdmin(admin);
-            loggedUser.setRole(role);
+            LoggedUser.getInstance().setAdmin(admin);
+            LoggedUser.getInstance().setRole(role);
 
             if(fsAuth < 12){
             //if(fsAuth.equals(fs_on)){
@@ -61,8 +61,8 @@ public class LoginController {
         } else {
             myFactory = UserFactory.getFactory(UserFactory.ROLE_STUDENT);
             student = (Student) myFactory.createUser();
-            loggedUser.setStudent(student);
-            loggedUser.setRole(role);
+            LoggedUser.getInstance().setStudent(student);
+            LoggedUser.getInstance().setRole(role);
 
             if(fsAuth < 12){
                 UserFSDao userDao = new UserFSDao();
@@ -73,7 +73,7 @@ public class LoginController {
             }
             //TODO: check se polimorfismo vuole nome classe variabile uguale
             LessonDao lessonDao = new LessonDao();
-            student.setLessons(lessonDao.findStudentLessons(loggedUser.getStudent().getUserId()));
+            student.setLessons(lessonDao.findStudentLessons(LoggedUser.getInstance().getStudent().getUserId()));
             accountHomepageBean.setName(student.getName());
             accountHomepageBean.setRole(role);
         }
