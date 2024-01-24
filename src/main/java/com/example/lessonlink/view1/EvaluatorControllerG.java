@@ -47,15 +47,15 @@ public class EvaluatorControllerG {
     }
     @FXML
     void back() {
-        FxmlLoader.setPage("CreateTeacherProfile");
+        FXMLLoader fxmlLoader = FxmlLoader.setPage("CreateTeacherProfile");
+        CreateTeacherControllerG createTeacherControllerG = fxmlLoader.getController();
+        createTeacherControllerG.setData(profileTeacherBean);
     }
 
 
     @FXML
     public void useEvaluated(ActionEvent event) {
         profileTeacherBean.setFare(fareEvaluated.getText());
-
-            addTeacherController.useEvaluatedFare(profileTeacherBean);
             FXMLLoader fxmlLoader = FxmlLoader.setPage("ConfirmationPage");
             ConfirmationControllerG confirmationControllerG = fxmlLoader.getController();
             confirmationControllerG.setController(addTeacherController);
@@ -65,8 +65,7 @@ public class EvaluatorControllerG {
     @FXML
     void useOther(ActionEvent event) {
         profileTeacherBean.setFare(FareField.getText());
-        if(profileTeacherBean.fareValidate()){
-            addTeacherController.useOtherFare(profileTeacherBean);
+        if(profileTeacherBean.fareValidate()){;
             FXMLLoader fxmlLoader = FxmlLoader.setPage("ConfirmationPage");
             ConfirmationControllerG confirmationControllerG = fxmlLoader.getController();
             confirmationControllerG.setController(addTeacherController);
@@ -75,7 +74,7 @@ public class EvaluatorControllerG {
     }
 
     public void setFareToScreen(String fare) {
-        fareEvaluated.setText(fare);
+        fareEvaluated.setText(fare + " €/h");
         System.out.println(fare);
     }
 }

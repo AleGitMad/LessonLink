@@ -1,7 +1,7 @@
 package com.example.lessonlink.model.dao;
 
 import com.example.lessonlink.exceptions.FailedResearchException;
-import com.example.lessonlink.model.decorator.Teacher;
+import com.example.lessonlink.model.Teacher;
 import com.example.lessonlink.model.service.Connector;
 import com.example.lessonlink.model.service.Query;
 
@@ -61,4 +61,27 @@ public class TeacherDao {
         return teacher;
     }
 
+    public void insertTeacher(Teacher teacher) throws SQLException {
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            conn = Connector.getInstance().getConnection();
+            stmt = conn.createStatement();
+
+            String insertStatement = Query.insertTeacher(stmt, teacher);
+
+            stmt.executeUpdate(insertStatement);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException e) {
+                //not handled
+            }
+        }
+    }
 }

@@ -1,15 +1,11 @@
 package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.AddTeacherController;
-import com.example.lessonlink.model.decorator.Teacher;
 import com.example.lessonlink.view1.bean.ProfileTeacherBean;
-import com.example.lessonlink.view1.bean.TeacherBean;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 
 //This controller will control the CreateTeacher.fxml and EvaluatorPage.fxml files
 public class CreateTeacherControllerG {
@@ -76,5 +72,15 @@ public class CreateTeacherControllerG {
             evaluatorControllerG.setProfileTeacherBean(profileTeacherBean);
             evaluatorControllerG.setFareToScreen(profileTeacherBean.getFare());
         }
+    }
+
+    public void setData(ProfileTeacherBean profileTeacherBean) {
+        nameField.setText(profileTeacherBean.getName());
+        cityBox.setValue(profileTeacherBean.getCity());
+        qualificationBox.setValue(profileTeacherBean.getQualification());
+        subjectBox1.setValue(profileTeacherBean.getSubject1());
+        subjectBox2.setValue(profileTeacherBean.getSubject2());
+        subjectBox3.setValue(profileTeacherBean.getSubject3());
+        onlineBox.setValue(profileTeacherBean.getOnline());
     }
 }

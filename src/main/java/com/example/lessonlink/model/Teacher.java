@@ -1,4 +1,6 @@
-package com.example.lessonlink.model.decorator;
+package com.example.lessonlink.model;
+
+import com.example.lessonlink.model.decorator.Educator;
 
 public class Teacher extends Educator {
 

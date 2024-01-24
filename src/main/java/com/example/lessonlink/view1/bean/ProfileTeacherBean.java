@@ -82,7 +82,7 @@ public class ProfileTeacherBean {
         return online.equals("Yes");
     }
     public int getFareC() {
-        return Integer.parseInt(fare);
+        return Integer.parseInt(fare.substring(0, fare.length() - 4));
     }
 
 
@@ -91,8 +91,16 @@ public class ProfileTeacherBean {
                 && Objects.nonNull(subject1) && Objects.nonNull(online);
 
         boolean subjectsCheck = true;
-        if (Objects.nonNull(subject2) || Objects.nonNull(subject3)) {
-            subjectsCheck = !subject1.equals(subject2) && !subject1.equals(subject3) && !subject2.equals(subject3);
+        if (Objects.nonNull(subject1)) {
+            if (Objects.nonNull(subject2)) {
+                subjectsCheck = !subject1.equals(subject2);
+            }
+            if (Objects.nonNull(subject3)) {
+                subjectsCheck = subjectsCheck && !subject1.equals(subject3);
+            }
+            if (Objects.nonNull(subject2) && Objects.nonNull(subject3)) {
+                subjectsCheck = subjectsCheck && !subject2.equals(subject3);
+            }
         }
 
         return basicCheck && subjectsCheck;

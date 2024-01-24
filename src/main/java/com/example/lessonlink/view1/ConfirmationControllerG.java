@@ -4,8 +4,11 @@ import com.example.lessonlink.controller.AddTeacherController;
 import com.example.lessonlink.view1.bean.ProfileTeacherBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+
+import java.sql.SQLException;
 
 //This controller will control the CreateTeacher.fxml and EvaluatorPage.fxml files
 public class ConfirmationControllerG {
@@ -28,6 +31,7 @@ public class ConfirmationControllerG {
 
 
     private AddTeacherController addTeacherController;
+    private ProfileTeacherBean profileTeacherBean;
 
     public void setController(AddTeacherController addTeacherController) {
         this.addTeacherController = addTeacherController;
@@ -38,6 +42,7 @@ public class ConfirmationControllerG {
         city.setText(profileTeacherBean.getCity());
         qualification.setText(profileTeacherBean.getQualification());
         fare.setText(profileTeacherBean.getFare());
+        this.profileTeacherBean = profileTeacherBean;
     }
 
     @FXML
@@ -54,13 +59,21 @@ public class ConfirmationControllerG {
     }
     @FXML
     void back() {
-        FxmlLoader.setPage("EvaluatorPage");
+        FXMLLoader fxmlLoader = FxmlLoader.setPage("EvaluatorPage");
+        EvaluatorControllerG evaluatorControllerG = fxmlLoader.getController();
+        evaluatorControllerG.setController(addTeacherController);
+        evaluatorControllerG.setProfileTeacherBean(profileTeacherBean);
+        evaluatorControllerG.setFareToScreen(profileTeacherBean.getFare());
     }
 
 
 
     public void createProfile() {
-        addTeacherController.confirmTeacher();
+        try {
+            addTeacherController.confirmTeacher(profileTeacherBean);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         FxmlLoader.setPage("AdminHomepage");
     }
 }

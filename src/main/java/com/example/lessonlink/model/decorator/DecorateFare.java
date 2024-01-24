@@ -2,6 +2,7 @@ package com.example.lessonlink.model.decorator;
 
 import com.example.lessonlink.decorations.*;
 import com.example.lessonlink.decorations.Math;
+import com.example.lessonlink.model.Teacher;
 
 public interface DecorateFare {
     int MATH_IDX = 0;

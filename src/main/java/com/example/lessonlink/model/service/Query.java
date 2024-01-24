@@ -1,5 +1,7 @@
 package com.example.lessonlink.model.service;
 
+import com.example.lessonlink.model.Teacher;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -40,4 +42,8 @@ public class Query {
         return stmt.executeQuery(query);
     }
 
+    public static String insertTeacher(Statement stmt, Teacher teacher) throws SQLException {
+        return String.format("INSERT INTO Teachers (name, subject1, subject2, subject3, fare, city, qualification, availableOnline) VALUES ('%s', '%s', '%s', '%s', %d, '%s', '%s', %b)",
+                teacher.getName(), teacher.getSubject1(), teacher.getSubject2(), teacher.getSubject3(), teacher.getFare(), teacher.getCity(), teacher.getQualification(), teacher.isAvailableOnline());
+    }
 }
