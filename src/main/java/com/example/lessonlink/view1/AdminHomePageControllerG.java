@@ -26,11 +26,11 @@ public class AdminHomePageControllerG {
     void addTeacher(ActionEvent event) {
         FxmlLoader.setPage("CreateTeacherProfile");
     }
-    /*
+
     @FXML
     void activeBookings(ActionEvent event) {
         BookingsController bookingsController = new BookingsController();
-        FXMLLoader loader = FxmlLoader.setPage("ResultsPage");
+        FXMLLoader loader = FxmlLoader.setPage("ActiveBookings");
         ActiveBookingsControllerG activeBookingsControllerG = loader.getController();
         activeBookingsControllerG.setController(bookingsController);
 
@@ -42,5 +42,5 @@ public class AdminHomePageControllerG {
         }
         activeBookingsControllerG.setData(bookingBeanList);
     }
-    */
+
 }

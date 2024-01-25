@@ -46,30 +46,105 @@ public class ActiveBookingsControllerG {
     public Label studentName4;
     @FXML
     public Label date4;
+    @FXML
+    public Button sendButton1;
+    @FXML
+    public Button sendButton2;
+    @FXML
+    public Button sendButton3;
+    @FXML
+    public Button sendButton4;
 
 
     private BookingsController bookingsController;
+    private List<BookingBean> bookingBeans;
 
 
     @FXML
     void initialize() {
+        result1.setVisible(false);
+        result2.setVisible(false);
+        result3.setVisible(false);
+        result4.setVisible(false);
     }
 
     @FXML
     public void logout(MouseEvent mouseEvent) {
             FxmlLoader.setPage("Home");
     }
+    @FXML
     public void setHomePage(MouseEvent mouseEvent) {
         FxmlLoader.setPage("AdminHomepage");
     }
-
-    public void sendEmail(ActionEvent actionEvent) {
-    }
-
     public void setController(BookingsController bookingsController) {
         this.bookingsController = bookingsController;
     }
 
+
+    public void sendEmail(ActionEvent actionEvent) {
+        Button button = (Button) actionEvent.getSource();
+        String buttonId = button.getId();
+
+        switch (buttonId) {
+            case "sendButton1":
+                bookingsController.sendEmail(bookingBeans);
+                sendButton1.setVisible(false);
+                break;
+            case "sendButton2":
+                bookingsController.sendEmail(bookingBeans);
+                sendButton2.setVisible(false);
+                break;
+            case "sendButton3":
+                bookingsController.sendEmail(bookingBeans);
+                sendButton3.setVisible(false);
+                break;
+            case "sendButton4":
+                bookingsController.sendEmail(bookingBeans);
+                sendButton4.setVisible(false);
+                break;
+            default:
+        }
+    }
+
+
     public void setData(List<BookingBean> bookingBeanList) {
+        bookingBeans = bookingBeanList;
+
+        if (!bookingBeanList.isEmpty()) {
+            result1.setVisible(true);
+            teacherName1.setText(bookingBeanList.getFirst().getTeacher());
+            studentName1.setText(bookingBeanList.getFirst().getStudent());
+            date1.setText(bookingBeanList.getFirst().getDateTime());
+            if(!bookingBeanList.getFirst().getConfirmed()){
+                sendButton1.setVisible(false);
+            }
+        }
+        if (bookingBeanList.size() >= 2) {
+            result2.setVisible(true);
+            teacherName2.setText(bookingBeanList.get(1).getTeacher());
+            studentName2.setText(bookingBeanList.get(1).getStudent());
+            date2.setText(bookingBeanList.get(1).getDateTime());
+            if(!bookingBeanList.get(1).getConfirmed()){
+                sendButton2.setVisible(false);
+            }
+        }
+        if (bookingBeanList.size() >= 3) {
+            result3.setVisible(true);
+            teacherName3.setText(bookingBeanList.get(2).getTeacher());
+            studentName3.setText(bookingBeanList.get(2).getStudent());
+            date3.setText(bookingBeanList.get(2).getDateTime());
+            if(!bookingBeanList.get(3).getConfirmed()){
+                sendButton3.setVisible(false);
+            }
+        }
+        if (bookingBeanList.size() >= 4) {
+            result4.setVisible(true);
+            teacherName4.setText(bookingBeanList.get(3).getTeacher());
+            studentName4.setText(bookingBeanList.get(3).getStudent());
+            date4.setText(bookingBeanList.get(3).getDateTime());
+            if(!bookingBeanList.get(4).getConfirmed()){
+                sendButton4.setVisible(false);
+            }
+        }
     }
 }

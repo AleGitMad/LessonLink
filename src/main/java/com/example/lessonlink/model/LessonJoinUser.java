@@ -2,17 +2,32 @@ package com.example.lessonlink.model;
 
 import com.example.lessonlink.model.Lesson;
 
+import java.time.LocalDateTime;
+
 public class LessonJoinUser {
     private Lesson lesson;
-    private String teacherName;
-    private String studentName;
+
+    private Teacher teacher;
+
+    private User user;
+
+    public LessonJoinUser(String username, String teachername, LocalDateTime dateTime, boolean isConfirmed) {
+        lesson = new Lesson();
+        teacher = new Teacher();
+        user = new User();
+        this.lesson.setDateTime(dateTime);
+        this.lesson.setIsConfirmed(isConfirmed);
+        this.teacher.setName(teachername);
+        this.user.setName(username);
+    }
+
 
     public String getTeacher() {
-        return teacherName;
+        return teacher.getName();
     }
 
     public String getStudent() {
-        return studentName;
+        return user.getName();
     }
 
     public boolean getConfirmed() {

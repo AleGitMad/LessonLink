@@ -10,7 +10,6 @@ import java.util.List;
 
 public class BookingsController {
 
-    /*
     public List<BookingBean> getActiveBookings() throws FailedResearchException {
         List<BookingBean> bookingBeanList = new ArrayList<>();
         LessonDao lessonDao = new LessonDao();
@@ -30,5 +29,7 @@ public class BookingsController {
         }
         return bookingBeanList;
     }
-    */
+
+    public void sendEmail(List<BookingBean> bookingBeans) {
+    }
 }

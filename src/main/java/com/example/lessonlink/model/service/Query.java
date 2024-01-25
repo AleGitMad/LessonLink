@@ -83,7 +83,7 @@ public class Query {
     }
 
     public static ResultSet LessonByAdmin(Statement stmt, int adminId) throws SQLException {
-        String query = "SELECT * FROM Lessons INNER JOIN Users ON Lessons.teacherId = Users.userId INNER JOIN Users ON Lessons.studentId = Users.userId";
+        String query = "SELECT * FROM lessons INNER JOIN Teachers ON Lessons.teacherId = Teachers.teacherId INNER JOIN Users ON Lessons.studentId = users.userId WHERE Teachers.adminId = " + adminId;
         return stmt.executeQuery(query);
     }
 }

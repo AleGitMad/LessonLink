@@ -102,7 +102,7 @@ public class LessonDao {
         }
     }
 
-    /*
+
     public List<LessonJoinUser> findLessoByAdmin(int adminId) throws FailedResearchException {
         List<LessonJoinUser> lessonsJoinAdmin = new ArrayList<>();
 
@@ -115,7 +115,7 @@ public class LessonDao {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = Query.LessonByAdmin(stmt, adminId);
             while (rs.next()) {
-                lessonsJoinAdmin.add(extractLessonJoinAdmin(conn, rs));
+                lessonsJoinAdmin.add(extractLessonJoinAdmin(rs));
             }
         } catch (Exception se) {
             se.printStackTrace();
@@ -131,14 +131,10 @@ public class LessonDao {
         return lessonsJoinAdmin;
     }
 
-    private LessonJoinUser extractLessonJoinAdmin(Connection conn, ResultSet rs) throws SQLException {
-        return new Lesson(rs.getInt("lessonId"),
+    private LessonJoinUser extractLessonJoinAdmin(ResultSet rs) throws SQLException {
+            return new LessonJoinUser(rs.getString("users.name"),
+                rs.getString("teachers.name"),
                 rs.getTimestamp("dateTime").toLocalDateTime(),
-                rs.getBoolean("isOnline"),
-                rs.getInt("teacherId"),
-                rs.getInt("studentId"),
-                rs.getBoolean("isConfirmed"),
-                rs.getBoolean("isPaid"));
+                rs.getBoolean("isConfirmed"));
     }
-    */
 }
