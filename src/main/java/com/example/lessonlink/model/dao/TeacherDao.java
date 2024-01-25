@@ -1,6 +1,7 @@
 package com.example.lessonlink.model.dao;
 
 import com.example.lessonlink.exceptions.FailedResearchException;
+import com.example.lessonlink.model.Lesson;
 import com.example.lessonlink.model.Teacher;
 import com.example.lessonlink.model.service.Connector;
 import com.example.lessonlink.model.service.Query;
@@ -9,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

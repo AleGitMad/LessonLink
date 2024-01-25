@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lessonlink.view1.PaymentPageControllerG">
+    <children>
+        <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/HomeBack.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="363.0" layoutY="187.0" mnemonicParsing="false" onAction="#payNow" prefHeight="168.0" prefWidth="553.0" style="-fx-background-color: #3C64B1; -fx-border-radius: 26; -fx-background-radius: 26; -fx-text-fill: white;" text="Pay Now (PayPal)" textFill="WHITE">
+            <font>
+                <Font name="Calibri Bold" size="44.0" />
+            </font>
+            <padding>
+                <Insets left="78.0" />
+            </padding></Button>
+        <Button layoutX="363.0" layoutY="406.0" mnemonicParsing="false" onAction="#payLater" prefHeight="168.0" prefWidth="553.0" style="-fx-background-color: #3C64B1; -fx-text-fill: white; -fx-background-radius: 26; -fx-border-radius: 26;" text="Pay after lesson" textFill="WHITE">
+            <font>
+                <Font name="Calibri Bold" size="44.0" />
+            </font>
+            <padding>
+                <Insets left="60.0" />
+            </padding></Button>
+        <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="414.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/CardPayment.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="414.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/Cash.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="20.0" layoutY="660.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/backIcon.png" />
+        </ImageView>
+        <Rectangle fill="#2a4476" height="40.0" layoutX="1111.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="2.0" />
+        <Rectangle fill="#3c64b1" height="40.0" layoutX="1113.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="105.0" />
+        <Label fx:id="username" layoutX="1120.0" layoutY="29.0" prefHeight="23.0" prefWidth="92.0" text="Username" textFill="WHITE">
+            <font>
+                <Font name="Calibri Bold" size="18.0" />
+            </font>
+        </Label>
+        <Rectangle fill="#2a4476" height="40.0" layoutX="1218.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="2.0" />
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1071.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/adminIcon.png" />
+        </ImageView>
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1220.0" layoutY="20.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/logoutIcon.png" />
+        </ImageView>
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1025.0" layoutY="20.0" onMouseClicked="#setHomePage" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/HomeButton.png" />
+        </ImageView>
+        <Pane fx:id="redirectPane" layoutX="390.0" layoutY="110.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" visible="false">
+            <children>
+                <Label layoutX="62.0" layoutY="46.0" prefHeight="108.0" prefWidth="390.0" text="Redirecting you to PayPal..." textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="Calibri Bold" size="41.0" />
+                    </font></Label>
+                <Label layoutX="78.0" layoutY="203.0" prefHeight="93.0" prefWidth="344.0" text="Click the button if you're not redirected automatically" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="Calibri" size="29.0" />
+                    </font>
+                </Label>
+                <Button fx:id="redirectButton" layoutX="152.0" layoutY="345.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="197.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Go to PayPal" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font name="Calibri Bold" size="23.0" />
+                    </font>
+                </Button>
+            </children>
+        </Pane>
+        <Pane fx:id="confirmPane" layoutX="390.0" layoutY="110.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" visible="false">
+            <children>
+                <Label layoutX="74.0" layoutY="46.0" prefHeight="108.0" prefWidth="353.0" text="Lesson booked successfully!" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="Calibri Bold" size="41.0" />
+                    </font></Label>
+                <Label layoutX="112.0" layoutY="190.0" prefHeight="93.0" prefWidth="285.0" text="Thanks for choosing us!" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="Calibri" size="29.0" />
+                    </font>
+                </Label>
+                <Button fx:id="goHomeButton1" layoutX="152.0" layoutY="345.0" mnemonicParsing="false" onAction="#setHomePage" prefHeight="97.0" prefWidth="197.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Go back to home" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font name="Calibri Bold" size="23.0" />
+                    </font>
+                </Button>
+            </children>
+        </Pane>
+        <Pane fx:id="errorPane" layoutX="390.0" layoutY="110.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" visible="false">
+            <children>
+                <Label fx:id="errorLabel" layoutX="108.0" layoutY="58.0" prefHeight="180.0" prefWidth="285.0" text="error" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="Calibri Bold" size="41.0" />
+                    </font>
+                </Label>
+                <Button fx:id="goHomeButton2" layoutX="153.0" layoutY="308.0" mnemonicParsing="false" onAction="#setHomePage" prefHeight="97.0" prefWidth="197.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Go back to home" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font name="Calibri Bold" size="23.0" />
+                    </font>
+                </Button>
+            </children>
+        </Pane>
+        <Label layoutX="14.0" layoutY="20.0" text="LessonLink">
+            <font>
+                <Font name="Calibri Bold" size="35.0" />
+            </font>
+        </Label>
+        <Line endX="298.0" layoutX="7.0" layoutY="58.0" stroke="#3c64b1" strokeWidth="2.0" />
+    </children>
+</Pane>

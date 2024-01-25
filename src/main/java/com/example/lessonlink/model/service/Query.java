@@ -1,10 +1,13 @@
 package com.example.lessonlink.model.service;
 
+import com.example.lessonlink.model.Lesson;
 import com.example.lessonlink.model.Teacher;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Query {
     private Query() {}
@@ -35,6 +38,17 @@ public class Query {
     public static ResultSet findLessons(Statement stmt, int studentId) throws SQLException {
         String selectedStatement = "SELECT * FROM lessons WHERE studentId = " + studentId;
         return stmt.executeQuery(selectedStatement);
+    }
+
+    public static ResultSet checkSlotAvailability(Statement stmt, int teacherId, LocalDateTime dateTime) throws SQLException {
+        String formattedDateTime = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String selectedStatement = "SELECT * FROM lessons WHERE teacherId = " + teacherId + " AND dateTime = '" + formattedDateTime + "'";
+        return stmt.executeQuery(selectedStatement);
+    }
+
+    public static String insertLesson(Statement stmt, Lesson lesson) throws SQLException {
+        String formattedDateTime = lesson.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        return String.format("INSERT INTO Lessons (dateTime, isOnline, teacherId, studentId, isConfirmed, isPaid) VALUES ('%s', '%b', '%d', '%d', %b, '%b')", formattedDateTime, lesson.getIsOnline(), lesson.getTeacherId(), lesson.getStudentId(), lesson.getIsConfirmed(), lesson.getIsPaid());
     }
 
     public static ResultSet checkCredentials(Statement stmt, String email, String password) throws SQLException {

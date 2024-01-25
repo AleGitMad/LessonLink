@@ -1,10 +1,12 @@
 package com.example.lessonlink.view1;
 
-import com.example.lessonlink.model.Teacher;
+import com.example.lessonlink.controller.BookLessonController;
+import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.view1.bean.LessonBean;
 import com.example.lessonlink.view1.bean.TeacherBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -78,8 +80,20 @@ public class ResultsPageControllerG {
     @FXML
     private ComboBox<String> lessonTime;
 
+    @FXML
+    private Pane fullPane;
+    @FXML
+    private Pane errorPane;
+    @FXML
+    private Label errorLabel;
+
+    private int selectedTeacherId;
+
 
     private List<TeacherBean> teacherBeans;
+
+    BookLessonController bookLessonController = new BookLessonController();
+
     public void setTeacherBeans(List<TeacherBean> teacherBeans) {
         this.teacherBeans = teacherBeans;
     }
@@ -87,7 +101,7 @@ public class ResultsPageControllerG {
     @FXML
     public void initialize() {
 
-        lessonTime.getItems().addAll("8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00");
+        lessonTime.getItems().addAll("08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00");
 
         //setup togglegroup (only one button can be selected at a time)
         ToggleGroup sortingMethod = new ToggleGroup();
@@ -154,40 +168,55 @@ public class ResultsPageControllerG {
     void showConfirmPanel(ActionEvent event) {
         switch (((Button) event.getSource()).getId()) {
             case "bookLessonButton1":
+                disableHighlights();
                 resultHighlight1.setVisible(true);
                 teacherConfirmImage.setVisible(true);
                 teacherConfirmLabel.setText(teacherBeans.getFirst().getTeacherName());
                 teacherConfirmLabel.setVisible(true);
                 fareIntConfirm.setText(teacherBeans.getFirst().getTeacherFare() + "€/h");
                 fareIntConfirm.setVisible(true);
+                selectedTeacherId = teacherBeans.getFirst().getTeacherId();
                 break;
             case "bookLessonButton2":
+                disableHighlights();
                 resultHighlight2.setVisible(true);
                 teacherConfirmImage.setVisible(true);
                 teacherConfirmLabel.setText(teacherBeans.get(1).getTeacherName());
                 teacherConfirmLabel.setVisible(true);
                 fareIntConfirm.setText(teacherBeans.get(1).getTeacherFare() + "€/h");
                 fareIntConfirm.setVisible(true);
+                selectedTeacherId = teacherBeans.get(1).getTeacherId();
                 break;
             case "bookLessonButton3":
+                disableHighlights();
                 resultHighlight3.setVisible(true);
                 teacherConfirmImage.setVisible(true);
                 teacherConfirmLabel.setText(teacherBeans.get(2).getTeacherName());
                 teacherConfirmLabel.setVisible(true);
                 fareIntConfirm.setText(teacherBeans.get(2).getTeacherFare() + "€/h");
                 fareIntConfirm.setVisible(true);
+                selectedTeacherId = teacherBeans.get(2).getTeacherId();
                 break;
             case "bookLessonButton4":
+                disableHighlights();
                 resultHighlight4.setVisible(true);
                 teacherConfirmImage.setVisible(true);
                 teacherConfirmLabel.setText(teacherBeans.get(3).getTeacherName());
                 teacherConfirmLabel.setVisible(true);
                 fareIntConfirm.setText(teacherBeans.get(3).getTeacherFare() + "€/h");
                 fareIntConfirm.setVisible(true);
+                selectedTeacherId = teacherBeans.get(3).getTeacherId();
                 break;
             default:
                 break;
         }
+    }
+
+    void disableHighlights() {
+        resultHighlight1.setVisible(false);
+        resultHighlight2.setVisible(false);
+        resultHighlight3.setVisible(false);
+        resultHighlight4.setVisible(false);
     }
 
     @FXML
@@ -198,8 +227,43 @@ public class ResultsPageControllerG {
     @FXML
     void checkSlotAvailability(ActionEvent event) {
         LessonBean lessonBean = new LessonBean();
-
+        lessonBean.setTeacherId(selectedTeacherId);
+        lessonBean.setLessonDate(lessonDate.getValue());
+        lessonBean.setLessonTime(lessonTime.getValue());
+        if (lessonBean.validate()) {
+            lessonBean.setLessonDateTimeFrom(java.sql.Date.valueOf(lessonBean.getLessonDate()), lessonBean.getLessonTime());
+            try {
+                if (bookLessonController.checkSlotAvailability(lessonBean)) {
+                    lessonBean.setIsOnline(teacherBeans.getFirst().getIsOnline());
+                    setPaymentPage(lessonBean);
+                } else {
+                    fullPane.setVisible(true);
+                }
+            } catch (FailedResearchException e) {
+                errorPane.setVisible(true);
+                errorLabel.setText(e.getMessage());
+            }
+        } else {
+            errorPane.setVisible(true);
+            errorLabel.setText("Please select all the fields, making sure to select a date in the future");
+        }
     }
 
+    void setPaymentPage(LessonBean lessonBean) {
+        FXMLLoader loader = FxmlLoader.setPage("PaymentPage");
+        PaymentPageControllerG paymentPageControllerG = loader.getController();
+        //pass teacherBeans to make resultsPage results available when going back
+        paymentPageControllerG.setTeacherBeans(teacherBeans);
+        paymentPageControllerG.setLessonBean(lessonBean);
+    }
+
+    @FXML
+    void closeFullPane(ActionEvent event) {
+        fullPane.setVisible(false);
+    }
+    @FXML
+    void closeErrorPane(ActionEvent event) {
+        errorPane.setVisible(false);
+    }
 
 }

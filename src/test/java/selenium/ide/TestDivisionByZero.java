@@ -21,7 +21,7 @@ public class TestDivisionByZero {
     JavascriptExecutor js;
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/test/java/selenium/driver/msedgedriver.exe");
+        System.setProperty("webdriver.edge.driver", "src/test/java/selenium/driver/msedgedriver.exe");
         driver = new EdgeDriver();
         js = (JavascriptExecutor) driver;
     }

@@ -6,10 +6,28 @@ import java.util.List;
 
 public class TeacherBean {
 
+    private int teacherId;
     private String teacherName;
     private float teacherAverageRating;
     private int teacherFare;
     private boolean teacherHasReview;
+    private boolean isOnline; //bool to check if lesson has to be online when registering in database
+
+    public boolean getIsOnline() {
+        return isOnline;
+    }
+
+    public void setIsOnline(boolean online) {
+        isOnline = online;
+    }
+
+    public int getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
 
     public String getTeacherName() {
         return teacherName;

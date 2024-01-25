@@ -54,6 +54,8 @@ public class SearchPageControllerG {
                 try {
                     teacherBeans = bookLessonController.search(researchBean);
                     if (!teacherBeans.isEmpty()) {
+                        //online boolean set in the first teacherBean of the list
+                        teacherBeans.getFirst().setIsOnline(researchBean.getIsOnline());
                         setResultsPage(teacherBeans);
                     } else {
                         notFoundPane.setVisible(true);
