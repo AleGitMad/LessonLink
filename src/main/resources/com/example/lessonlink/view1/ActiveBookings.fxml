@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lessonlink.view1.ActiveBookingsControllerG">
+    <children>
+        <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/SemiWhiteBack.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="30.0" layoutY="20.0" text="LessonLink">
+            <font>
+                <Font name="Calibri Bold" size="43.0" />
+            </font>
+        </Label>
+        <ImageView fx:id="logoutButton" fitHeight="40.0" fitWidth="40.0" layoutX="1220.0" layoutY="20.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/logoutIcon.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1071.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/studentIcon.png" />
+            </image>
+        </ImageView>
+        <Rectangle fill="#2a4476" height="40.0" layoutX="1218.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="2.0" />
+        <Rectangle fill="#3c64b1" height="40.0" layoutX="1113.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="105.0" />
+        <Label fx:id="userNameLabel" layoutX="1120.0" layoutY="29.0" prefHeight="23.0" prefWidth="92.0" text="Username" textFill="WHITE">
+            <font>
+                <Font name="Calibri Bold" size="18.0" />
+            </font>
+        </Label>
+        <Rectangle fill="#2a4476" height="40.0" layoutX="1111.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="2.0" />
+        <ImageView fx:id="homeButton" fitHeight="40.0" fitWidth="40.0" layoutX="1024.0" layoutY="20.0" onMouseClicked="#setHomePage" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/HomeButton.png" />
+            </image>
+        </ImageView>
+
+        <Pane fx:id="result1" layoutX="335.0" layoutY="146.0" prefHeight="98.0" prefWidth="609.0">
+            <children>
+                <Rectangle fx:id="resultHighlight2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="#3c64b1" strokeType="OUTSIDE" strokeWidth="3.0" visible="false" width="609.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="BLACK" strokeType="INSIDE" width="609.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="98.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
+                <Label fx:id="teacherName1" layoutX="118.0" layoutY="2.0" prefHeight="56.0" prefWidth="164.0" text="Teacher Name">
+                    <font>
+                        <Font name="Calibri Bold" size="26.0" />
+                    </font>
+                </Label>
+                <ImageView fx:id="teacherProfileImage2112" fitHeight="76.0" fitWidth="76.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/profilePicturesDefault.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="studentName1" layoutX="118.0" layoutY="41.0" prefHeight="46.0" prefWidth="150.0" text="Student Name">
+                    <font>
+                        <Font name="Calibri" size="19.0" />
+                    </font>
+                </Label>
+                <Label fx:id="date1" layoutX="348.0" layoutY="41.0" prefHeight="46.0" prefWidth="150.0" text="2023-03-23 18:30" textFill="#757575">
+                    <font>
+                        <Font name="Calibri" size="19.0" />
+                    </font>
+                </Label>
+            <ImageView fitHeight="60.0" fitWidth="88.0" layoutX="505.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/emailIcon.png" />
+               </image>
+            </ImageView>
+                <Button fx:id="sendButton1" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" onAction="#sendEmail" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Send Email" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font name="Calibri Bold" size="17.0" />
+                    </font>
+                </Button>
+            </children>
+        </Pane>
+      <Pane fx:id="result2" layoutX="336.0" layoutY="276.0" prefHeight="98.0" prefWidth="609.0">
+         <children>
+            <Rectangle fx:id="resultHighlight21" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="#3c64b1" strokeType="OUTSIDE" strokeWidth="3.0" visible="false" width="609.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="BLACK" strokeType="INSIDE" width="609.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="98.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
+            <Label fx:id="teacherName2" layoutX="118.0" layoutY="2.0" prefHeight="56.0" prefWidth="164.0" text="Teacher Name">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="teacherProfileImage21121" fitHeight="76.0" fitWidth="76.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/profilePicturesDefault.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="studentName2" layoutX="118.0" layoutY="41.0" prefHeight="46.0" prefWidth="150.0" text="Student Name">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="date2" layoutX="348.0" layoutY="41.0" prefHeight="46.0" prefWidth="150.0" text="2023-03-23 18:30" textFill="#757575">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="60.0" fitWidth="88.0" layoutX="505.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/emailIcon.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="sendButton2" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" onAction="#sendEmail" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Send Email" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Calibri Bold" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="result3" layoutX="335.0" layoutY="406.0" prefHeight="98.0" prefWidth="609.0">
+         <children>
+            <Rectangle fx:id="resultHighlight211" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="#3c64b1" strokeType="OUTSIDE" strokeWidth="3.0" visible="false" width="609.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="BLACK" strokeType="INSIDE" width="609.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="98.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
+            <Label fx:id="teacherName3" layoutX="118.0" layoutY="2.0" prefHeight="56.0" prefWidth="164.0" text="Teacher Name">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="teacherProfileImage211211" fitHeight="76.0" fitWidth="76.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/profilePicturesDefault.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="studentName3" layoutX="118.0" layoutY="41.0" prefHeight="46.0" prefWidth="150.0" text="Student Name">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="date3" layoutX="348.0" layoutY="41.0" prefHeight="46.0" prefWidth="150.0" text="2023-03-23 18:30" textFill="#757575">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="60.0" fitWidth="88.0" layoutX="505.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/emailIcon.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="sendButton3" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" onAction="#sendEmail" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Send Email" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Calibri Bold" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="result4" layoutX="335.0" layoutY="536.0" prefHeight="98.0" prefWidth="609.0">
+         <children>
+            <Rectangle fx:id="resultHighlight212" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="#3c64b1" strokeType="OUTSIDE" strokeWidth="3.0" visible="false" width="609.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="BLACK" strokeType="INSIDE" width="609.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="98.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
+            <Label fx:id="teacherName4" layoutX="118.0" layoutY="2.0" prefHeight="56.0" prefWidth="164.0" text="Teacher Name">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="teacherProfileImage211212" fitHeight="76.0" fitWidth="76.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/profilePicturesDefault.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="studentName4" layoutX="118.0" layoutY="41.0" prefHeight="46.0" prefWidth="150.0" text="Student Name">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="date4" layoutX="348.0" layoutY="41.0" prefHeight="46.0" prefWidth="150.0" text="2023-03-23 18:30" textFill="#757575">
+               <font>
+                  <Font name="Calibri" size="19.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="60.0" fitWidth="88.0" layoutX="505.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/emailIcon.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="sendButton4" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" onAction="#sendEmail" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Send Email" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Calibri Bold" size="17.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+    </children>
+</Pane>

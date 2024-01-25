@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class Query {
     private Query() {}
@@ -56,8 +57,27 @@ public class Query {
         return stmt.executeQuery(query);
     }
 
-    public static String insertTeacher(Statement stmt, Teacher teacher) throws SQLException {
-        return String.format("INSERT INTO Teachers (name, subject1, subject2, subject3, fare, city, qualification, availableOnline) VALUES ('%s', '%s', '%s', '%s', %d, '%s', '%s', %b)",
-                teacher.getName(), teacher.getSubject1(), teacher.getSubject2(), teacher.getSubject3(), teacher.getFare(), teacher.getCity(), teacher.getQualification(), teacher.isAvailableOnline());
+    public static String insertTeacher(Teacher teacher) throws SQLException {
+        String query;
+        if (teacher.getSubject2() == null && teacher.getSubject3() != null) {
+            query = String.format("INSERT INTO Teachers (name, subject1, subject2, subject3, fare, city, qualification, availableOnline, adminId) VALUES ('%s', '%s', null, '%s', %d, '%s', '%s', %b, %d)",
+                    teacher.getName(), teacher.getSubject1(), teacher.getSubject3(), teacher.getFare(), teacher.getCity(), teacher.getQualification(), teacher.isAvailableOnline(), teacher.getAdminId());
+        } else if (teacher.getSubject3() == null && teacher.getSubject2() != null) {
+            query = String.format("INSERT INTO Teachers (name, subject1, subject2, subject3, fare, city, qualification, availableOnline, adminId) VALUES ('%s', '%s', '%s', null, %d, '%s', '%s', %b, %d)",
+                    teacher.getName(), teacher.getSubject1(), teacher.getSubject2(), teacher.getFare(), teacher.getCity(), teacher.getQualification(), teacher.isAvailableOnline(), teacher.getAdminId());
+        } else if (teacher.getSubject2() == null && teacher.getSubject3() == null) {
+            query = String.format("INSERT INTO Teachers (name, subject1, subject2, subject3, fare, city, qualification, availableOnline, adminId) VALUES ('%s', '%s', null, null, %d, '%s', '%s', %b, %d)",
+                    teacher.getName(), teacher.getSubject1(), teacher.getFare(), teacher.getCity(), teacher.getQualification(), teacher.isAvailableOnline(), teacher.getAdminId());
+        } else {
+            query = String.format("INSERT INTO Teachers (name, subject1, subject2, subject3, fare, city, qualification, availableOnline, adminId) VALUES ('%s', '%s', '%s', '%s', %d, '%s', '%s', %b, %d)",
+                    teacher.getName(), teacher.getSubject1(), teacher.getSubject2(), null, teacher.getFare(), teacher.getCity(), teacher.getQualification(), teacher.isAvailableOnline(), teacher.getAdminId());
+        }
+
+        return query;
+    }
+
+    public static ResultSet LessonByAdmin(Statement stmt, int adminId) throws SQLException {
+        String query = "SELECT * FROM Lessons INNER JOIN Users ON Lessons.teacherId = Users.userId INNER JOIN Users ON Lessons.studentId = Users.userId";
+        return stmt.executeQuery(query);
     }
 }

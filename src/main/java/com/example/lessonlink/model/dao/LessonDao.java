@@ -2,8 +2,7 @@ package com.example.lessonlink.model.dao;
 
 import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.Lesson;
-import com.example.lessonlink.model.Review;
-import com.example.lessonlink.model.Teacher;
+import com.example.lessonlink.model.LessonJoinUser;
 import com.example.lessonlink.model.service.Connector;
 import com.example.lessonlink.model.service.Query;
 
@@ -99,5 +98,43 @@ public class LessonDao {
                 //not handled
             }
         }
+    }
+
+    public List<LessonJoinUser> findLessoByAdmin(int adminId) throws FailedResearchException {
+        List<LessonJoinUser> lessonsJoinAdmin = new ArrayList<>();
+
+        Statement stmt = null;
+        Connection conn = null;
+
+
+        try {
+            conn = Connector.getInstance().getConnection();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = Query.LessonByAdmin(stmt, adminId);
+            while (rs.next()) {
+                lessonsJoinAdmin.add(extractLessonJoinAdmin(conn, rs));
+            }
+        } catch (Exception se) {
+            se.printStackTrace();
+            throw new FailedResearchException("An error during research occurred.");
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException e) {
+                //not handled
+            }
+        }
+        return lessonsJoinAdmin;
+    }
+
+    private LessonJoinUser extractLessonJoinAdmin(Connection conn, ResultSet rs) throws SQLException {
+        return new Lesson(rs.getInt("lessonId"),
+                rs.getTimestamp("dateTime").toLocalDateTime(),
+                rs.getBoolean("isOnline"),
+                rs.getInt("teacherId"),
+                rs.getInt("studentId"),
+                rs.getBoolean("isConfirmed"),
+                rs.getBoolean("isPaid"));
     }
 }

@@ -35,34 +35,32 @@ public class ProfileTeacherBean {
         online = value;
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
-    public String getCity() {
+    public String city() {
         return city;
     }
-    public String getQualification() {
+    public String qualification() {
         return qualification;
     }
-    public String getSubject1() {
+    public String subject1() {
         return subject1;
     }
-    public String getSubject2() {
+    public String subject2() {
         return subject2;
     }
-    public String getSubject3() {
+    public String subject3() {
         return subject3;
     }
-    public String getOnline() {
+    public String online() {
         return online;
     }
-    public String getFare() {
+    public String fare() {
         return fare;
     }
 
-    public String getNameC() {
-        return name;
-    }
+
     public String getCityC() {
         return city;
     }

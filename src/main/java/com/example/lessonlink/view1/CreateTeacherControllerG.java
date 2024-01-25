@@ -70,17 +70,17 @@ public class CreateTeacherControllerG {
             EvaluatorControllerG evaluatorControllerG = fxmlLoader.getController();
             evaluatorControllerG.setController(addTeacherController);
             evaluatorControllerG.setProfileTeacherBean(profileTeacherBean);
-            evaluatorControllerG.setFareToScreen(profileTeacherBean.getFare());
+            evaluatorControllerG.setFareToScreen(profileTeacherBean.fare());
         }
     }
 
     public void setData(ProfileTeacherBean profileTeacherBean) {
-        nameField.setText(profileTeacherBean.getName());
-        cityBox.setValue(profileTeacherBean.getCity());
-        qualificationBox.setValue(profileTeacherBean.getQualification());
-        subjectBox1.setValue(profileTeacherBean.getSubject1());
-        subjectBox2.setValue(profileTeacherBean.getSubject2());
-        subjectBox3.setValue(profileTeacherBean.getSubject3());
-        onlineBox.setValue(profileTeacherBean.getOnline());
+        nameField.setText(profileTeacherBean.name());
+        cityBox.setValue(profileTeacherBean.city());
+        qualificationBox.setValue(profileTeacherBean.qualification());
+        subjectBox1.setValue(profileTeacherBean.subject1());
+        subjectBox2.setValue(profileTeacherBean.subject2());
+        subjectBox3.setValue(profileTeacherBean.subject3());
+        onlineBox.setValue(profileTeacherBean.online());
     }
 }

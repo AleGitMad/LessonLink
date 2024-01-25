@@ -2,12 +2,10 @@ package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.AddTeacherController;
 import com.example.lessonlink.view1.bean.ProfileTeacherBean;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
 import java.sql.SQLException;
 
 //This controller will control the CreateTeacher.fxml and EvaluatorPage.fxml files
@@ -37,11 +35,11 @@ public class ConfirmationControllerG {
         this.addTeacherController = addTeacherController;
     }
     public void setProfileTeacherBean(ProfileTeacherBean profileTeacherBean) {
-        name.setText(profileTeacherBean.getName());
-        subjects.setText(profileTeacherBean.getSubject1() + " " + profileTeacherBean.getSubject2() + " " + profileTeacherBean.getSubject3());
-        city.setText(profileTeacherBean.getCity());
-        qualification.setText(profileTeacherBean.getQualification());
-        fare.setText(profileTeacherBean.getFare());
+        name.setText(profileTeacherBean.name());
+        subjects.setText(profileTeacherBean.subject1() + " " + profileTeacherBean.subject2() + " " + profileTeacherBean.subject3());
+        city.setText(profileTeacherBean.city());
+        qualification.setText(profileTeacherBean.qualification());
+        fare.setText(profileTeacherBean.fare());
         this.profileTeacherBean = profileTeacherBean;
     }
 
@@ -63,7 +61,7 @@ public class ConfirmationControllerG {
         EvaluatorControllerG evaluatorControllerG = fxmlLoader.getController();
         evaluatorControllerG.setController(addTeacherController);
         evaluatorControllerG.setProfileTeacherBean(profileTeacherBean);
-        evaluatorControllerG.setFareToScreen(profileTeacherBean.getFare());
+        evaluatorControllerG.setFareToScreen(profileTeacherBean.fare());
     }
 
 

@@ -60,10 +60,11 @@ public class TeacherDao {
             teacher.setHasReviews(false);
         }
 
+
         return teacher;
     }
 
-    public void insertTeacher(Teacher teacher) throws SQLException {
+    public void saveTeacher(Teacher teacher) throws SQLException {
         Statement stmt = null;
         Connection conn = null;
 
@@ -71,7 +72,7 @@ public class TeacherDao {
             conn = Connector.getInstance().getConnection();
             stmt = conn.createStatement();
 
-            String insertStatement = Query.insertTeacher(stmt, teacher);
+            String insertStatement = Query.insertTeacher(teacher);
 
             stmt.executeUpdate(insertStatement);
 

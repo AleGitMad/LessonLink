@@ -5,6 +5,7 @@ import com.example.lessonlink.model.decorator.Educator;
 public class Teacher extends Educator {
 
     private int teacherId;
+    private int adminId;
     private String name;
     private float averageRating;
     private boolean hasReviews;
@@ -61,8 +62,9 @@ public class Teacher extends Educator {
     public boolean getHasReviews() {
         return hasReviews;
     }
-
     public void setHasReviews(boolean hasReviews) {
         this.hasReviews = hasReviews;
     }
+    public int getAdminId() { return adminId; }
+    public void setAdminId(int adminId) { this.adminId = adminId; }
 }

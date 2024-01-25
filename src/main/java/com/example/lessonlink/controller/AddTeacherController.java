@@ -1,5 +1,6 @@
 package com.example.lessonlink.controller;
 
+import com.example.lessonlink.model.LoggedUser;
 import com.example.lessonlink.model.dao.TeacherDao;
 import com.example.lessonlink.model.decorator.DecorateFare;
 import com.example.lessonlink.model.decorator.Educator;
@@ -28,14 +29,19 @@ public class AddTeacherController {
         fillTeacher(teacher, profileTeacherBean);
         TeacherDao teacherDao = new TeacherDao();
         try {
-            teacherDao.insertTeacher(teacher);
+            teacherDao.saveTeacher(teacher);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     private void fillTeacher(Teacher teacher, ProfileTeacherBean profileTeacherBean){
-        teacher.setName(profileTeacherBean.getName());
+        LoggedUser loggedUser = LoggedUser.getInstance();
+
+        //teacher.setAdminId(loggedUser.getAdmin().getUserId()); TODO fix loggedUser
+        teacher.setAdminId(2);
+
+        teacher.setName(profileTeacherBean.name());
         teacher.setSubject1(profileTeacherBean.getSubject1C());
         teacher.setSubject2(profileTeacherBean.getSubject2C());
         teacher.setSubject3(profileTeacherBean.getSubject3C());
