@@ -1,8 +1,5 @@
 package com.example.lessonlink.view1.bean;
 
-import com.example.lessonlink.model.Teacher;
-
-import java.util.List;
 
 public class TeacherBean {
 

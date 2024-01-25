@@ -48,7 +48,7 @@ public class Query {
 
     public static String insertLesson(Statement stmt, Lesson lesson) throws SQLException {
         String formattedDateTime = lesson.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        return String.format("INSERT INTO Lessons (dateTime, isOnline, teacherId, studentId, isConfirmed, isPaid) VALUES ('%s', '%b', '%d', '%d', %b, '%b')", formattedDateTime, lesson.getIsOnline(), lesson.getTeacherId(), lesson.getStudentId(), lesson.getIsConfirmed(), lesson.getIsPaid());
+        return String.format("INSERT INTO Lessons (dateTime, isOnline, teacherId, studentId, isConfirmed, isPaid) VALUES ('%s', %b, '%d', '%d', %b, %b)", formattedDateTime, lesson.getIsOnline(), lesson.getTeacherId(), lesson.getStudentId(), lesson.getIsConfirmed(), lesson.getIsPaid());
     }
 
     public static ResultSet checkCredentials(Statement stmt, String email, String password) throws SQLException {

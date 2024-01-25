@@ -69,7 +69,7 @@
                         <Font name="Calibri" size="29.0" />
                     </font>
                 </Label>
-                <Button fx:id="redirectButton" layoutX="152.0" layoutY="345.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="197.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Go to PayPal" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                <Button fx:id="redirectButton" layoutX="152.0" layoutY="345.0" mnemonicParsing="false" onAction="#showConfirmPane" prefHeight="97.0" prefWidth="197.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Go to PayPal" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                     <font>
                         <Font name="Calibri Bold" size="23.0" />
                     </font>
