@@ -1,11 +1,10 @@
 package com.example.lessonlink.controller;
 
 import com.example.lessonlink.exceptions.FailedResearchException;
-import com.example.lessonlink.model.Lesson;
-import com.example.lessonlink.model.LoggedUser;
+import com.example.lessonlink.model.*;
 import com.example.lessonlink.model.dao.LessonDao;
 import com.example.lessonlink.model.dao.TeacherDao;
-import com.example.lessonlink.model.Teacher;
+import com.example.lessonlink.view1.bean.AccountBean;
 import com.example.lessonlink.view1.bean.LessonBean;
 import com.example.lessonlink.view1.bean.ResearchBean;
 import com.example.lessonlink.view1.bean.TeacherBean;
@@ -19,6 +18,7 @@ public class BookLessonController {
     public List<TeacherBean> search(ResearchBean researchBean) throws FailedResearchException {
         TeacherDao teacherDao = new TeacherDao();
         List<Teacher> teachers = teacherDao.findTeachers(researchBean.getSubject(), researchBean.getWhere(), researchBean.getIsOnline());
+        //teacherBean populated with teacher (entity) data
         List<TeacherBean> teacherBeans = new ArrayList<>();
         for (Teacher teacher : teachers) {
             TeacherBean teacherBean = new TeacherBean();
@@ -56,5 +56,29 @@ public class BookLessonController {
         lesson.setIsConfirmed(false);
         lesson.setIsPaid(lessonBean.getIsPaid());
     }
+
+    public AccountBean getAccountBean() {
+        AccountBean accountBean = new AccountBean();
+        accountBean.setName(LoggedUser.getInstance().getStudent().getName());
+        accountBean.setRole(LoggedUser.getInstance().getRole());
+        return accountBean;
+    }
+
+    public List<LessonBean> getLessons() throws FailedResearchException {
+        LessonDao lessonDao = new LessonDao();
+        List<LessonJoinTeacher> lessons = lessonDao.findStudentLessons(LoggedUser.getInstance().getStudent().getUserId());
+        List<LessonBean> lessonBeans = new ArrayList<>();
+        for (LessonJoinTeacher lesson : lessons) {
+            LessonBean lessonBean = new LessonBean();
+            lessonBean.setLessonDate(lesson.getLesson().getDateTime().toLocalDate());
+            lessonBean.setTeacherId(lesson.getLesson().getTeacherId());
+            lessonBean.setIsConfirmed(lesson.getLesson().getIsConfirmed());
+            lessonBean.setIsPaid(lesson.getLesson().getIsPaid());
+            lessonBean.setTeacherName(lesson.getTeacher().getName());
+            lessonBeans.add(lessonBean);
+        }
+        return lessonBeans;
+    }
+    //student.setLessons(lessonDao.findStudentLessons(LoggedUser.getInstance().getStudent().getUserId()));
 
 }

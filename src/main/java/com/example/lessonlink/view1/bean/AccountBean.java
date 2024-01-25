@@ -1,23 +1,18 @@
 package com.example.lessonlink.view1.bean;
 
-//TODO: capire se usare questo o il bean di AccountHomepageBean
+//TODO: capire se usare questo o il bean di AccountBean
 public class AccountBean {
-    private String email;
-    private String userId;
+    private String name;
+    private String role;
 
-    public String getUserId() {
-        return userId;
+    public String getName() {
+        return name;
     }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setName(String name) { this.name = name; }
+    public String getRole() {
+        return role;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

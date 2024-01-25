@@ -2,7 +2,7 @@ package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.LoginController;
 import com.example.lessonlink.exceptions.FailedResearchException;
-import com.example.lessonlink.view1.bean.AccountHomepageBean;
+import com.example.lessonlink.view1.bean.AccountBean;
 import com.example.lessonlink.view1.bean.LoginBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +27,7 @@ public class LoginControllerG {
 
     FXMLLoader fxmlLoader;
 
-    AccountHomepageBean accountHomepageBean;
+    AccountBean accountBean;
 
     @FXML
     void setHomePage() {
@@ -42,20 +42,20 @@ public class LoginControllerG {
         if(loginBean.validation()){
 
             try {
-                accountHomepageBean = loginController.login(loginBean);
+                accountBean = loginController.login(loginBean);
 
                 //TODO: no need to pass accountHomepageBean, LoggedUser.getInstance().getStudent().getName is enough
-                if (accountHomepageBean.getRole().equals("Student")) {
+                if (accountBean.getRole().equals("Student")) {
                     StudentHomepageControllerG studentHomepageControllerG;
                     fxmlLoader = FxmlLoader.setPage("StudentHomepage");
                     studentHomepageControllerG = fxmlLoader.getController();
-                    studentHomepageControllerG.setUserName(accountHomepageBean.getName());
+                    studentHomepageControllerG.setUserName(accountBean.getName());
 
-                }else if(accountHomepageBean.getRole().equals("Admin")) {
+                }else if(accountBean.getRole().equals("Admin")) {
                     AdminHomePageControllerG adminHomepageControllerG;
                     fxmlLoader = FxmlLoader.setPage("AdminHomepage");
                     adminHomepageControllerG = fxmlLoader.getController();
-                    adminHomepageControllerG.setUsername(accountHomepageBean.getName());
+                    adminHomepageControllerG.setUsername(accountBean.getName());
                 }
 
             } catch (FailedLoginException e) {

@@ -36,8 +36,14 @@ public class Query {
         return stmt.executeQuery(selectedStatement);
     }
 
+    /*
     public static ResultSet findLessons(Statement stmt, int studentId) throws SQLException {
         String selectedStatement = "SELECT * FROM lessons WHERE studentId = " + studentId;
+        return stmt.executeQuery(selectedStatement);
+    }
+    */
+    public static ResultSet findLessons(Statement stmt, int studentId) throws SQLException {
+        String selectedStatement = "SELECT * FROM lessons JOIN teachers ON lessons.teacherId = teachers.teacherId WHERE studentId = " + studentId;
         return stmt.executeQuery(selectedStatement);
     }
 

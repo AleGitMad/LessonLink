@@ -26,6 +26,7 @@ public class AdminHomePageControllerG {
     void addTeacher(ActionEvent event) {
         FxmlLoader.setPage("CreateTeacherProfile");
     }
+    /*
     @FXML
     void activeBookings(ActionEvent event) {
         BookingsController bookingsController = new BookingsController();
@@ -41,4 +42,5 @@ public class AdminHomePageControllerG {
         }
         activeBookingsControllerG.setData(bookingBeanList);
     }
+    */
 }

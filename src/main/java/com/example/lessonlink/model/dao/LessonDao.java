@@ -2,6 +2,7 @@ package com.example.lessonlink.model.dao;
 
 import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.Lesson;
+import com.example.lessonlink.model.LessonJoinTeacher;
 import com.example.lessonlink.model.LessonJoinUser;
 import com.example.lessonlink.model.service.Connector;
 import com.example.lessonlink.model.service.Query;
@@ -15,10 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LessonDao {
-    public List<Lesson> findStudentLessons(int studentId) throws FailedResearchException {
+    public List<LessonJoinTeacher> findStudentLessons(int studentId) throws FailedResearchException {
         Statement stmt = null;
         Connection conn = null;
-        List<Lesson> lessons = new ArrayList<>();
+        List<LessonJoinTeacher> lessons = new ArrayList<>();
 
         try {
             conn = Connector.getInstance().getConnection();
@@ -41,14 +42,15 @@ public class LessonDao {
         return lessons;
     }
 
-    private Lesson extractLesson(Connection conn, ResultSet rs) throws SQLException {
-        return new Lesson(rs.getInt("lessonId"),
+    private LessonJoinTeacher extractLesson(Connection conn, ResultSet rs) throws SQLException {
+        return new LessonJoinTeacher(rs.getInt("lessonId"),
                 rs.getTimestamp("dateTime").toLocalDateTime(),
                 rs.getBoolean("isOnline"),
                 rs.getInt("teacherId"),
                 rs.getInt("studentId"),
                 rs.getBoolean("isConfirmed"),
-                rs.getBoolean("isPaid"));
+                rs.getBoolean("isPaid"),
+                rs.getString("teachers.name"));
     }
 
     public boolean findTeacherLessons(int teacherId, LocalDateTime dateTime) throws FailedResearchException {
@@ -100,6 +102,7 @@ public class LessonDao {
         }
     }
 
+    /*
     public List<LessonJoinUser> findLessoByAdmin(int adminId) throws FailedResearchException {
         List<LessonJoinUser> lessonsJoinAdmin = new ArrayList<>();
 
@@ -137,4 +140,5 @@ public class LessonDao {
                 rs.getBoolean("isConfirmed"),
                 rs.getBoolean("isPaid"));
     }
+    */
 }

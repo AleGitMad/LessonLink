@@ -2,7 +2,7 @@ package junit;
 
 import com.example.lessonlink.controller.LoginController;
 import com.example.lessonlink.exceptions.FailedResearchException;
-import com.example.lessonlink.view1.bean.AccountHomepageBean;
+import com.example.lessonlink.view1.bean.AccountBean;
 import com.example.lessonlink.view1.bean.LoginBean;
 import org.junit.jupiter.api.Test;
 
@@ -24,9 +24,9 @@ class TestLoginController {
         loginBean.setEmail("alessandro@gmail.com");
         loginBean.setPassword("password");
         try {
-            AccountHomepageBean accountHomepageBean = loginController.login(loginBean);
-            assertEquals("Student", accountHomepageBean.getRole());
-            assertEquals("alessandro", accountHomepageBean.getName());
+            AccountBean accountBean = loginController.login(loginBean);
+            assertEquals("Student", accountBean.getRole());
+            assertEquals("alessandro", accountBean.getName());
         } catch (FailedLoginException | SQLException | FailedResearchException e) {
             fail("Exception thrown: " + e.getMessage());
         }

@@ -14,6 +14,26 @@ public class LessonBean {
 
     private boolean isPaid;
 
+    private boolean isConfirmed;
+
+    private String teacherName;
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public boolean getIsConfirmed() {
+        return isConfirmed;
+    }
+
+    public void setIsConfirmed(boolean confirmed) {
+        isConfirmed = confirmed;
+    }
+
     public boolean getIsOnline() {
         return isOnline;
     }

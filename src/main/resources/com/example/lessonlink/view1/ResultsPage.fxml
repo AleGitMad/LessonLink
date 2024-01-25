@@ -293,5 +293,15 @@
             </Button>
          </children>
       </Pane>
+      <Button fx:id="bookLessonButton11" layoutX="863.0" layoutY="677.0" mnemonicParsing="false" onAction="#showConfirmPanel" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: #646E81; -fx-line-spacing: -10;" text="Next" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="bookLessonButton111" layoutX="117.0" layoutY="677.0" mnemonicParsing="false" onAction="#showConfirmPanel" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: #646E81; -fx-line-spacing: -10;" text="Prev" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

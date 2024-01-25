@@ -42,7 +42,10 @@ public class SearchPageControllerG {
     public void initialize() {
         subjectBox.getItems().addAll("Math", "History", "English", "Physics", "Geography");
         whereBox.getItems().addAll("Rome", "Milan", "Bergamo", "Tivoli", "Online");
+        userNameLabel.setText(bookLessonController.getAccountBean().getName());
     }
+
+
 
     @FXML
     void search() {

@@ -87,6 +87,9 @@ public class ResultsPageControllerG {
     @FXML
     private Label errorLabel;
 
+    @FXML
+    private Label userNameLabel;
+
     private int selectedTeacherId;
 
 
@@ -111,6 +114,8 @@ public class ResultsPageControllerG {
         //set default sorting method
         sortByRatingButton.setSelected(true);
         sortByRating = true;
+
+        userNameLabel.setText(bookLessonController.getAccountBean().getName());
     }
 
     public void changeSortingMethod(ActionEvent actionEvent) {
