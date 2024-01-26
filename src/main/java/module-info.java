@@ -9,4 +9,5 @@ module com.example.lessonlink {
     exports com.example.lessonlink.model;
     exports com.example.lessonlink.model.decorator;
     exports com.example.lessonlink.view1.bean;
+    exports com.example.lessonlink.model.observer;
 }

@@ -18,6 +18,27 @@ public class LessonBean {
 
     private String teacherName;
 
+    private float averageRating;
+    /*
+    private int selectedTeacherId;
+
+    public int getSelectedTeacherId() {
+        return selectedTeacherId;
+    }
+
+    public void setSelectedTeacherId(int selectedTeacherId) {
+        this.selectedTeacherId = selectedTeacherId;
+    }
+    */
+
+    public float getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(float averageRating) {
+        this.averageRating = averageRating;
+    }
+
     public String getTeacherName() {
         return teacherName;
     }
@@ -76,6 +97,9 @@ public class LessonBean {
 
     public LocalDateTime getLessonDateTime() {
         return lessonDateTime;
+    }
+    public void setLessonDateTime(LocalDateTime lessonDateTime) {
+        this.lessonDateTime = lessonDateTime;
     }
 
     public boolean validate() {

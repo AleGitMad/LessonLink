@@ -1,6 +1,12 @@
 package com.example.lessonlink.model.decorator;
 
-public abstract class Educator {
+import com.example.lessonlink.model.observer.Observer;
+import com.example.lessonlink.model.observer.Subject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Educator extends Subject {
     protected String subject1;
     protected String subject2;
     protected String subject3;
@@ -9,6 +15,20 @@ public abstract class Educator {
     protected String qualification;
     protected boolean availableOnline;
     protected String decorations = "0".repeat(13);
+
+
+
+    //observer pattern
+    List<Observer> observers = new ArrayList<>();
+    protected Educator() {
+        super();
+    }
+    @Override
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+
 
     public abstract int setAddFare();
     public abstract String setDecoration();

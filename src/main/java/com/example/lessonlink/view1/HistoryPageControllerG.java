@@ -1,19 +1,20 @@
 package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.BookLessonController;
+import com.example.lessonlink.model.observer.Observer;
 import com.example.lessonlink.view1.bean.LessonBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 
-public class HistoryPageControllerG {
+public class HistoryPageControllerG implements Observer {
 
     @FXML
     private Label teacherNameLabel1;
@@ -60,9 +61,41 @@ public class HistoryPageControllerG {
     @FXML
     private Label userNameLabel;
 
+    @FXML
+    private Button leaveReview1;
+    @FXML
+    private Button leaveReview2;
+    @FXML
+    private Button leaveReview3;
+    @FXML
+    private Button leaveReview4;
+    @FXML
+    private Button leaveReview5;
+
+    @FXML
+    private Rectangle resultHighlight1;
+    @FXML
+    private Rectangle resultHighlight2;
+    @FXML
+    private Rectangle resultHighlight3;
+    @FXML
+    private Rectangle resultHighlight4;
+    @FXML
+    private Rectangle resultHighlight5;
+
+    @FXML
+    private Label teacherConfirmLabel;
+    @FXML
+    private ImageView teacherConfirmImage;
+    @FXML
+    private Label teacherRatingLabel;
+
+
     List<LessonBean> lessonBeans;
 
     BookLessonController bookLessonController = new BookLessonController();
+
+    private int selectedTeacherId;
 
     @FXML
     public void initialize() {
@@ -79,6 +112,9 @@ public class HistoryPageControllerG {
         sortByDate = true;
 
         userNameLabel.setText(bookLessonController.getAccountBean().getName());
+
+        //observer pattern
+        //bookLessonController.attachObserverToTeacher(this);
     }
 
     @FXML
@@ -103,11 +139,12 @@ public class HistoryPageControllerG {
         // Create arrays of labels and panes
         Label[] teacherNameLabels = {teacherNameLabel1, teacherNameLabel2, teacherNameLabel3, teacherNameLabel4, teacherNameLabel5};
         Label[] lessonDateLabels = {lessonDate1, lessonDate2, lessonDate3, lessonDate4, lessonDate5};
+        Button[] leaveReviewButtons = {leaveReview1, leaveReview2, leaveReview3, leaveReview4, leaveReview5};
         Pane[] resultPanes = {result1, result2, result3, result4, result5};
 
         // Set teacher details for each teacher
         for (int i = 0; i < numberOfLessons; i++) {
-            setLessonDetails(lessonBeans.get(i), teacherNameLabels[i], lessonDateLabels[i]);
+            setLessonDetails(lessonBeans.get(i), teacherNameLabels[i], lessonDateLabels[i], leaveReviewButtons[i]);
         }
 
         // Set visibility of result panes
@@ -116,11 +153,84 @@ public class HistoryPageControllerG {
         }
     }
 
-    private void setLessonDetails(LessonBean lessonBean, Label teacherNameLabel, Label lessonDateLabel) {
-
+    private void setLessonDetails(LessonBean lessonBean, Label teacherNameLabel, Label lessonDateLabel, Button leaveReviewButton) {
         teacherNameLabel.setText(lessonBean.getTeacherName());
-        lessonDateLabel.setText("Had a lesson on" + lessonBean.getLessonDate().toString());
+        if (lessonBean.getLessonDateTime().isAfter(LocalDateTime.now())) {
+            lessonDateLabel.setText("Next lesson on " + lessonBean.getLessonDate().toString());
+            leaveReviewButton.setVisible(false);
+        } else {
+            lessonDateLabel.setText("Had a lesson on " + lessonBean.getLessonDate().toString());
+        }
     }
+
+    @FXML
+    void showConfirmPanel(ActionEvent event) {
+        switch (((Button) event.getSource()).getId()) {
+            case "leaveReview1":
+                disableHighlights();
+                resultHighlight1.setVisible(true);
+                teacherConfirmImage.setVisible(true);
+                teacherConfirmLabel.setText(lessonBeans.getFirst().getTeacherName());
+                teacherConfirmLabel.setVisible(true);
+                teacherRatingLabel.setText("Actual rating: " + lessonBeans.getFirst().getAverageRating() + "/10");
+                teacherRatingLabel.setVisible(true);
+                selectedTeacherId = lessonBeans.getFirst().getTeacherId();
+                break;
+            case "leaveReview2":
+                disableHighlights();
+                resultHighlight2.setVisible(true);
+                teacherConfirmImage.setVisible(true);
+                teacherConfirmLabel.setText(lessonBeans.get(1).getTeacherName());
+                teacherConfirmLabel.setVisible(true);
+                teacherRatingLabel.setText("Actual rating: " + lessonBeans.get(1).getAverageRating() + "/10");
+                teacherRatingLabel.setVisible(true);
+                selectedTeacherId = lessonBeans.get(1).getTeacherId();
+                break;
+            case "leaveReview3":
+                disableHighlights();
+                resultHighlight3.setVisible(true);
+                teacherConfirmImage.setVisible(true);
+                teacherConfirmLabel.setText(lessonBeans.get(2).getTeacherName());
+                teacherConfirmLabel.setVisible(true);
+                teacherRatingLabel.setText("Actual rating: " + lessonBeans.get(2).getAverageRating() + "/10");
+                teacherRatingLabel.setVisible(true);
+                selectedTeacherId = lessonBeans.get(2).getTeacherId();
+                break;
+            case "leaveReview4":
+                disableHighlights();
+                resultHighlight4.setVisible(true);
+                teacherConfirmImage.setVisible(true);
+                teacherConfirmLabel.setText(lessonBeans.get(3).getTeacherName());
+                teacherConfirmLabel.setVisible(true);
+                teacherRatingLabel.setText("Actual rating: " + lessonBeans.get(3).getAverageRating() + "/10");
+                teacherRatingLabel.setVisible(true);
+                selectedTeacherId = lessonBeans.get(3).getTeacherId();
+                break;
+            case "leaveReview5":
+                disableHighlights();
+                resultHighlight5.setVisible(true);
+                teacherConfirmImage.setVisible(true);
+                teacherConfirmLabel.setText(lessonBeans.get(4).getTeacherName());
+                teacherConfirmLabel.setVisible(true);
+                teacherRatingLabel.setText("Actual rating: " + lessonBeans.get(4).getAverageRating() + "/10");
+                teacherRatingLabel.setVisible(true);
+                selectedTeacherId = lessonBeans.get(4).getTeacherId();
+                break;
+            default:
+                break;
+        }
+    }
+
+    void disableHighlights() {
+        resultHighlight1.setVisible(false);
+        resultHighlight2.setVisible(false);
+        resultHighlight3.setVisible(false);
+        resultHighlight4.setVisible(false);
+        resultHighlight5.setVisible(false);
+    }
+
+
+
 
     @FXML
     void logout(ActionEvent event) {
@@ -132,4 +242,8 @@ public class HistoryPageControllerG {
         FxmlLoader.setPage("StudentHomePage");
     }
 
+    @Override
+    public void update() {
+        //change average rating
+    }
 }

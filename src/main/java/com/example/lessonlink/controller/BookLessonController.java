@@ -3,7 +3,9 @@ package com.example.lessonlink.controller;
 import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.*;
 import com.example.lessonlink.model.dao.LessonDao;
+import com.example.lessonlink.model.dao.ReviewDao;
 import com.example.lessonlink.model.dao.TeacherDao;
+import com.example.lessonlink.view1.HistoryPageControllerG;
 import com.example.lessonlink.view1.bean.AccountBean;
 import com.example.lessonlink.view1.bean.LessonBean;
 import com.example.lessonlink.view1.bean.ResearchBean;
@@ -66,19 +68,24 @@ public class BookLessonController {
 
     public List<LessonBean> getLessons() throws FailedResearchException {
         LessonDao lessonDao = new LessonDao();
+        ReviewDao reviewDao = new ReviewDao();
         List<LessonJoinTeacher> lessons = lessonDao.findStudentLessons(LoggedUser.getInstance().getStudent().getUserId());
         List<LessonBean> lessonBeans = new ArrayList<>();
         for (LessonJoinTeacher lesson : lessons) {
             LessonBean lessonBean = new LessonBean();
             lessonBean.setLessonDate(lesson.getLesson().getDateTime().toLocalDate());
+            lessonBean.setLessonDateTime(lesson.getLesson().getDateTime());
             lessonBean.setTeacherId(lesson.getLesson().getTeacherId());
             lessonBean.setIsConfirmed(lesson.getLesson().getIsConfirmed());
             lessonBean.setIsPaid(lesson.getLesson().getIsPaid());
             lessonBean.setTeacherName(lesson.getTeacher().getName());
+            lessonBean.setAverageRating(reviewDao.getAverageRating(lesson.getTeacher().getTeacherId()));
             lessonBeans.add(lessonBean);
         }
         return lessonBeans;
     }
-    //student.setLessons(lessonDao.findStudentLessons(LoggedUser.getInstance().getStudent().getUserId()));
 
+    public void attachObserverToTeacher(HistoryPageControllerG historyPageControllerG, Teacher teacher) {
+        teacher.attach(historyPageControllerG);
+    }
 }

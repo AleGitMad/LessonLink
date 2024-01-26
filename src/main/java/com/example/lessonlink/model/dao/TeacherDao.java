@@ -75,6 +75,7 @@ public class TeacherDao {
             String insertStatement = Query.insertTeacher(teacher);
 
             stmt.executeUpdate(insertStatement);
+            //TODO: le query le fa tutte la classe Query
 
         } catch (SQLException e) {
             e.printStackTrace();

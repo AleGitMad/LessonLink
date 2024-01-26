@@ -45,7 +45,7 @@
       <Line endX="298.0" layoutX="7.0" layoutY="58.0" stroke="#3c64b1" strokeWidth="2.0" />
       <Pane fx:id="result1" layoutX="219.0" layoutY="122.0" prefHeight="98.0" prefWidth="609.0">
          <children>
-            <Rectangle fx:id="resultHighlight211" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="#3c64b1" strokeType="OUTSIDE" strokeWidth="3.0" visible="false" width="609.0" />
+            <Rectangle fx:id="resultHighlight1" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="#3c64b1" strokeType="OUTSIDE" strokeWidth="3.0" visible="false" width="609.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="BLACK" strokeType="INSIDE" width="609.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="98.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
             <Label fx:id="teacherNameLabel1" layoutX="118.0" layoutY="2.0" prefHeight="56.0" prefWidth="164.0" text="Teacher Name">
@@ -63,7 +63,7 @@
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
-            <Button fx:id="leaveReview1" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Leave review" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="leaveReview1" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" onAction="#showConfirmPanel" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Leave review" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="17.0" />
                </font>
@@ -85,7 +85,7 @@
                   <Image url="@../images/profilePicturesDefault.png" />
                </image>
             </ImageView>
-            <Button fx:id="leaveReview2" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Leave review" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="leaveReview2" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" onAction="#showConfirmPanel" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Leave review" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="17.0" />
                </font>
@@ -112,7 +112,7 @@
                   <Image url="@../images/profilePicturesDefault.png" />
                </image>
             </ImageView>
-            <Button fx:id="leaveReview3" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Leave review" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="leaveReview3" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" onAction="#showConfirmPanel" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Leave review" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="17.0" />
                </font>
@@ -139,7 +139,7 @@
                   <Image url="@../images/profilePicturesDefault.png" />
                </image>
             </ImageView>
-            <Button fx:id="leaveReview4" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Leave review" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="leaveReview4" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" onAction="#showConfirmPanel" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Leave review" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="17.0" />
                </font>
@@ -152,7 +152,7 @@
          </children></Pane>
       <Pane fx:id="result5" layoutX="219.0" layoutY="571.0" prefHeight="98.0" prefWidth="609.0">
          <children>
-            <Rectangle fx:id="resultHighlight21" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="#3c64b1" strokeType="OUTSIDE" strokeWidth="3.0" visible="false" width="609.0" />
+            <Rectangle fx:id="resultHighlight5" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="#3c64b1" strokeType="OUTSIDE" strokeWidth="3.0" visible="false" width="609.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="98.0" stroke="BLACK" strokeType="INSIDE" width="609.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="98.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
             <Label fx:id="teacherNameLabel5" layoutX="118.0" layoutY="2.0" prefHeight="56.0" prefWidth="164.0" text="Teacher Name">
@@ -165,7 +165,7 @@
                   <Image url="@../images/profilePicturesDefault.png" />
                </image>
             </ImageView>
-            <Button fx:id="leaveReview5" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Leave review" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="leaveReview5" layoutX="505.0" layoutY="19.0" mnemonicParsing="false" onAction="#showConfirmPanel" prefHeight="60.0" prefWidth="88.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Leave review" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="17.0" />
                </font>
