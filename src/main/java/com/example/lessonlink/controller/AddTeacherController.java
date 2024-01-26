@@ -5,6 +5,7 @@ import com.example.lessonlink.model.dao.TeacherDao;
 import com.example.lessonlink.model.decorator.DecorateFare;
 import com.example.lessonlink.model.decorator.Educator;
 import com.example.lessonlink.model.Teacher;
+import com.example.lessonlink.view1.bean.AccountBean;
 import com.example.lessonlink.view1.bean.ProfileTeacherBean;
 
 import java.sql.SQLException;
@@ -49,5 +50,12 @@ public class AddTeacherController {
         teacher.setCity(profileTeacherBean.getCityC());
         teacher.setAvailableOnline(profileTeacherBean.getOnlineC());
         teacher.setFare(profileTeacherBean.getFareC());
+    }
+
+    public AccountBean getAccountBean() {
+        AccountBean accountBean = new AccountBean();
+        accountBean.setName(LoggedUser.getInstance().getStudent().getName());
+        accountBean.setRole(LoggedUser.getInstance().getRole());
+        return accountBean;
     }
 }

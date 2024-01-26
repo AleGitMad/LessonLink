@@ -1,5 +1,6 @@
 package com.example.lessonlink.view1;
 
+import com.example.lessonlink.controller.BookLessonController;
 import com.example.lessonlink.view1.bean.LessonBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,7 +57,12 @@ public class HistoryPageControllerG {
     @FXML
     private ComboBox<Integer> yourRating;
 
+    @FXML
+    private Label userNameLabel;
+
     List<LessonBean> lessonBeans;
+
+    BookLessonController bookLessonController = new BookLessonController();
 
     @FXML
     public void initialize() {
@@ -71,6 +77,8 @@ public class HistoryPageControllerG {
         //set default sorting method
         sortByDateButton.setSelected(true);
         sortByDate = true;
+
+        userNameLabel.setText(bookLessonController.getAccountBean().getName());
     }
 
     @FXML
@@ -109,8 +117,19 @@ public class HistoryPageControllerG {
     }
 
     private void setLessonDetails(LessonBean lessonBean, Label teacherNameLabel, Label lessonDateLabel) {
+
         teacherNameLabel.setText(lessonBean.getTeacherName());
-        lessonDateLabel.setText(lessonBean.getLessonDateTime().toString());
+        lessonDateLabel.setText("Had a lesson on" + lessonBean.getLessonDate().toString());
+    }
+
+    @FXML
+    void logout(ActionEvent event) {
+        FxmlLoader.setPage("Home");
+    }
+
+    @FXML
+    void setHomePage() {
+        FxmlLoader.setPage("StudentHomePage");
     }
 
 }

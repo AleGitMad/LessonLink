@@ -31,6 +31,11 @@ public class StudentHomepageControllerG {
     }
 
     @FXML
+    public void initialize() {
+        userNameLabel.setText(bookLessonController.getAccountBean().getName());
+    }
+
+    @FXML
     void logout() {
         FxmlLoader.setPage("Home");
     }

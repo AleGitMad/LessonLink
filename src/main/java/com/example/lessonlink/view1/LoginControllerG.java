@@ -44,18 +44,11 @@ public class LoginControllerG {
             try {
                 accountBean = loginController.login(loginBean);
 
-                //TODO: no need to pass accountHomepageBean, LoggedUser.getInstance().getStudent().getName is enough
                 if (accountBean.getRole().equals("Student")) {
-                    StudentHomepageControllerG studentHomepageControllerG;
                     fxmlLoader = FxmlLoader.setPage("StudentHomepage");
-                    studentHomepageControllerG = fxmlLoader.getController();
-                    studentHomepageControllerG.setUserName(accountBean.getName());
 
                 }else if(accountBean.getRole().equals("Admin")) {
-                    AdminHomePageControllerG adminHomepageControllerG;
                     fxmlLoader = FxmlLoader.setPage("AdminHomepage");
-                    adminHomepageControllerG = fxmlLoader.getController();
-                    adminHomepageControllerG.setUsername(accountBean.getName());
                 }
 
             } catch (FailedLoginException e) {

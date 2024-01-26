@@ -1,5 +1,6 @@
 package com.example.lessonlink.view1;
 
+import com.example.lessonlink.controller.AddTeacherController;
 import com.example.lessonlink.controller.BookingsController;
 import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.view1.bean.BookingBean;
@@ -12,10 +13,13 @@ import java.util.List;
 
 public class AdminHomePageControllerG {
     @FXML
-    private Label Username;
+    private Label username;
 
-    public void setUsername(String username) {
-        Username.setText(username);
+    AddTeacherController addTeacherController = new AddTeacherController();
+
+    @FXML
+    public void initialize() {
+        username.setText(addTeacherController.getAccountBean().getName());
     }
 
     @FXML
