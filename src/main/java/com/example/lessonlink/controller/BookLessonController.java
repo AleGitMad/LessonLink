@@ -6,10 +6,7 @@ import com.example.lessonlink.model.dao.LessonDao;
 import com.example.lessonlink.model.dao.ReviewDao;
 import com.example.lessonlink.model.dao.TeacherDao;
 import com.example.lessonlink.view1.HistoryPageControllerG;
-import com.example.lessonlink.view1.bean.AccountBean;
-import com.example.lessonlink.view1.bean.LessonBean;
-import com.example.lessonlink.view1.bean.ResearchBean;
-import com.example.lessonlink.view1.bean.TeacherBean;
+import com.example.lessonlink.view1.bean.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -39,7 +36,7 @@ public class BookLessonController {
         return lessonDao.findTeacherLessons(lessonBean.getTeacherId(), lessonBean.getLessonDateTime());
     }
 
-    public void insertLesson(LessonBean lessonBean) throws FailedResearchException{
+    public void insertLesson(LessonBean lessonBean) {
         Lesson lesson = new Lesson();
         fillLesson(lesson, lessonBean);
         LessonDao lessonDao = new LessonDao();
@@ -87,5 +84,25 @@ public class BookLessonController {
 
     public void attachObserverToTeacher(HistoryPageControllerG historyPageControllerG, Teacher teacher) {
         teacher.attach(historyPageControllerG);
+    }
+
+    public void insertReview(ReviewBean reviewBean) {
+        Review review = new Review();
+        fillReview(review, reviewBean);
+        ReviewDao reviewDao = new ReviewDao();
+        try {
+            reviewDao.insertReview(review);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void fillReview(Review review, ReviewBean reviewBean) {
+        review.setStars((int) reviewBean.getStars());
+        review.setTeacherId(reviewBean.getTeacherId());
+        review.setDate(reviewBean.getDate());
+        if (reviewBean.getComment() != null) {
+            review.setComment(reviewBean.getComment());
+        }
     }
 }

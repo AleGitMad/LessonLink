@@ -217,38 +217,25 @@
             </Label>
          </children></Pane>
       <TextField fx:id="yourComment" editable="false" layoutX="1054.0" layoutY="444.0" prefHeight="92.0" prefWidth="175.0" promptText="Your comment" />
-      <Button fx:id="confirmLessonButton" layoutX="1055.0" layoutY="614.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="173.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Confirm Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button layoutX="1055.0" layoutY="614.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="173.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Review Sent!" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="confirmReviewButton" layoutX="1055.0" layoutY="614.0" mnemonicParsing="false" onAction="#confirmReview" prefHeight="80.0" prefWidth="173.0" style="-fx-background-color: #3C64B1; -fx-line-spacing: -10;" text="Confirm Review" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Calibri Bold" size="23.0" />
          </font>
       </Button>
       <ComboBox fx:id="yourRating" layoutX="1055.0" layoutY="407.0" prefHeight="25.0" prefWidth="173.0" promptText="Your rating" style="-fx-font-family: Calibri; -fx-font-size: 15px; -fx-background-color: #FFFFFF;" />
-      <Pane fx:id="fullPane" layoutX="390.0" layoutY="110.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" visible="false">
-         <children>
-            <Label layoutX="68.0" layoutY="61.0" prefHeight="56.0" prefWidth="369.0" text="Slot already occupied" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font name="Calibri Bold" size="41.0" />
-               </font></Label>
-            <Label layoutX="80.0" layoutY="181.0" prefHeight="93.0" prefWidth="344.0" text="Please select another date or time" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font name="Calibri" size="29.0" />
-               </font>
-            </Label>
-            <Button fx:id="newSearchButton1" layoutX="153.0" layoutY="348.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="197.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Edit selection" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font name="Calibri Bold" size="23.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
       <Pane fx:id="errorPane" layoutX="390.0" layoutY="110.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" visible="false">
          <children>
-            <Label fx:id="errorLabel" layoutX="75.0" layoutY="58.0" prefHeight="226.0" prefWidth="369.0" text="Please select all the fields, making sure to select a date in the future" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="errorLabel" layoutX="75.0" layoutY="58.0" prefHeight="226.0" prefWidth="369.0" text="Please select rating value before confirming" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="41.0" />
                </font>
             </Label>
-            <Button fx:id="newSearchButton2" layoutX="153.0" layoutY="348.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="197.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Make a new research" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button layoutX="153.0" layoutY="348.0" mnemonicParsing="false" onAction="#closeErrorPane" prefHeight="97.0" prefWidth="197.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Edit your review" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="23.0" />
                </font>

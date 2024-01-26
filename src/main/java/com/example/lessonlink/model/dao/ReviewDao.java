@@ -72,7 +72,7 @@ public class ReviewDao {
         return reviews;
     }
 
-    private Review extractReview(Connection conn, ResultSet rs) throws SQLException, FailedResearchException {
+    private Review extractReview(Connection conn, ResultSet rs) throws SQLException {
         return new Review(rs.getInt("reviewId"),
                 rs.getInt("stars"),
                 rs.getDate("date"),
@@ -81,4 +81,23 @@ public class ReviewDao {
     }
     //TODO: meccanismo di visualizzazione delle reviews
 
+    public void insertReview(Review review) throws SQLException {
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            conn = Connector.getInstance().getConnection();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            Query.insertReview(stmt, review);
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException e) {
+                //not handled
+            }
+        }
+    }
 }

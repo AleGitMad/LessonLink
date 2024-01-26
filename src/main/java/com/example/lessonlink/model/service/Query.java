@@ -1,6 +1,7 @@
 package com.example.lessonlink.model.service;
 
 import com.example.lessonlink.model.Lesson;
+import com.example.lessonlink.model.Review;
 import com.example.lessonlink.model.Teacher;
 
 import java.sql.ResultSet;
@@ -88,6 +89,16 @@ public class Query {
 
     public static void updateLesson(Statement stmt, Lesson lesson) throws SQLException {
         String query = "UPDATE Lessons SET isConfirmed = "+ lesson.getIsConfirmed() +" WHERE lessonId = " + lesson.getLessonId();
+        stmt.executeUpdate(query);
+    }
+
+    public static void insertReview(Statement stmt, Review review) throws SQLException {
+        String query;
+        if (review.getComment() != null) {
+            query = String.format("INSERT INTO Reviews (stars, comment, date, teacherId) VALUES (%d, '%s', '%s', %d)", review.getStars(), review.getComment(), review.getDate(), review.getTeacherId());
+        } else {
+            query = String.format("INSERT INTO Reviews (stars, date, teacherId) VALUES (%d, '%s', %d)", review.getStars(), review.getDate(), review.getTeacherId());
+        }
         stmt.executeUpdate(query);
     }
 }

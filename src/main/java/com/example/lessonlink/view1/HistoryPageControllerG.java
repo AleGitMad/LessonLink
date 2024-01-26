@@ -3,6 +3,7 @@ package com.example.lessonlink.view1;
 import com.example.lessonlink.controller.BookLessonController;
 import com.example.lessonlink.model.observer.Observer;
 import com.example.lessonlink.view1.bean.LessonBean;
+import com.example.lessonlink.view1.bean.ReviewBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,8 +11,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Comparator;
+import java.sql.Date;
 import java.util.List;
 
 public class HistoryPageControllerG implements Observer {
@@ -89,6 +92,14 @@ public class HistoryPageControllerG implements Observer {
     private ImageView teacherConfirmImage;
     @FXML
     private Label teacherRatingLabel;
+    @FXML
+    private TextField yourComment;
+
+    @FXML
+    private Pane errorPane;
+
+    @FXML
+    private Button confirmReviewButton;
 
 
     List<LessonBean> lessonBeans;
@@ -96,6 +107,7 @@ public class HistoryPageControllerG implements Observer {
     BookLessonController bookLessonController = new BookLessonController();
 
     private int selectedTeacherId;
+    private int buttonPressed;
 
     @FXML
     public void initialize() {
@@ -158,6 +170,7 @@ public class HistoryPageControllerG implements Observer {
         if (lessonBean.getLessonDateTime().isAfter(LocalDateTime.now())) {
             lessonDateLabel.setText("Next lesson on " + lessonBean.getLessonDate().toString());
             leaveReviewButton.setVisible(false);
+            //mostra confermata o meno
         } else {
             lessonDateLabel.setText("Had a lesson on " + lessonBean.getLessonDate().toString());
         }
@@ -174,7 +187,9 @@ public class HistoryPageControllerG implements Observer {
                 teacherConfirmLabel.setVisible(true);
                 teacherRatingLabel.setText("Actual rating: " + lessonBeans.getFirst().getAverageRating() + "/10");
                 teacherRatingLabel.setVisible(true);
+                yourComment.setEditable(true);
                 selectedTeacherId = lessonBeans.getFirst().getTeacherId();
+                buttonPressed = 1;
                 break;
             case "leaveReview2":
                 disableHighlights();
@@ -184,7 +199,9 @@ public class HistoryPageControllerG implements Observer {
                 teacherConfirmLabel.setVisible(true);
                 teacherRatingLabel.setText("Actual rating: " + lessonBeans.get(1).getAverageRating() + "/10");
                 teacherRatingLabel.setVisible(true);
+                yourComment.setEditable(true);
                 selectedTeacherId = lessonBeans.get(1).getTeacherId();
+                buttonPressed = 2;
                 break;
             case "leaveReview3":
                 disableHighlights();
@@ -194,7 +211,9 @@ public class HistoryPageControllerG implements Observer {
                 teacherConfirmLabel.setVisible(true);
                 teacherRatingLabel.setText("Actual rating: " + lessonBeans.get(2).getAverageRating() + "/10");
                 teacherRatingLabel.setVisible(true);
+                yourComment.setEditable(true);
                 selectedTeacherId = lessonBeans.get(2).getTeacherId();
+                buttonPressed = 3;
                 break;
             case "leaveReview4":
                 disableHighlights();
@@ -204,7 +223,9 @@ public class HistoryPageControllerG implements Observer {
                 teacherConfirmLabel.setVisible(true);
                 teacherRatingLabel.setText("Actual rating: " + lessonBeans.get(3).getAverageRating() + "/10");
                 teacherRatingLabel.setVisible(true);
+                yourComment.setEditable(true);
                 selectedTeacherId = lessonBeans.get(3).getTeacherId();
+                buttonPressed = 4;
                 break;
             case "leaveReview5":
                 disableHighlights();
@@ -214,7 +235,9 @@ public class HistoryPageControllerG implements Observer {
                 teacherConfirmLabel.setVisible(true);
                 teacherRatingLabel.setText("Actual rating: " + lessonBeans.get(4).getAverageRating() + "/10");
                 teacherRatingLabel.setVisible(true);
+                yourComment.setEditable(true);
                 selectedTeacherId = lessonBeans.get(4).getTeacherId();
+                buttonPressed = 5;
                 break;
             default:
                 break;
@@ -227,9 +250,51 @@ public class HistoryPageControllerG implements Observer {
         resultHighlight3.setVisible(false);
         resultHighlight4.setVisible(false);
         resultHighlight5.setVisible(false);
+        confirmReviewButton.setVisible(true);
     }
 
 
+    @FXML
+    void confirmReview() {
+        ReviewBean reviewBean = new ReviewBean();
+        reviewBean.setStars(yourRating.getValue());
+        if (!yourComment.getText().isEmpty()) {
+            reviewBean.setComment(yourComment.getText());
+        }
+        reviewBean.setTeacherId(selectedTeacherId);
+        if (reviewBean.validate()) {
+
+            reviewBean.setDate(Date.valueOf(LocalDate.now()));
+            try {
+                bookLessonController.insertReview(reviewBean);
+                switch (buttonPressed) {
+                    case 1:
+                        leaveReview1.setVisible(false);
+                        break;
+                    case 2:
+                        leaveReview2.setVisible(false);
+                        break;
+                    case 3:
+                        leaveReview3.setVisible(false);
+                        break;
+                    case 4:
+                        leaveReview4.setVisible(false);
+                        break;
+                    case 5:
+                        leaveReview5.setVisible(false);
+                        break;
+                    default:
+                        break;
+                }
+                confirmReviewButton.setVisible(false);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            errorPane.setVisible(true);
+        }
+
+    }
 
 
     @FXML
@@ -245,5 +310,10 @@ public class HistoryPageControllerG implements Observer {
     @Override
     public void update() {
         //change average rating
+    }
+
+    @FXML
+    void closeErrorPane() {
+        errorPane.setVisible(false);
     }
 }
