@@ -180,60 +180,60 @@ public class HistoryPageControllerG implements Observer {
     void showConfirmPanel(ActionEvent event) {
         switch (((Button) event.getSource()).getId()) {
             case "leaveReview1":
-                disableHighlights();
+                disableHighlightsEnableFields();
                 resultHighlight1.setVisible(true);
                 teacherConfirmImage.setVisible(true);
                 teacherConfirmLabel.setText(lessonBeans.getFirst().getTeacherName());
                 teacherConfirmLabel.setVisible(true);
-                teacherRatingLabel.setText("Actual rating: " + lessonBeans.getFirst().getAverageRating() + "/10");
+                teacherRatingLabel.setText(truncateAverageRating(lessonBeans.getFirst().getAverageRating()));
                 teacherRatingLabel.setVisible(true);
                 yourComment.setEditable(true);
                 selectedTeacherId = lessonBeans.getFirst().getTeacherId();
                 buttonPressed = 1;
                 break;
             case "leaveReview2":
-                disableHighlights();
+                disableHighlightsEnableFields();
                 resultHighlight2.setVisible(true);
                 teacherConfirmImage.setVisible(true);
                 teacherConfirmLabel.setText(lessonBeans.get(1).getTeacherName());
                 teacherConfirmLabel.setVisible(true);
-                teacherRatingLabel.setText("Actual rating: " + lessonBeans.get(1).getAverageRating() + "/10");
+                teacherRatingLabel.setText(truncateAverageRating(lessonBeans.get(1).getAverageRating()));
                 teacherRatingLabel.setVisible(true);
                 yourComment.setEditable(true);
                 selectedTeacherId = lessonBeans.get(1).getTeacherId();
                 buttonPressed = 2;
                 break;
             case "leaveReview3":
-                disableHighlights();
+                disableHighlightsEnableFields();
                 resultHighlight3.setVisible(true);
                 teacherConfirmImage.setVisible(true);
                 teacherConfirmLabel.setText(lessonBeans.get(2).getTeacherName());
                 teacherConfirmLabel.setVisible(true);
-                teacherRatingLabel.setText("Actual rating: " + lessonBeans.get(2).getAverageRating() + "/10");
+                teacherRatingLabel.setText(truncateAverageRating(lessonBeans.get(2).getAverageRating()));
                 teacherRatingLabel.setVisible(true);
                 yourComment.setEditable(true);
                 selectedTeacherId = lessonBeans.get(2).getTeacherId();
                 buttonPressed = 3;
                 break;
             case "leaveReview4":
-                disableHighlights();
+                disableHighlightsEnableFields();
                 resultHighlight4.setVisible(true);
                 teacherConfirmImage.setVisible(true);
                 teacherConfirmLabel.setText(lessonBeans.get(3).getTeacherName());
                 teacherConfirmLabel.setVisible(true);
-                teacherRatingLabel.setText("Actual rating: " + lessonBeans.get(3).getAverageRating() + "/10");
+                teacherRatingLabel.setText(truncateAverageRating(lessonBeans.get(3).getAverageRating()));
                 teacherRatingLabel.setVisible(true);
                 yourComment.setEditable(true);
                 selectedTeacherId = lessonBeans.get(3).getTeacherId();
                 buttonPressed = 4;
                 break;
             case "leaveReview5":
-                disableHighlights();
+                disableHighlightsEnableFields();
                 resultHighlight5.setVisible(true);
                 teacherConfirmImage.setVisible(true);
                 teacherConfirmLabel.setText(lessonBeans.get(4).getTeacherName());
                 teacherConfirmLabel.setVisible(true);
-                teacherRatingLabel.setText("Actual rating: " + lessonBeans.get(4).getAverageRating() + "/10");
+                teacherRatingLabel.setText(truncateAverageRating(lessonBeans.get(4).getAverageRating()));
                 teacherRatingLabel.setVisible(true);
                 yourComment.setEditable(true);
                 selectedTeacherId = lessonBeans.get(4).getTeacherId();
@@ -244,15 +244,22 @@ public class HistoryPageControllerG implements Observer {
         }
     }
 
-    void disableHighlights() {
+    void disableHighlightsEnableFields() {
         resultHighlight1.setVisible(false);
         resultHighlight2.setVisible(false);
         resultHighlight3.setVisible(false);
         resultHighlight4.setVisible(false);
         resultHighlight5.setVisible(false);
         confirmReviewButton.setVisible(true);
+        yourRating.setVisible(true);
+        yourComment.setVisible(true);
     }
 
+    private String truncateAverageRating(float averageRating) {
+        float truncAR = averageRating;
+        truncAR = (float) (Math.floor(truncAR * 10) / 10);
+        return "Actual rating: " + truncAR + "/10";
+    }
 
     @FXML
     void confirmReview() {
@@ -287,6 +294,8 @@ public class HistoryPageControllerG implements Observer {
                         break;
                 }
                 confirmReviewButton.setVisible(false);
+                yourRating.setVisible(false);
+                yourComment.setVisible(false);
             } catch (Exception e) {
                 e.printStackTrace();
             }
