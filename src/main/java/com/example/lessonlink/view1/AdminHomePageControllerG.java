@@ -7,13 +7,17 @@ import com.example.lessonlink.view1.bean.BookingBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
 
 import java.util.List;
 
 public class AdminHomePageControllerG {
     @FXML
     private Label userNameLabel;
+    @FXML
+    private Button modifyLabel;
 
     AddTeacherController addTeacherController = new AddTeacherController();
 
@@ -26,6 +30,10 @@ public class AdminHomePageControllerG {
     @FXML
     void logout() {
         FxmlLoader.setPage("Home");
+    }
+    @FXML
+    void modify(){
+        modifyLabel.setVisible(false);
     }
     @FXML
     void addTeacher(ActionEvent event) {
