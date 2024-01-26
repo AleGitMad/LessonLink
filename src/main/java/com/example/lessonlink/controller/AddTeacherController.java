@@ -39,8 +39,8 @@ public class AddTeacherController {
     private void fillTeacher(Teacher teacher, ProfileTeacherBean profileTeacherBean){
         LoggedUser loggedUser = LoggedUser.getInstance();
 
-        //teacher.setAdminId(loggedUser.getAdmin().getUserId()); TODO fix loggedUser
-        teacher.setAdminId(2);
+        teacher.setAdminId(loggedUser.getAdmin().getUserId()); //TODO fix loggedUser
+        //teacher.setAdminId(2);
 
         teacher.setName(profileTeacherBean.name());
         teacher.setSubject1(profileTeacherBean.getSubject1C());
@@ -54,7 +54,7 @@ public class AddTeacherController {
 
     public AccountBean getAccountBean() {
         AccountBean accountBean = new AccountBean();
-        accountBean.setName(LoggedUser.getInstance().getStudent().getName());
+        accountBean.setName(LoggedUser.getInstance().getAdmin().getName());
         accountBean.setRole(LoggedUser.getInstance().getRole());
         return accountBean;
     }

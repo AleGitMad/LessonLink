@@ -45,8 +45,16 @@ public class UserFSDao {
     }
 
     public void setUser(User user, String email) {
+        String utente = System.getenv("UTENTE");
+        final String utente_alexs = "alexs";
+        String url = null;
 
-        String url = "C:\\Users\\alexs\\Desktop\\Users.txt";
+        if(utente.equals(utente_alexs)) {
+            url = "C:\\Users\\alexs\\Desktop\\Users.txt";
+        }else {
+            url = "C:\\Users\\Leonardo\\Desktop\\Users.txt";
+        }
+        //String url = "C:\\Users\\alexs\\Desktop\\Users.txt";
 
         File file = new File(url);
         String str;

@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class Query {
     private Query() {}
@@ -53,7 +52,7 @@ public class Query {
         return stmt.executeQuery(selectedStatement);
     }
 
-    public static String insertLesson(Statement stmt, Lesson lesson) throws SQLException {
+    public static String insertLesson(Statement stmt, Lesson lesson) throws SQLException { // TODO spostare l'executeUpdate qui
         String formattedDateTime = lesson.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         return String.format("INSERT INTO Lessons (dateTime, isOnline, teacherId, studentId, isConfirmed, isPaid) VALUES ('%s', %b, '%d', '%d', %b, %b)", formattedDateTime, lesson.getIsOnline(), lesson.getTeacherId(), lesson.getStudentId(), lesson.getIsConfirmed(), lesson.getIsPaid());
     }
@@ -63,7 +62,7 @@ public class Query {
         return stmt.executeQuery(query);
     }
 
-    public static String insertTeacher(Teacher teacher) throws SQLException {
+    public static void insertTeacher(Statement stmt, Teacher teacher) throws SQLException {
         String query;
         if (teacher.getSubject2() == null && teacher.getSubject3() != null) {
             query = String.format("INSERT INTO Teachers (name, subject1, subject2, subject3, fare, city, qualification, availableOnline, adminId) VALUES ('%s', '%s', null, '%s', %d, '%s', '%s', %b, %d)",
@@ -79,11 +78,16 @@ public class Query {
                     teacher.getName(), teacher.getSubject1(), teacher.getSubject2(), null, teacher.getFare(), teacher.getCity(), teacher.getQualification(), teacher.isAvailableOnline(), teacher.getAdminId());
         }
 
-        return query;
+        stmt.executeUpdate(query);
     }
 
     public static ResultSet LessonByAdmin(Statement stmt, int adminId) throws SQLException {
         String query = "SELECT * FROM lessons INNER JOIN Teachers ON Lessons.teacherId = Teachers.teacherId INNER JOIN Users ON Lessons.studentId = users.userId WHERE Teachers.adminId = " + adminId;
         return stmt.executeQuery(query);
+    }
+
+    public static void updateLesson(Statement stmt, Lesson lesson) throws SQLException {
+        String query = "UPDATE Lessons SET isConfirmed = "+ lesson.getIsConfirmed() +" WHERE lessonId = " + lesson.getLessonId();
+        stmt.executeUpdate(query);
     }
 }

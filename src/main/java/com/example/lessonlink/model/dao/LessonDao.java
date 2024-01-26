@@ -89,7 +89,6 @@ public class LessonDao {
             String insertStatement = Query.insertLesson(stmt, lesson);
 
             stmt.executeUpdate(insertStatement);
-
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -135,6 +134,28 @@ public class LessonDao {
             return new LessonJoinUser(rs.getString("users.name"),
                 rs.getString("teachers.name"),
                 rs.getTimestamp("dateTime").toLocalDateTime(),
-                rs.getBoolean("isConfirmed"));
+                rs.getBoolean("isConfirmed"),
+                rs.getInt("lessonId"));
+    }
+
+    public void updateLesson(Lesson lesson){
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            conn = Connector.getInstance().getConnection();
+            stmt = conn.createStatement();
+
+            Query.updateLesson(stmt, lesson);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException e) {
+                //not handled
+            }
+        }
     }
 }

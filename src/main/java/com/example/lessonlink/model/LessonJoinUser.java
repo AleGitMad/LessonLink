@@ -11,7 +11,7 @@ public class LessonJoinUser {
 
     private User user;
 
-    public LessonJoinUser(String username, String teachername, LocalDateTime dateTime, boolean isConfirmed) {
+    public LessonJoinUser(String username, String teachername, LocalDateTime dateTime, boolean isConfirmed, int lessonId) {
         lesson = new Lesson();
         teacher = new Teacher();
         user = new User();
@@ -19,6 +19,7 @@ public class LessonJoinUser {
         this.lesson.setIsConfirmed(isConfirmed);
         this.teacher.setName(teachername);
         this.user.setName(username);
+        this.lesson.setLessonId(lessonId);
     }
 
 
@@ -34,7 +35,11 @@ public class LessonJoinUser {
         return lesson.getIsConfirmed();
     }
 
-    public String getDateTime() {
-        return lesson.getDateTime().toString();
+    public LocalDateTime getDateTime() {
+        return lesson.getDateTime();
+    }
+
+    public int getLessonId() {
+        return lesson.getLessonId();
     }
 }

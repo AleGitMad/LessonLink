@@ -34,7 +34,7 @@
       </Button>
       <Rectangle fill="#2a4476" height="40.0" layoutX="1111.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="2.0" />
       <Rectangle fill="#3c64b1" height="40.0" layoutX="1113.0" layoutY="20.0" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="105.0" />
-      <Label fx:id="username" layoutX="1120.0" layoutY="29.0" prefHeight="23.0" prefWidth="92.0" text="Username" textFill="WHITE">
+      <Label fx:id="userNameLabel" layoutX="1120.0" layoutY="29.0" prefHeight="23.0" prefWidth="92.0" text="Username" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="18.0" />
          </font>

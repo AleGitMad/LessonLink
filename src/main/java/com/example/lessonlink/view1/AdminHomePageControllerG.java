@@ -13,13 +13,14 @@ import java.util.List;
 
 public class AdminHomePageControllerG {
     @FXML
-    private Label username;
+    private Label userNameLabel;
 
     AddTeacherController addTeacherController = new AddTeacherController();
 
     @FXML
     public void initialize() {
-        username.setText(addTeacherController.getAccountBean().getName());
+        userNameLabel.setText(addTeacherController.getAccountBean().getName());
+        //userNameLabel.setText("admin");
     }
 
     @FXML

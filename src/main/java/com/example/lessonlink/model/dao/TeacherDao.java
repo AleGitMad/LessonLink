@@ -72,11 +72,7 @@ public class TeacherDao {
             conn = Connector.getInstance().getConnection();
             stmt = conn.createStatement();
 
-            String insertStatement = Query.insertTeacher(teacher);
-
-            stmt.executeUpdate(insertStatement);
-            //TODO: le query le fa tutte la classe Query
-
+            Query.insertTeacher(stmt, teacher);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

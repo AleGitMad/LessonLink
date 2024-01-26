@@ -84,22 +84,27 @@ public class ActiveBookingsControllerG {
     public void sendEmail(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
         String buttonId = button.getId();
+        BookingBean bookingBean;
 
         switch (buttonId) {
             case "sendButton1":
-                bookingsController.sendEmail(bookingBeans);
+                bookingBean = bookingBeans.getFirst();
+                bookingsController.sendEmail(bookingBean);
                 sendButton1.setVisible(false);
                 break;
             case "sendButton2":
-                bookingsController.sendEmail(bookingBeans);
+                bookingBean = bookingBeans.get(1);
+                bookingsController.sendEmail(bookingBean);
                 sendButton2.setVisible(false);
                 break;
             case "sendButton3":
-                bookingsController.sendEmail(bookingBeans);
+                bookingBean = bookingBeans.get(2);
+                bookingsController.sendEmail(bookingBean);
                 sendButton3.setVisible(false);
                 break;
             case "sendButton4":
-                bookingsController.sendEmail(bookingBeans);
+                bookingBean = bookingBeans.get(3);
+                bookingsController.sendEmail(bookingBean);
                 sendButton4.setVisible(false);
                 break;
             default:
@@ -115,7 +120,7 @@ public class ActiveBookingsControllerG {
             teacherName1.setText(bookingBeanList.getFirst().getTeacher());
             studentName1.setText(bookingBeanList.getFirst().getStudent());
             date1.setText(bookingBeanList.getFirst().getDateTime());
-            if(!bookingBeanList.getFirst().getConfirmed()){
+            if(bookingBeanList.getFirst().getConfirmed()){
                 sendButton1.setVisible(false);
             }
         }
@@ -124,7 +129,7 @@ public class ActiveBookingsControllerG {
             teacherName2.setText(bookingBeanList.get(1).getTeacher());
             studentName2.setText(bookingBeanList.get(1).getStudent());
             date2.setText(bookingBeanList.get(1).getDateTime());
-            if(!bookingBeanList.get(1).getConfirmed()){
+            if(bookingBeanList.get(1).getConfirmed()){
                 sendButton2.setVisible(false);
             }
         }
@@ -133,7 +138,7 @@ public class ActiveBookingsControllerG {
             teacherName3.setText(bookingBeanList.get(2).getTeacher());
             studentName3.setText(bookingBeanList.get(2).getStudent());
             date3.setText(bookingBeanList.get(2).getDateTime());
-            if(!bookingBeanList.get(3).getConfirmed()){
+            if(bookingBeanList.get(3).getConfirmed()){
                 sendButton3.setVisible(false);
             }
         }
@@ -142,7 +147,7 @@ public class ActiveBookingsControllerG {
             teacherName4.setText(bookingBeanList.get(3).getTeacher());
             studentName4.setText(bookingBeanList.get(3).getStudent());
             date4.setText(bookingBeanList.get(3).getDateTime());
-            if(!bookingBeanList.get(4).getConfirmed()){
+            if(bookingBeanList.get(4).getConfirmed()){
                 sendButton4.setVisible(false);
             }
         }
