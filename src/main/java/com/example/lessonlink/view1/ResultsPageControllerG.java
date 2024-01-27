@@ -119,6 +119,10 @@ public class ResultsPageControllerG {
     }
 
     public void changeSortingMethod(ActionEvent actionEvent) {
+        disableHighlights();
+        teacherConfirmImage.setVisible(false);
+        teacherConfirmLabel.setVisible(false);
+        fareIntConfirm.setVisible(false);
         sortByRating = actionEvent.getSource().equals(sortByRatingButton);
         setResultsPage();
     }
