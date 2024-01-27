@@ -270,7 +270,6 @@ public class HistoryPageControllerG implements Observer {
         }
         reviewBean.setTeacherId(selectedTeacherId);
         if (reviewBean.validate()) {
-
             reviewBean.setDate(Date.valueOf(LocalDate.now()));
             try {
                 bookLessonController.insertReview(reviewBean);

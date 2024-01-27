@@ -55,8 +55,6 @@ public class LoginControllerG {
                 showErrorMessage(e.getMessage());
             } catch (SQLException e) {
                 //not handled
-            } catch (FailedResearchException e) {
-                throw new RuntimeException(e);
             }
             //TODO: exception handling
 

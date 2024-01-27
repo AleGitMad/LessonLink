@@ -15,7 +15,7 @@ import javax.security.auth.login.FailedLoginException;
 import java.sql.SQLException;
 
 public class LoginController {
-    public AccountBean login(LoginBean loginBean) throws FailedLoginException, SQLException, FailedResearchException {
+    public AccountBean login(LoginBean loginBean) throws FailedLoginException, SQLException {
 
         Admin admin;
         Student student;
@@ -29,6 +29,7 @@ public class LoginController {
         }else {
             UserDao userDao = new UserDao();
             role = userDao.checkCredentials(loginBean.getEmail(), loginBean.getPassword());
+            System.out.println("LoginController: ");
         }
 
         UserFactory myFactory;

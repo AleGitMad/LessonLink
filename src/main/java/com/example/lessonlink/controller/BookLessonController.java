@@ -92,6 +92,7 @@ public class BookLessonController {
         ReviewDao reviewDao = new ReviewDao();
         try {
             reviewDao.insertReview(review);
+            //chiama metodo per ottenere il teacher dal database
         } catch (SQLException e) {
             e.printStackTrace();
         }

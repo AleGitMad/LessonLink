@@ -1,6 +1,5 @@
 package com.example.lessonlink.view1.bean;
 
-//TODO: capire se usare questo o il bean di AccountBean
 public class AccountBean {
     private String name;
     private String role;

@@ -31,7 +31,7 @@ public class UserFSDao {
                         role = br.readLine();
                         return role;
                     }else {
-                        throw new FailedLoginException("Wrong password");
+                        throw new FailedLoginException("Incorrect email or password. Try again");
                     }
                 }
             }

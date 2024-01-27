@@ -1,16 +1,18 @@
 package com.example.lessonlink.model.dao;
 
+import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.User;
 import com.example.lessonlink.model.service.Connector;
 import com.example.lessonlink.model.service.Query;
 
+import javax.security.auth.login.FailedLoginException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserDao {
-    public String checkCredentials(String email, String password) {
+    public String checkCredentials(String email, String password) throws FailedLoginException {
         Statement stmt = null;
         Connection conn = null;
         String role = null;
@@ -21,10 +23,15 @@ public class UserDao {
             ResultSet rs = Query.checkCredentials(stmt, email, password);
             if (rs.next()) {
                 role = rs.getString("role");
+            } else {
+                throw new FailedLoginException("Incorrect email or password. Try again");
             }
-        } catch (Exception se) {
+        } catch (SQLException se) {
             se.printStackTrace();
-        } finally {
+        } catch (FailedLoginException e) {
+            throw new FailedLoginException("Incorrect email or password. Try again");
+        }
+        finally {
             try {
                 if (stmt != null)
                     stmt.close();
