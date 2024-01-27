@@ -101,6 +101,28 @@ public class HistoryPageControllerG implements Observer {
     @FXML
     private Button confirmReviewButton;
 
+    @FXML
+    private ImageView notConfirmed1;
+    @FXML
+    private ImageView notConfirmed2;
+    @FXML
+    private ImageView notConfirmed3;
+    @FXML
+    private ImageView notConfirmed4;
+    @FXML
+    private ImageView notConfirmed5;
+    @FXML
+    private ImageView confirmed1;
+    @FXML
+    private ImageView confirmed2;
+    @FXML
+    private ImageView confirmed3;
+    @FXML
+    private ImageView confirmed4;
+    @FXML
+    private ImageView confirmed5;
+
+
 
     List<LessonBean> lessonBeans;
 
@@ -153,10 +175,12 @@ public class HistoryPageControllerG implements Observer {
         Label[] lessonDateLabels = {lessonDate1, lessonDate2, lessonDate3, lessonDate4, lessonDate5};
         Button[] leaveReviewButtons = {leaveReview1, leaveReview2, leaveReview3, leaveReview4, leaveReview5};
         Pane[] resultPanes = {result1, result2, result3, result4, result5};
+        ImageView[] notConfirmed = {notConfirmed1, notConfirmed2, notConfirmed3, notConfirmed4, notConfirmed5};
+        ImageView[] confirmed = {confirmed1, confirmed2, confirmed3, confirmed4, confirmed5};
 
         // Set teacher details for each teacher
         for (int i = 0; i < numberOfLessons; i++) {
-            setLessonDetails(lessonBeans.get(i), teacherNameLabels[i], lessonDateLabels[i], leaveReviewButtons[i]);
+            setLessonDetails(lessonBeans.get(i), teacherNameLabels[i], lessonDateLabels[i], leaveReviewButtons[i], notConfirmed[i], confirmed[i]);
         }
 
         // Set visibility of result panes
@@ -165,11 +189,16 @@ public class HistoryPageControllerG implements Observer {
         }
     }
 
-    private void setLessonDetails(LessonBean lessonBean, Label teacherNameLabel, Label lessonDateLabel, Button leaveReviewButton) {
+    private void setLessonDetails(LessonBean lessonBean, Label teacherNameLabel, Label lessonDateLabel, Button leaveReviewButton, ImageView notConfirmed, ImageView confirmed) {
         teacherNameLabel.setText(lessonBean.getTeacherName());
         if (lessonBean.getLessonDateTime().isAfter(LocalDateTime.now())) {
             lessonDateLabel.setText("Next lesson on " + lessonBean.getLessonDate().toString());
             leaveReviewButton.setVisible(false);
+            if (lessonBean.getIsConfirmed()) {
+                confirmed.setVisible(true);
+            } else {
+                notConfirmed.setVisible(true);
+            }
             //mostra confermata o meno
         } else {
             lessonDateLabel.setText("Had a lesson on " + lessonBean.getLessonDate().toString());
@@ -294,7 +323,10 @@ public class HistoryPageControllerG implements Observer {
                 }
                 confirmReviewButton.setVisible(false);
                 yourRating.setVisible(false);
+                yourRating.getSelectionModel().clearSelection();
+                yourRating.setValue(null);
                 yourComment.setVisible(false);
+                yourComment.clear();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -306,7 +338,7 @@ public class HistoryPageControllerG implements Observer {
 
 
     @FXML
-    void logout(ActionEvent event) {
+    void logout() {
         FxmlLoader.setPage("Home");
     }
 
@@ -324,4 +356,5 @@ public class HistoryPageControllerG implements Observer {
     void closeErrorPane() {
         errorPane.setVisible(false);
     }
+
 }

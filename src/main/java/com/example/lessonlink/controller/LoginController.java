@@ -30,7 +30,6 @@ public class LoginController {
         }else {
             UserDao userDao = new UserDao();
             role = userDao.checkCredentials(loginBean.getEmail(), loginBean.getPassword());
-            System.out.println("LoginController: ");
         }
 
         UserFactory myFactory;

@@ -81,12 +81,12 @@ public class PaymentPageControllerG {
     }
 
     @FXML
-    void logout(ActionEvent event) {
+    void logout() {
         FxmlLoader.setPage("Home");
     }
 
     @FXML
-    void setHomePage(ActionEvent event) {
+    void setHomePage() {
         FxmlLoader.setPage("StudentHomePage");
     }
 }

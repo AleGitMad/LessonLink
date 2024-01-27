@@ -17,18 +17,18 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 class TestLoginController {
 
-//    @Test
-//    void testLogin() {
-//        LoginController loginController = new LoginController();
-//        LoginBean loginBean = new LoginBean();
-//        loginBean.setEmail("alessandro@gmail.com");
-//        loginBean.setPassword("password");
-//        try {
-//            AccountBean accountBean = loginController.login(loginBean);
-//            assertEquals("Student", accountBean.getRole());
-//            assertEquals("alessandro", accountBean.getName());
-//        } catch (FailedLoginException | SQLException | FailedResearchException e) {
-//            fail("Exception thrown: " + e.getMessage());
-//        }
-//    }
+    @Test
+    void testLogin() {
+        LoginController loginController = new LoginController();
+        LoginBean loginBean = new LoginBean();
+        loginBean.setEmail("alessandro@gmail.com");
+        loginBean.setPassword("password");
+        try {
+            AccountBean accountBean = loginController.login(loginBean);
+            assertEquals("Student", accountBean.getRole());
+            assertEquals("alessandro", accountBean.getName());
+        } catch (FailedLoginException | SQLException e) {
+            fail("Exception thrown: " + e.getMessage());
+        }
+    }
 }

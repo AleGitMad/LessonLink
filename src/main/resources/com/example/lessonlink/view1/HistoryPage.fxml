@@ -68,6 +68,16 @@
                   <Font name="Calibri Bold" size="17.0" />
                </font>
             </Button>
+            <ImageView fx:id="notConfirmed1" fitHeight="44.0" fitWidth="44.0" layoutX="527.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/User%20Clock.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="confirmed1" fitHeight="44.0" fitWidth="44.0" layoutX="530.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/Attendance.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane fx:id="result2" layoutX="219.0" layoutY="234.0" prefHeight="98.0" prefWidth="609.0">
@@ -95,6 +105,16 @@
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
+            <ImageView fx:id="confirmed2" fitHeight="44.0" fitWidth="44.0" layoutX="530.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/Attendance.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="notConfirmed2" fitHeight="44.0" fitWidth="44.0" layoutX="527.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/User%20Clock.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane fx:id="result3" layoutX="219.0" layoutY="346.0" prefHeight="98.0" prefWidth="609.0">
@@ -122,6 +142,16 @@
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
+            <ImageView fx:id="notConfirmed3" fitHeight="44.0" fitWidth="44.0" layoutX="527.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/User%20Clock.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="confirmed3" fitHeight="44.0" fitWidth="44.0" layoutX="530.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/Attendance.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane fx:id="result4" layoutX="219.0" layoutY="459.0" prefHeight="98.0" prefWidth="609.0">
@@ -149,6 +179,16 @@
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
+            <ImageView fx:id="notConfirmed4" fitHeight="44.0" fitWidth="44.0" layoutX="527.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/User%20Clock.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="confirmed4" fitHeight="44.0" fitWidth="44.0" layoutX="530.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/Attendance.png" />
+               </image>
+            </ImageView>
          </children></Pane>
       <Pane fx:id="result5" layoutX="219.0" layoutY="571.0" prefHeight="98.0" prefWidth="609.0">
          <children>
@@ -175,6 +215,16 @@
                   <Font name="Calibri" size="19.0" />
                </font>
             </Label>
+            <ImageView fx:id="confirmed5" fitHeight="44.0" fitWidth="44.0" layoutX="530.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/Attendance.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="notConfirmed5" fitHeight="44.0" fitWidth="44.0" layoutX="527.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/User%20Clock.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <RadioButton fx:id="sortByDateButton" layoutX="117.0" layoutY="74.0" mnemonicParsing="false" onAction="#changeSortingMethod" prefHeight="32.0" prefWidth="126.0" text="Date">
