@@ -10,10 +10,10 @@ public class BookingBean {
     private Lesson lesson;
 
 
-    public void setTeacherId(String teacher) {
+    public void setTeacherName(String teacher) {
         this.teacher = teacher;
     }
-    public void setStudentId(String student) {
+    public void setStudentName(String student) {
         this.student = student;
     }
     public void setLesson(Lesson lesson) {

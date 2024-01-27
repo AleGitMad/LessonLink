@@ -12,13 +12,13 @@ import javafx.scene.control.TextField;
 //This controller will control the CreateTeacher.fxml and EvaluatorPage.fxml files
 public class EvaluatorControllerG {
     @FXML
-    public Button useEvaluated;
+    public Button useEvaluatedButton;
     @FXML
     public Button useOther;
     @FXML
     public Label username;
     @FXML
-    public TextField FareField;
+    public TextField fareField;
     @FXML
     public Label fareEvaluated;
 
@@ -30,7 +30,6 @@ public class EvaluatorControllerG {
     }
     public void setProfileTeacherBean(ProfileTeacherBean profileTeacherBean) {
         this.profileTeacherBean = profileTeacherBean;
-        //System.out.println(profileTeacherBean.getName());
     }
 
     @FXML
@@ -64,8 +63,8 @@ public class EvaluatorControllerG {
 
     @FXML
     void useOther(ActionEvent event) {
-        profileTeacherBean.setFare(FareField.getText());
-        if(profileTeacherBean.fareValidate()){;
+        profileTeacherBean.setFare(fareField.getText());
+        if(profileTeacherBean.fareValidate()){
             FXMLLoader fxmlLoader = FxmlLoader.setPage("ConfirmationPage");
             ConfirmationControllerG confirmationControllerG = fxmlLoader.getController();
             confirmationControllerG.setController(addTeacherController);
@@ -75,6 +74,5 @@ public class EvaluatorControllerG {
 
     public void setFareToScreen(String fare) {
         fareEvaluated.setText(fare + " €/h");
-        System.out.println(fare);
     }
 }

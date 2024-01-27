@@ -132,10 +132,14 @@ public class LessonDao {
 
     private LessonJoinUser extractLessonJoinAdmin(ResultSet rs) throws SQLException {
             return new LessonJoinUser(rs.getString("users.name"),
-                rs.getString("teachers.name"),
-                rs.getTimestamp("dateTime").toLocalDateTime(),
-                rs.getBoolean("isConfirmed"),
-                rs.getInt("lessonId"));
+                    rs.getString("teachers.name"),
+                    rs.getTimestamp("dateTime").toLocalDateTime(),
+                    rs.getBoolean("isConfirmed"),
+                    rs.getInt("lessonId"),
+                    rs.getBoolean("isOnline"),
+                    rs.getBoolean("isPaid"),
+                    rs.getInt("teacherId"),
+                    rs.getInt("studentId"));
     }
 
     public void updateLesson(Lesson lesson){

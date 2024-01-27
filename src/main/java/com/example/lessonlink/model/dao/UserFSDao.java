@@ -7,17 +7,7 @@ import java.io.*;
 
 public class UserFSDao {
     public String checkCredentials(String email, String password) throws FailedLoginException {
-        String utente = System.getenv("UTENTE");
-        final String utente_alexs = "alexs";
-        String url = null;
-
-        if(utente.equals(utente_alexs)) {
-            url = "C:\\Users\\alexs\\Desktop\\Users.txt";
-        }else {
-            url = "C:\\Users\\Leonardo\\Desktop\\Users.txt";
-        }
-
-        File file = new File(url);
+        File file = new File("src/main/res/Users.txt");
         String str;
 
         String role;
@@ -45,18 +35,7 @@ public class UserFSDao {
     }
 
     public void setUser(User user, String email) {
-        String utente = System.getenv("UTENTE");
-        final String utente_alexs = "alexs";
-        String url = null;
-
-        if(utente.equals(utente_alexs)) {
-            url = "C:\\Users\\alexs\\Desktop\\Users.txt";
-        }else {
-            url = "C:\\Users\\Leonardo\\Desktop\\Users.txt";
-        }
-        //String url = "C:\\Users\\alexs\\Desktop\\Users.txt";
-
-        File file = new File(url);
+        File file = new File("src/main/res/Users.txt");
         String str;
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {

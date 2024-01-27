@@ -30,9 +30,14 @@ public class BookingsController {
             lesson.setDateTime(lessonJoinUser.getDateTime());
             lesson.setIsConfirmed(lessonJoinUser.getConfirmed());
             lesson.setLessonId(lessonJoinUser.getLessonId());
+            lesson.setIsOnline(lessonJoinUser.getOnline());
+            lesson.setIsPaid(lessonJoinUser.getPaid());
+            lesson.setTeacherId(lessonJoinUser.getTeacherId());
+            lesson.setStudentId(lessonJoinUser.getStudentId());
 
-            bookingBean.setTeacherId(lessonJoinUser.getTeacher());
-            bookingBean.setStudentId(lessonJoinUser.getStudent());
+
+            bookingBean.setTeacherName(lessonJoinUser.getTeacher());
+            bookingBean.setStudentName(lessonJoinUser.getStudent());
             bookingBean.setLesson(lesson);
             bookingBeanList.add(bookingBean);
         }

@@ -26,6 +26,7 @@ public class LoginController {
         if(fsAuth < 12){
             UserFSDao userDao = new UserFSDao();
             role = userDao.checkCredentials(loginBean.getEmail(), loginBean.getPassword());
+            System.out.println("sono in login controller");
         }else {
             UserDao userDao = new UserDao();
             role = userDao.checkCredentials(loginBean.getEmail(), loginBean.getPassword());
