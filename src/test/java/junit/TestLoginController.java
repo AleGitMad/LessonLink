@@ -27,7 +27,7 @@ class TestLoginController {
             AccountBean accountBean = loginController.login(loginBean);
             assertEquals("Student", accountBean.getRole());
             assertEquals("alessandro", accountBean.getName());
-        } catch (FailedLoginException | SQLException | FailedResearchException e) {
+        } catch (FailedLoginException | SQLException e) {
             fail("Exception thrown: " + e.getMessage());
         }
     }
