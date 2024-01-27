@@ -32,7 +32,7 @@ class TestLessonBeanValidate {
         WebDriver driver = new EdgeDriver();
 
         // // Get a future date from random.org
-        driver.get("https://www.random.org/calendar-dates/?num=1&start_day=27&start_month=1&start_year=2024&end_day=31&end_month=12&end_year=2024&mondays=on&tuesdays=on&wednesdays=on&thursdays=on&fridays=on&display=2&format=html&rnd=new");
+        driver.get("https://www.random.org/calendar-dates/?num=1&start_day=27&start_month=3&start_year=2024&end_day=31&end_month=12&end_year=2024&mondays=on&tuesdays=on&wednesdays=on&thursdays=on&fridays=on&display=2&format=html&rnd=new");
         WebElement dateElement = driver.findElement(By.xpath("//p[contains(@style, '2em')]"));
         String dateString = dateElement.getText();
         LocalDate date = LocalDate.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
