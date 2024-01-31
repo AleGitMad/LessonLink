@@ -11,23 +11,25 @@ import com.example.lessonlink.view1.bean.ProfileTeacherBean;
 import java.sql.SQLException;
 
 public class AddTeacherController {
-    public void addTeacher(ProfileTeacherBean profileTeacherBean) {
-        Educator teacher = new Teacher();
-        teacher.setSubject1(profileTeacherBean.getSubject1C());
-        teacher.setSubject2(profileTeacherBean.getSubject2C());
-        teacher.setSubject3(profileTeacherBean.getSubject3C());
-        teacher.setQualification(profileTeacherBean.getQualificationC());
-        teacher.setCity(profileTeacherBean.getCityC());
-        teacher.setAvailableOnline(profileTeacherBean.getOnlineC());
+    private final Teacher teacher = new Teacher();
 
-        teacher = DecorateFare.addDecoration(profileTeacherBean.getDecorations(), (Teacher)teacher);
-        profileTeacherBean.setFare(Integer.toString(teacher.getFare()));
+    public void addTeacher(ProfileTeacherBean profileTeacherBean) {
+        Educator educator = new Teacher();
+        educator.setSubject1(profileTeacherBean.getSubject1C());
+        educator.setSubject2(profileTeacherBean.getSubject2C());
+        educator.setSubject3(profileTeacherBean.getSubject3C());
+        educator.setQualification(profileTeacherBean.getQualificationC());
+        educator.setCity(profileTeacherBean.getCityC());
+        educator.setAvailableOnline(profileTeacherBean.getOnlineC());
+
+        educator = DecorateFare.addDecoration(profileTeacherBean.getDecorations(), (Teacher)educator);
+        profileTeacherBean.setFare(Integer.toString(educator.getFare()));
+        fillTeacher(teacher, profileTeacherBean);
     }
 
 
     public void confirmTeacher(ProfileTeacherBean profileTeacherBean) throws SQLException {
-        Teacher teacher = new Teacher();
-        fillTeacher(teacher, profileTeacherBean);
+        teacher.setFare(profileTeacherBean.getFareC());
         TeacherDao teacherDao = new TeacherDao();
         try {
             teacherDao.saveTeacher(teacher);
@@ -39,8 +41,7 @@ public class AddTeacherController {
     private void fillTeacher(Teacher teacher, ProfileTeacherBean profileTeacherBean){
         LoggedUser loggedUser = LoggedUser.getInstance();
 
-        teacher.setAdminId(loggedUser.getAdmin().getUserId()); //TODO fix loggedUser
-        //teacher.setAdminId(2);
+        teacher.setAdminId(loggedUser.getAdmin().getUserId());
 
         teacher.setName(profileTeacherBean.name());
         teacher.setSubject1(profileTeacherBean.getSubject1C());
@@ -49,7 +50,6 @@ public class AddTeacherController {
         teacher.setQualification(profileTeacherBean.getQualificationC());
         teacher.setCity(profileTeacherBean.getCityC());
         teacher.setAvailableOnline(profileTeacherBean.getOnlineC());
-        teacher.setFare(profileTeacherBean.getFareC());
     }
 
     public AccountBean getAccountBean() {

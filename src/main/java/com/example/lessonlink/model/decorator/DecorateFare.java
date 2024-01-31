@@ -119,6 +119,8 @@ public interface DecorateFare {
                         decoration = online.setDecoration();
                         educator = online;
                         break;
+                    default:
+                        break;
                 }
             }
         }

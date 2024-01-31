@@ -39,7 +39,7 @@ public class ConfirmationControllerG {
         subjects.setText(profileTeacherBean.subject1() + " " + profileTeacherBean.subject2() + " " + profileTeacherBean.subject3());
         city.setText(profileTeacherBean.city());
         qualification.setText(profileTeacherBean.qualification());
-        fare.setText(profileTeacherBean.fare());
+        fare.setText(profileTeacherBean.fare() + " €/h");
         this.profileTeacherBean = profileTeacherBean;
     }
 

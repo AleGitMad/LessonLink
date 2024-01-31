@@ -54,7 +54,7 @@ public class EvaluatorControllerG {
 
     @FXML
     public void useEvaluated(ActionEvent event) {
-        profileTeacherBean.setFare(fareEvaluated.getText());
+        profileTeacherBean.setFare(fareEvaluated.getText().substring(0, fareEvaluated.getText().length() - 4));
             FXMLLoader fxmlLoader = FxmlLoader.setPage("ConfirmationPage");
             ConfirmationControllerG confirmationControllerG = fxmlLoader.getController();
             confirmationControllerG.setController(addTeacherController);

@@ -76,7 +76,7 @@ public class Query {
                     teacher.getName(), teacher.getSubject1(), teacher.getFare(), teacher.getCity(), teacher.getQualification(), teacher.isAvailableOnline(), teacher.getAdminId());
         } else {
             query = String.format("INSERT INTO Teachers (name, subject1, subject2, subject3, fare, city, qualification, availableOnline, adminId) VALUES ('%s', '%s', '%s', '%s', %d, '%s', '%s', %b, %d)",
-                    teacher.getName(), teacher.getSubject1(), teacher.getSubject2(), null, teacher.getFare(), teacher.getCity(), teacher.getQualification(), teacher.isAvailableOnline(), teacher.getAdminId());
+                    teacher.getName(), teacher.getSubject1(), teacher.getSubject2(), teacher.getSubject3(), teacher.getFare(), teacher.getCity(), teacher.getQualification(), teacher.isAvailableOnline(), teacher.getAdminId());
         }
 
         stmt.executeUpdate(query);

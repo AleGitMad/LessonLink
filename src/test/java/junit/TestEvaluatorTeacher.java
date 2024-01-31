@@ -1,6 +1,8 @@
 package junit;
 
 import com.example.lessonlink.controller.AddTeacherController;
+import com.example.lessonlink.model.Admin;
+import com.example.lessonlink.model.LoggedUser;
 import com.example.lessonlink.view1.bean.ProfileTeacherBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,6 +20,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class TestEvaluatorTeacher {
     @org.junit.jupiter.api.Test
     void testAddTeacher() {
+        Admin admin = new Admin();
+        admin.setUserId(2); // The user 2 have to be an admin
+        LoggedUser.getInstance().setAdmin(admin);
         ProfileTeacherBean profileTeacherBean = new ProfileTeacherBean();
         profileTeacherBean.setSubject1("Math");
         profileTeacherBean.setSubject2("Science");

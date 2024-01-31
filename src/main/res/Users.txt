@@ -1,0 +1,10 @@
+leonardo@gmail.com
+password2
+Admin
+2
+leonardo
+alessandro@gmail.com
+password
+Student
+1
+alessandro

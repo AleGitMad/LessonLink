@@ -14,31 +14,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookingsController {
+    private List<LessonJoinUser> lessonJoinUsers;
 
     public List<BookingBean> getActiveBookings() throws FailedResearchException {
         List<BookingBean> bookingBeanList = new ArrayList<>();
         LessonDao lessonDao = new LessonDao();
-        List<LessonJoinUser> lessonJoinUsers;
         int adminId = LoggedUser.getInstance().getAdmin().getUserId();
 
         lessonJoinUsers = lessonDao.findLessoByAdmin(adminId);
 
         for (LessonJoinUser lessonJoinUser : lessonJoinUsers) {
             BookingBean bookingBean = new BookingBean();
-            Lesson lesson = new Lesson();
-
-            lesson.setDateTime(lessonJoinUser.getDateTime());
-            lesson.setIsConfirmed(lessonJoinUser.getConfirmed());
-            lesson.setLessonId(lessonJoinUser.getLessonId());
-            lesson.setIsOnline(lessonJoinUser.getOnline());
-            lesson.setIsPaid(lessonJoinUser.getPaid());
-            lesson.setTeacherId(lessonJoinUser.getTeacherId());
-            lesson.setStudentId(lessonJoinUser.getStudentId());
+//            Lesson lesson = new Lesson();
+//
+//            lesson.setDateTime(lessonJoinUser.getDateTime());
+//            lesson.setIsConfirmed(lessonJoinUser.getConfirmed());
+//            lesson.setLessonId(lessonJoinUser.getLessonId());
+//            lesson.setIsOnline(lessonJoinUser.getOnline());
+//            lesson.setIsPaid(lessonJoinUser.getPaid());
+//            lesson.setTeacherId(lessonJoinUser.getTeacherId());
+//            lesson.setStudentId(lessonJoinUser.getStudentId());
 
 
             bookingBean.setTeacherName(lessonJoinUser.getTeacher());
             bookingBean.setStudentName(lessonJoinUser.getStudent());
-            bookingBean.setLesson(lesson);
+            bookingBean.setDate(lessonJoinUser.getDateTime());
+            bookingBean.setLessonId(lessonJoinUser.getLessonId());
+            bookingBean.setIsConfirmed(lessonJoinUser.getConfirmed());
+            bookingBean.setTeacherId(lessonJoinUser.getTeacherId());
+            bookingBean.setStudentId(lessonJoinUser.getStudentId());
             bookingBeanList.add(bookingBean);
         }
         return bookingBeanList;
@@ -46,9 +50,16 @@ public class BookingsController {
 
     public void sendEmail(BookingBean bookingBean) {
         LessonDao lessonDao = new LessonDao();
-        Lesson lesson = bookingBean.getLesson();
-        lesson.setIsConfirmed(true);
-
-        lessonDao.updateLesson(lesson);
+        for (LessonJoinUser lessonJoinUser : lessonJoinUsers) {
+            if (lessonJoinUser.getLessonId() == bookingBean.getLessonId()) {
+                lessonJoinUser.getLesson().setIsConfirmed(true);
+                lessonDao.updateLesson(lessonJoinUser.getLesson());
+                break;
+            }
+        }
+//        Lesson lesson = lessonJoinUsers.get(bookingBean.getLessonId()).getLesson();
+//        lesson.setIsConfirmed(true);
+//
+//        lessonDao.updateLesson(lesson);
     }
 }

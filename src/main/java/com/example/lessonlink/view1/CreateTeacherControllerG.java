@@ -65,7 +65,6 @@ public class CreateTeacherControllerG {
         if (profileTeacherBean.validate()) {
             profileTeacherBean.setDecorations();
             addTeacherController.addTeacher(profileTeacherBean);
-            //System.out.println(profileTeacherBean.getName());
             FXMLLoader fxmlLoader = FxmlLoader.setPage("EvaluatorPage");
             EvaluatorControllerG evaluatorControllerG = fxmlLoader.getController();
             evaluatorControllerG.setController(addTeacherController);

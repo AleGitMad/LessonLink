@@ -80,7 +80,7 @@ public class ProfileTeacherBean {
         return online.equals("Yes");
     }
     public int getFareC() {
-        return Integer.parseInt(fare.substring(0, fare.length() - 4));
+        return Integer.parseInt(fare);
     }
 
 

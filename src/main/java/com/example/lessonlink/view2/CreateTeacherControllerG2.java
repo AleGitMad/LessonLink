@@ -31,6 +31,8 @@ public class CreateTeacherControllerG2 {
         AddTeacherController addTeacherController = new AddTeacherController();
         addTeacherController.addTeacher(profileTeacherBean);
 
+        toPrint = "";
+
     }
 
     private ProfileTeacherBean fillBean(){

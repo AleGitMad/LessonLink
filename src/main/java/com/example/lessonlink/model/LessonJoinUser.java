@@ -62,4 +62,8 @@ public class LessonJoinUser {
     public int getStudentId() {
         return lesson.getStudentId();
     }
+
+    public Lesson getLesson() {
+        return lesson;
+    }
 }
