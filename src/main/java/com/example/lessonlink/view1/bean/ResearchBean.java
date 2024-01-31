@@ -6,6 +6,9 @@ public class ResearchBean {
         private String where;
         private boolean isOnline;
 
+        public ResearchBean() {
+        }
+
         public ResearchBean(String subject, String where) {
             this.subject = subject;
             this.where = where;

@@ -1,5 +1,6 @@
 package com.example.lessonlink.view2;
 
+import com.example.lessonlink.view1.SearchPageControllerG;
 import com.example.lessonlink.view2.utility.LinePrinter;
 
 import java.io.BufferedReader;
@@ -22,10 +23,13 @@ public class StudentHomePageControllerG2 {
         }
         switch(choice){
             case("0"):
+                SearchPageControllerG2 searchPageControllerG2 = new SearchPageControllerG2();
+                searchPageControllerG2.search();
                 break;
             case("1"):
                 break;
             case("2"):
+
                 break;
             default:
                 break;

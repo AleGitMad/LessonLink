@@ -17,40 +17,14 @@ public class LoginControllerG2 {
     private String toPrint;
     private LoginController loginController = new LoginController();
 
-    public void start() {
-        toPrint = "+++++++ LessonLink +++++++\nPress:\n0 to login\n1 to register\n";
+    public void register() {
+        toPrint = "Not implemented yet, stay tuned!";
         LinePrinter.getInstance().print(toPrint);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String role = "";
-        try {
-            role = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        switch(role){
-            case"0":
-                login();
-                break;
-            case"1":
-                registration();
-                break;
-            default:
-                toPrint = "The number you inserted is not valid";
-                ErrorPrinter.getInstance().print(toPrint);
-                start();
-                break;
-        }
     }
 
-
-    private void registration() {
-
-    }
-
-
-    private void login() {
+    public void login() {
         LoginBean loginBean = new LoginBean();              // settaggio parametri LoginBean
-        toPrint = "Logging in. . . Insert your credentials.\n Email: ";
+        toPrint = "Logging in. . . Insert your credentials.\nEmail:";
         LinePrinter.getInstance().print(toPrint);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {

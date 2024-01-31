@@ -36,7 +36,6 @@ public class SearchPageControllerG {
     BookLessonController bookLessonController = new BookLessonController();
 
     List<TeacherBean> teacherBeans;
-    TeacherBean teacherBean;
 
     @FXML
     public void initialize() {

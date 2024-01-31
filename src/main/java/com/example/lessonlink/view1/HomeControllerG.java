@@ -15,4 +15,6 @@ public class HomeControllerG {
         FxmlLoader.setPage("login");
     }
 
+    //TODO: distinguish between student and admin login
+
 }

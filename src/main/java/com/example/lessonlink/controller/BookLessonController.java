@@ -14,6 +14,10 @@ import java.util.List;
 
 public class BookLessonController {
 
+    //keep track of the teachers the student had lessons with
+    List<Teacher> teachersInHistory;
+    //che succede se un altro studente pubblica una recensione mentre uno studente sta vedendo la sua history?
+
     public List<TeacherBean> search(ResearchBean researchBean) throws FailedResearchException {
         TeacherDao teacherDao = new TeacherDao();
         List<Teacher> teachers = teacherDao.findTeachers(researchBean.getSubject(), researchBean.getWhere(), researchBean.getIsOnline());

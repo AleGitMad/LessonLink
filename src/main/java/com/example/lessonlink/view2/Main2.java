@@ -10,7 +10,7 @@ public class Main2 extends Application {
 
     @Override
     public void start(Stage stage) {
-        LoginControllerG2 loginControllerG2 = new LoginControllerG2();
-        loginControllerG2.start();
+        HomeControllerG2 homeControllerG2 = new HomeControllerG2();
+        homeControllerG2.start();
     }
 }

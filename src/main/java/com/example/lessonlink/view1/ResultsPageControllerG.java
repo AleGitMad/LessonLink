@@ -91,7 +91,7 @@ public class ResultsPageControllerG {
     private Label userNameLabel;
 
     private int selectedTeacherId;
-
+    private boolean isOnline;
 
     private List<TeacherBean> teacherBeans;
 
@@ -99,6 +99,7 @@ public class ResultsPageControllerG {
 
     public void setTeacherBeans(List<TeacherBean> teacherBeans) {
         this.teacherBeans = teacherBeans;
+        isOnline = teacherBeans.getFirst().getIsOnline();
     }
 
     @FXML
@@ -243,7 +244,7 @@ public class ResultsPageControllerG {
             lessonBean.setLessonDateTimeFrom(java.sql.Date.valueOf(lessonBean.getLessonDate()), lessonBean.getLessonTime());
             try {
                 if (bookLessonController.checkSlotAvailability(lessonBean)) {
-                    lessonBean.setIsOnline(teacherBeans.getFirst().getIsOnline());
+                    lessonBean.setIsOnline(isOnline);
                     setPaymentPage(lessonBean);
                 } else {
                     fullPane.setVisible(true);
