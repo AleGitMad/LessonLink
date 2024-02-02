@@ -70,7 +70,7 @@ public class ReviewDao {
             }
         } catch (Exception se) {
             se.printStackTrace();
-            throw new FailedResearchException("An error during research occurred.");
+            throw new FailedResearchException("An error during reviews research occurred.");
         } finally {
             try {
                 if (stmt != null)
@@ -82,6 +82,7 @@ public class ReviewDao {
         return new float[]{averageRating, reviews};
     }
 
+    //reviews visualization logic not implemented
     public List<Review> findTeacherReviews(int teacherId) throws FailedResearchException {
         Statement stmt = null;
         Connection conn = null;
@@ -115,7 +116,6 @@ public class ReviewDao {
                 rs.getString("comment"),
                 rs.getInt("teacherId"));
     }
-    //TODO: meccanismo di visualizzazione delle reviews
 
     public void insertReview(Review review) throws FailedInsertException {
         Statement stmt = null;
@@ -127,7 +127,7 @@ public class ReviewDao {
             Query.insertReview(stmt, review);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new FailedInsertException("An error during insertion occurred.");
+            throw new FailedInsertException("An error during review insertion occurred.");
         } finally {
             try {
                 if (stmt != null)

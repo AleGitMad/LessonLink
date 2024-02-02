@@ -8,7 +8,6 @@ import com.example.lessonlink.model.dao.ReviewDao;
 import com.example.lessonlink.model.dao.TeacherDao;
 import com.example.lessonlink.view1.bean.*;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -44,12 +43,7 @@ public class BookLessonController {
         Lesson lesson = new Lesson();
         fillLesson(lesson, lessonBean);
         LessonDao lessonDao = new LessonDao();
-        try {
-            lessonDao.insertLesson(lesson);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new FailedInsertException("An error during insertion occurred.");
-        }
+        lessonDao.insertLesson(lesson);
     }
 
     private void fillLesson(Lesson lesson, LessonBean lessonBean) {
@@ -112,18 +106,13 @@ public class BookLessonController {
         Review review = new Review();
         fillReview(review, reviewBean);
         ReviewDao reviewDao = new ReviewDao();
-        try {
-            //modifica valore averageReview
-            teacherToUpdate.setTotalReviews(teacherToUpdate.getTotalReviews() + 1);
-            teacherToUpdate.setAverageRating(
-                    (teacherToUpdate.getAverageRating()*(teacherToUpdate.getTotalReviews()-1)
-                            + reviewBean.getStars()) / teacherToUpdate.getTotalReviews());
-            //insert review in db
-            reviewDao.insertReview(review);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new FailedInsertException("An error during insertion occurred.");
-        }
+        //modifica valore averageReview
+        teacherToUpdate.setTotalReviews(teacherToUpdate.getTotalReviews() + 1);
+        teacherToUpdate.setAverageRating(
+                (teacherToUpdate.getAverageRating()*(teacherToUpdate.getTotalReviews()-1)
+                        + reviewBean.getStars()) / teacherToUpdate.getTotalReviews());
+        //insert review in db
+        reviewDao.insertReview(review);
     }
 
     private void fillReview(Review review, ReviewBean reviewBean) {
