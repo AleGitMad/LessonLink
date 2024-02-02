@@ -18,7 +18,6 @@ public class BookLessonController {
     //keep track of the teachers the student had lessons with
     List<Teacher> teachersInHistory = new ArrayList<>();
 
-
     public List<TeacherBean> search(ResearchBean researchBean) throws FailedResearchException {
         TeacherDao teacherDao = new TeacherDao();
         List<Teacher> teachers = teacherDao.findTeachers(researchBean.getSubject(), researchBean.getWhere(), researchBean.getIsOnline());

@@ -18,8 +18,10 @@ public class LoginControllerG2 {
     private LoginController loginController = new LoginController();
 
     public void register() {
-        toPrint = "Not implemented yet, stay tuned!";
+        toPrint = "Not implemented yet, stay tuned!\n\n";
         LinePrinter.getInstance().print(toPrint);
+        HomeControllerG2 homeControllerG2 = new HomeControllerG2();
+        homeControllerG2.start();
     }
 
     public void login() {
@@ -60,6 +62,7 @@ public class LoginControllerG2 {
 
         } else{
             ErrorPrinter.getInstance().print("Incorrect email or password. Try again");
+            login();
         }
     }
     //TODO: login retry logic to add
