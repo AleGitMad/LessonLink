@@ -9,6 +9,7 @@ public class Teacher extends Educator {
     private String name;
     private float averageRating;
     private boolean hasReviews;
+    private int totalReviews;
 
     public Teacher(int teacherId, String name, String subject1, String subject2, String subject3, int fare, String city, String qualification, boolean availableOnline) {
         this.teacherId = teacherId;
@@ -32,6 +33,14 @@ public class Teacher extends Educator {
         this.city = "";
         this.qualification = "";
         this.availableOnline = false;
+    }
+
+    public int getTotalReviews() {
+        return totalReviews;
+    }
+
+    public void setTotalReviews(int totalReviews) {
+        this.totalReviews = totalReviews;
     }
 
     @Override
@@ -58,6 +67,7 @@ public class Teacher extends Educator {
     }
     public void setAverageRating(float averageRating) {
         this.averageRating = averageRating;
+        notifyObservers();
     }
     public boolean getHasReviews() {
         return hasReviews;

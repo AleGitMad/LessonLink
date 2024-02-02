@@ -11,12 +11,13 @@ import com.example.lessonlink.view1.bean.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class BookLessonController {
 
     //keep track of the teachers the student had lessons with
-    List<Teacher> teachersInHistory;
-    //che succede se un altro studente pubblica una recensione mentre uno studente sta vedendo la sua history?
+    List<Teacher> teachersInHistory = new ArrayList<>();
+
 
     public List<TeacherBean> search(ResearchBean researchBean) throws FailedResearchException {
         TeacherDao teacherDao = new TeacherDao();
@@ -73,30 +74,58 @@ public class BookLessonController {
         List<LessonJoinTeacher> lessons = lessonDao.findStudentLessons(LoggedUser.getInstance().getStudent().getUserId());
         List<LessonBean> lessonBeans = new ArrayList<>();
         for (LessonJoinTeacher lesson : lessons) {
+
+            //lessonBean population
             LessonBean lessonBean = new LessonBean();
             lessonBean.setLessonDate(lesson.getLesson().getDateTime().toLocalDate());
             lessonBean.setLessonDateTime(lesson.getLesson().getDateTime());
             lessonBean.setTeacherId(lesson.getLesson().getTeacherId());
             lessonBean.setIsConfirmed(lesson.getLesson().getIsConfirmed());
             lessonBean.setIsPaid(lesson.getLesson().getIsPaid());
+
             lessonBean.setTeacherName(lesson.getTeacher().getName());
-            lessonBean.setAverageRating(reviewDao.getAverageRating(lesson.getTeacher().getTeacherId()));
+            float[] ratingAndReviews = reviewDao.getAverageRatingAndTotalReviews(lesson.getTeacher().getTeacherId());
+            lessonBean.setAverageRating(ratingAndReviews[0]);
+
             lessonBeans.add(lessonBean);
+
+            //teachersInHistory population
+            Teacher teacher = lesson.getTeacher();
+            teacher.setAverageRating(ratingAndReviews[0]);
+            teacher.setTotalReviews((int) ratingAndReviews[1]);
+            this.teachersInHistory.add(teacher);
         }
         return lessonBeans;
     }
 
+    /*
     public void attachObserverToTeacher(HistoryPageControllerG historyPageControllerG, Teacher teacher) {
         teacher.attach(historyPageControllerG);
     }
+    */
 
-    public void insertReview(ReviewBean reviewBean) {
+    public Teacher getTeacherById(int teacherId) {
+        Optional<Teacher> teacherOptional = teachersInHistory.stream().filter(teacher ->
+                        teacher.getTeacherId() == teacherId).findFirst();
+        if (teacherOptional.isPresent()) {
+            return teacherOptional.get();
+        } else {
+            return null;
+        }
+    }
+
+    public void insertReview(ReviewBean reviewBean, Teacher teacherToUpdate) {
         Review review = new Review();
         fillReview(review, reviewBean);
         ReviewDao reviewDao = new ReviewDao();
         try {
+            //modifica valore averageReview
+            teacherToUpdate.setTotalReviews(teacherToUpdate.getTotalReviews() + 1);
+            teacherToUpdate.setAverageRating(
+                    (teacherToUpdate.getAverageRating()*(teacherToUpdate.getTotalReviews()-1)
+                            + reviewBean.getStars()) / teacherToUpdate.getTotalReviews());
+            //insert review in db
             reviewDao.insertReview(review);
-            //chiama metodo per ottenere il teacher dal database
         } catch (SQLException e) {
             e.printStackTrace();
         }

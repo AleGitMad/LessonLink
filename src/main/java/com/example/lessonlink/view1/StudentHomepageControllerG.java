@@ -73,6 +73,7 @@ public class StudentHomepageControllerG {
         FXMLLoader loader = FxmlLoader.setPage("HistoryPage");
         HistoryPageControllerG historyPageControllerG = loader.getController();
         historyPageControllerG.setLessonBeans(lessonBeans);
+        historyPageControllerG.setBookLessonController(bookLessonController);
         historyPageControllerG.setHistoryPage();
     }
 }

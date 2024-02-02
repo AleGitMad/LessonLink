@@ -19,15 +19,16 @@ public abstract class Educator extends Subject {
 
 
     //observer pattern
-    List<Observer> observers = new ArrayList<>();
+    //List<Observer> observers = new ArrayList<>();
     protected Educator() {
         super();
     }
+    /*
     @Override
     public void attach(Observer observer) {
         observers.add(observer);
     }
-
+    */
 
 
     public abstract int setAddFare();

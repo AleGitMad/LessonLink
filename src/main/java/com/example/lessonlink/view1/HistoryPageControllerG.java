@@ -1,6 +1,7 @@
 package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.BookLessonController;
+import com.example.lessonlink.model.Teacher;
 import com.example.lessonlink.model.observer.Observer;
 import com.example.lessonlink.view1.bean.LessonBean;
 import com.example.lessonlink.view1.bean.ReviewBean;
@@ -126,7 +127,9 @@ public class HistoryPageControllerG implements Observer {
 
     List<LessonBean> lessonBeans;
 
-    BookLessonController bookLessonController = new BookLessonController();
+    BookLessonController bookLessonController;
+
+    Teacher teacherToObserv;
 
     private int selectedTeacherId;
     private int buttonPressed;
@@ -145,10 +148,6 @@ public class HistoryPageControllerG implements Observer {
         sortByDateButton.setSelected(true);
         sortByDate = true;
 
-        userNameLabel.setText(bookLessonController.getAccountBean().getName());
-
-        //observer pattern
-        //bookLessonController.attachObserverToTeacher(this);
     }
 
     @FXML
@@ -159,6 +158,11 @@ public class HistoryPageControllerG implements Observer {
 
     public void setLessonBeans(List<LessonBean> lessonBeans) {
         this.lessonBeans = lessonBeans;
+    }
+
+    public void setBookLessonController(BookLessonController bookLessonController) {
+        this.bookLessonController = bookLessonController;
+        userNameLabel.setText(bookLessonController.getAccountBean().getName());
     }
 
     public void setHistoryPage() {
@@ -177,6 +181,9 @@ public class HistoryPageControllerG implements Observer {
         Pane[] resultPanes = {result1, result2, result3, result4, result5};
         ImageView[] notConfirmed = {notConfirmed1, notConfirmed2, notConfirmed3, notConfirmed4, notConfirmed5};
         ImageView[] confirmed = {confirmed1, confirmed2, confirmed3, confirmed4, confirmed5};
+
+        //resets leaveReviewButtons
+        enableLeaveReviewButtons();
 
         // Set teacher details for each teacher
         for (int i = 0; i < numberOfLessons; i++) {
@@ -284,6 +291,24 @@ public class HistoryPageControllerG implements Observer {
         yourComment.setVisible(true);
     }
 
+    void enableLeaveReviewButtons() {
+        leaveReview1.setVisible(true);
+        leaveReview2.setVisible(true);
+        leaveReview3.setVisible(true);
+        leaveReview4.setVisible(true);
+        leaveReview5.setVisible(true);
+        confirmed1.setVisible(false);
+        confirmed2.setVisible(false);
+        confirmed3.setVisible(false);
+        confirmed4.setVisible(false);
+        confirmed5.setVisible(false);
+        notConfirmed1.setVisible(false);
+        notConfirmed2.setVisible(false);
+        notConfirmed3.setVisible(false);
+        notConfirmed4.setVisible(false);
+        notConfirmed5.setVisible(false);
+    }
+
     private String truncateAverageRating(float averageRating) {
         float truncAR = averageRating;
         truncAR = (float) (Math.floor(truncAR * 10) / 10);
@@ -301,7 +326,12 @@ public class HistoryPageControllerG implements Observer {
         if (reviewBean.validate()) {
             reviewBean.setDate(Date.valueOf(LocalDate.now()));
             try {
-                bookLessonController.insertReview(reviewBean);
+                //get Teacher
+                teacherToObserv = bookLessonController.getTeacherById(reviewBean.getTeacherId());
+                //attach
+                teacherToObserv.attach(this);
+                //insert review
+                bookLessonController.insertReview(reviewBean, teacherToObserv);
                 switch (buttonPressed) {
                     case 1:
                         leaveReview1.setVisible(false);
@@ -349,7 +379,7 @@ public class HistoryPageControllerG implements Observer {
 
     @Override
     public void update() {
-        //change average rating
+        teacherRatingLabel.setText(truncateAverageRating((teacherToObserv).getAverageRating()));
     }
 
     @FXML
