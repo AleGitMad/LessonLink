@@ -16,7 +16,7 @@ public class SearchPageControllerG2 {
     private String toPrint;
     BookLessonController bookLessonController = new BookLessonController();
     List<TeacherBean> teacherBeans;
-    public void search() throws IOException {
+    public void search() throws FailedResearchException, IOException {
         toPrint = "What do you want to study?\n";
         LinePrinter.getInstance().print(toPrint);
         ResearchBean researchBean = new ResearchBean();
@@ -39,7 +39,7 @@ public class SearchPageControllerG2 {
         }
     }
 
-    private void selectSubject(ResearchBean researchBean) throws IOException {
+    private void selectSubject(ResearchBean researchBean) throws IOException, FailedResearchException {
         toPrint = "Select subject:\n1: Math\n2: History\n3: English\n4: Physics\n5: Geography\n0: Return to homepage";
         LinePrinter.getInstance().print(toPrint);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

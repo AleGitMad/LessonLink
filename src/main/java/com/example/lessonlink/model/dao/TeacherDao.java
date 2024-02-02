@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,15 +26,15 @@ public class TeacherDao {
             while (rs.next()) {
                 teachers.add(extractTeacher(conn, rs));
             }
-        } catch (Exception se) {
-            se.printStackTrace();
-            throw new FailedResearchException("An error during research occurred.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new FailedResearchException("An error during teachers research occurred.");
         } finally {
             try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException e) {
-                //not handled
+                e.printStackTrace();
             }
         }
         return teachers;

@@ -1,5 +1,6 @@
 package com.example.lessonlink.model.dao;
 
+import com.example.lessonlink.exceptions.FailedInsertException;
 import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.Lesson;
 import com.example.lessonlink.model.LessonJoinTeacher;
@@ -30,7 +31,7 @@ public class LessonDao {
             }
         } catch (Exception se) {
             se.printStackTrace();
-            throw new FailedResearchException("An error during research occurred.");
+            throw new FailedResearchException("An error while searching lessons occurred.");
         } finally {
             try {
                 if (stmt != null)
@@ -78,7 +79,7 @@ public class LessonDao {
         return true;
     }
 
-    public void insertLesson(Lesson lesson) throws SQLException {
+    public void insertLesson(Lesson lesson) throws FailedInsertException {
         Statement stmt = null;
         Connection conn = null;
 
@@ -86,8 +87,9 @@ public class LessonDao {
             conn = Connector.getInstance().getConnection();
             stmt = conn.createStatement();
             Query.insertLesson(stmt, lesson);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            throw new FailedInsertException("An error during lesson insertion occurred.");
         } finally {
             try {
                 if (stmt != null)

@@ -1,7 +1,10 @@
 package com.example.lessonlink.view2;
 
 import com.example.lessonlink.controller.BookLessonController;
+import com.example.lessonlink.exceptions.FailedInsertException;
+import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.view1.bean.LessonBean;
+import com.example.lessonlink.view2.utility.ErrorPrinter;
 import com.example.lessonlink.view2.utility.LinePrinter;
 
 import java.io.BufferedReader;
@@ -17,7 +20,7 @@ public class PaymentPageControllerG2 {
         this.lessonBean = lessonBean;
     }
 
-    public void selectPayment() throws IOException{
+    public void selectPayment() throws IOException, FailedResearchException {
         toPrint = "Press:\n1 to pay now (PayPal)\n2 to pay later (cash)\n0 to go back to search page\n";
         LinePrinter.getInstance().print(toPrint);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -25,7 +28,7 @@ public class PaymentPageControllerG2 {
         try {
             choice = reader.readLine();
         } catch (IOException e) {
-            //towrite
+            e.printStackTrace();
         }
         switch(choice){
             case("0"):
@@ -34,12 +37,20 @@ public class PaymentPageControllerG2 {
                 break;
             case("1"):
                 lessonBean.setIsPaid(true);
-                bookLessonController.insertLesson(lessonBean);
+                try {
+                    bookLessonController.insertLesson(lessonBean);
+                } catch (FailedInsertException e) {
+                    ErrorPrinter.getInstance().print(e.getMessage());
+                }
                 goBackToHomePage();
                 break;
             case("2"):
                 lessonBean.setIsPaid(false);
-                bookLessonController.insertLesson(lessonBean);
+                try {
+                    bookLessonController.insertLesson(lessonBean);
+                } catch (FailedInsertException e) {
+                    ErrorPrinter.getInstance().print(e.getMessage());
+                }
                 goBackToHomePage();
                 break;
             default:
@@ -47,8 +58,8 @@ public class PaymentPageControllerG2 {
         }
     }
 
-    private void goBackToHomePage() throws IOException{
-        toPrint = "Lesson booked successfully!\nPress:\n0 to go back to homepage\n";
+    private void goBackToHomePage() throws IOException, FailedResearchException {
+        toPrint = "Lesson booked successfully!\nPress:\n0 to go back to homepage\nanything else to exit";
         LinePrinter.getInstance().print(toPrint);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String choice = "";
@@ -57,13 +68,11 @@ public class PaymentPageControllerG2 {
         } catch (IOException e) {
             //towrite
         }
-        switch(choice){
-            case("0"):
-                StudentHomePageControllerG2 studentHomePageControllerG2 = new StudentHomePageControllerG2();
-                studentHomePageControllerG2.setName(bookLessonController.getAccountBean().getName());
-                break;
-            default:
-                break;
+        if (choice.equals("0")) {
+            StudentHomePageControllerG2 studentHomePageControllerG2 = new StudentHomePageControllerG2();
+            studentHomePageControllerG2.setName(bookLessonController.getAccountBean().getName());
+        } else {
+            System.exit(0);
         }
     }
 

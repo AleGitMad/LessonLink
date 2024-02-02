@@ -1,6 +1,7 @@
 package com.example.lessonlink.view2;
 
 import com.example.lessonlink.controller.BookLessonController;
+import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.view1.bean.LessonBean;
 import com.example.lessonlink.view1.bean.TeacherBean;
 import com.example.lessonlink.view2.utility.ErrorPrinter;
@@ -28,7 +29,7 @@ public class ResultsPageControllerG2 {
         isOnline = teacherBeans.getFirst().getIsOnline();
     }
 
-    public void showResults() throws IOException {
+    public void showResults() throws IOException, FailedResearchException {
 
         //sorting
         teacherBeans.sort((TeacherBean t1, TeacherBean t2) -> {
@@ -141,7 +142,7 @@ public class ResultsPageControllerG2 {
         }
     }
 
-    private void checkSlotAvailability(LessonBean lessonBean) throws IOException {
+    private void checkSlotAvailability(LessonBean lessonBean) {
         if (lessonBean.validate()){
             lessonBean.setLessonDateTimeFrom(java.sql.Date.valueOf(lessonBean.getLessonDate()), lessonBean.getLessonTime());
         } else {
@@ -160,9 +161,11 @@ public class ResultsPageControllerG2 {
                 ErrorPrinter.getInstance().print(toPrint);
                 selectDate(lessonBean);
             }
-        } catch (Exception e) {
+        } catch (FailedResearchException e) {
             ErrorPrinter.getInstance().print(e.getMessage());
-            showResults();
+            selectDate(lessonBean);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

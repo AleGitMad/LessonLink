@@ -18,7 +18,7 @@ public class StudentHomePageControllerG2 {
     List<LessonBean> lessonBeans;
     BookLessonController bookLessonController = new BookLessonController();
 
-    public void setName(String name) throws IOException {
+    public void setName(String name) throws IOException, FailedResearchException {
         toPrint = "Welcome " + name + " to your homepage.\nPress:\n0 to book a lesson\n1 to check your history\n2 to logout";
         LinePrinter.getInstance().print(toPrint);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

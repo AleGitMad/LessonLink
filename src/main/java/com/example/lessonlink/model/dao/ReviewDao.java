@@ -1,5 +1,6 @@
 package com.example.lessonlink.model.dao;
 
+import com.example.lessonlink.exceptions.FailedInsertException;
 import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.Review;
 import com.example.lessonlink.model.service.Connector;
@@ -116,7 +117,7 @@ public class ReviewDao {
     }
     //TODO: meccanismo di visualizzazione delle reviews
 
-    public void insertReview(Review review) throws SQLException {
+    public void insertReview(Review review) throws FailedInsertException {
         Statement stmt = null;
         Connection conn = null;
 
@@ -124,14 +125,15 @@ public class ReviewDao {
             conn = Connector.getInstance().getConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             Query.insertReview(stmt, review);
-        } catch (SQLException se) {
-            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new FailedInsertException("An error during insertion occurred.");
         } finally {
             try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException e) {
-                //not handled
+                e.printStackTrace();
             }
         }
     }

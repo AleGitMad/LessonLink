@@ -12,5 +12,6 @@ module com.example.lessonlink {
     exports com.example.lessonlink.model.observer;
     exports com.example.lessonlink.view2 to javafx.graphics;
     exports com.example.lessonlink.controller;
+    exports com.example.lessonlink.exceptions;
 
 }

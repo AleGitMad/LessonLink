@@ -1,5 +1,6 @@
 package com.example.lessonlink.controller;
 
+import com.example.lessonlink.exceptions.FailedInsertException;
 import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.*;
 import com.example.lessonlink.model.dao.LessonDao;
@@ -34,19 +35,20 @@ public class BookLessonController {
         return teacherBeans;
     }
 
-    public boolean checkSlotAvailability(LessonBean lessonBean) throws FailedResearchException{
+    public boolean checkSlotAvailability(LessonBean lessonBean) throws FailedResearchException {
         LessonDao lessonDao = new LessonDao();
         return lessonDao.findTeacherLessons(lessonBean.getTeacherId(), lessonBean.getLessonDateTime());
     }
 
-    public void insertLesson(LessonBean lessonBean) {
+    public void insertLesson(LessonBean lessonBean) throws FailedInsertException {
         Lesson lesson = new Lesson();
         fillLesson(lesson, lessonBean);
         LessonDao lessonDao = new LessonDao();
         try {
             lessonDao.insertLesson(lesson);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            throw new FailedInsertException("An error during insertion occurred.");
         }
     }
 
@@ -106,7 +108,7 @@ public class BookLessonController {
         }
     }
 
-    public void insertReview(ReviewBean reviewBean, Teacher teacherToUpdate) {
+    public void insertReview(ReviewBean reviewBean, Teacher teacherToUpdate) throws FailedInsertException {
         Review review = new Review();
         fillReview(review, reviewBean);
         ReviewDao reviewDao = new ReviewDao();
@@ -118,8 +120,9 @@ public class BookLessonController {
                             + reviewBean.getStars()) / teacherToUpdate.getTotalReviews());
             //insert review in db
             reviewDao.insertReview(review);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            throw new FailedInsertException("An error during insertion occurred.");
         }
     }
 
