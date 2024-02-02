@@ -5,7 +5,6 @@ import com.example.lessonlink.model.*;
 import com.example.lessonlink.model.dao.LessonDao;
 import com.example.lessonlink.model.dao.ReviewDao;
 import com.example.lessonlink.model.dao.TeacherDao;
-import com.example.lessonlink.view1.HistoryPageControllerG;
 import com.example.lessonlink.view1.bean.*;
 
 import java.sql.SQLException;
@@ -96,12 +95,6 @@ public class BookLessonController {
         }
         return lessonBeans;
     }
-
-    /*
-    public void attachObserverToTeacher(HistoryPageControllerG historyPageControllerG, Teacher teacher) {
-        teacher.attach(historyPageControllerG);
-    }
-    */
 
     public Teacher getTeacherById(int teacherId) {
         Optional<Teacher> teacherOptional = teachersInHistory.stream().filter(teacher ->

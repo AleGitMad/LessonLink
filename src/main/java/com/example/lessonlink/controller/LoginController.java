@@ -1,10 +1,8 @@
 package com.example.lessonlink.controller;
 
-import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.Admin;
 import com.example.lessonlink.model.LoggedUser;
 import com.example.lessonlink.model.Student;
-import com.example.lessonlink.model.dao.LessonDao;
 import com.example.lessonlink.model.dao.UserFSDao;
 import com.example.lessonlink.model.dao.UserDao;
 import com.example.lessonlink.model.factories.UserFactory;
@@ -66,7 +64,6 @@ public class LoginController {
                 userDao.setUser(student, loginBean.getEmail());
             }
             //TODO: check se polimorfismo vuole nome classe variabile uguale
-            LessonDao lessonDao = new LessonDao();
             accountBean.setName(student.getName());
             accountBean.setRole(role);
         }

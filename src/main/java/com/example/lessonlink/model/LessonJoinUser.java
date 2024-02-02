@@ -1,7 +1,5 @@
 package com.example.lessonlink.model;
 
-import com.example.lessonlink.model.Lesson;
-
 import java.time.LocalDateTime;
 
 public class LessonJoinUser {

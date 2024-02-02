@@ -26,7 +26,7 @@ public class LessonDao {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = Query.findLessons(stmt, studentId);
             while (rs.next()) {
-                lessons.add(extractLesson(conn, rs));
+                lessons.add(extractLesson(rs));
             }
         } catch (Exception se) {
             se.printStackTrace();
@@ -42,7 +42,7 @@ public class LessonDao {
         return lessons;
     }
 
-    private LessonJoinTeacher extractLesson(Connection conn, ResultSet rs) throws SQLException {
+    private LessonJoinTeacher extractLesson(ResultSet rs) throws SQLException {
         return new LessonJoinTeacher(rs.getInt("lessonId"),
                 rs.getTimestamp("dateTime").toLocalDateTime(),
                 rs.getBoolean("isOnline"),
@@ -85,10 +85,7 @@ public class LessonDao {
         try {
             conn = Connector.getInstance().getConnection();
             stmt = conn.createStatement();
-
-            String insertStatement = Query.insertLesson(stmt, lesson);
-
-            stmt.executeUpdate(insertStatement);
+            Query.insertLesson(stmt, lesson);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -112,7 +109,7 @@ public class LessonDao {
         try {
             conn = Connector.getInstance().getConnection();
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = Query.LessonByAdmin(stmt, adminId);
+            ResultSet rs = Query.lessonByAdmin(stmt, adminId);
             while (rs.next()) {
                 lessonsJoinAdmin.add(extractLessonJoinAdmin(rs));
             }

@@ -36,12 +36,6 @@ public class Query {
         return stmt.executeQuery(selectedStatement);
     }
 
-    /*
-    public static ResultSet findLessons(Statement stmt, int studentId) throws SQLException {
-        String selectedStatement = "SELECT * FROM lessons WHERE studentId = " + studentId;
-        return stmt.executeQuery(selectedStatement);
-    }
-    */
     public static ResultSet findLessons(Statement stmt, int studentId) throws SQLException {
         String selectedStatement = "SELECT * FROM lessons JOIN teachers ON lessons.teacherId = teachers.teacherId WHERE studentId = " + studentId;
         return stmt.executeQuery(selectedStatement);
@@ -53,9 +47,10 @@ public class Query {
         return stmt.executeQuery(selectedStatement);
     }
 
-    public static String insertLesson(Statement stmt, Lesson lesson) throws SQLException { // TODO spostare l'executeUpdate qui
+    public static void insertLesson(Statement stmt, Lesson lesson) throws SQLException {
         String formattedDateTime = lesson.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        return String.format("INSERT INTO Lessons (dateTime, isOnline, teacherId, studentId, isConfirmed, isPaid) VALUES ('%s', %b, '%d', '%d', %b, %b)", formattedDateTime, lesson.getIsOnline(), lesson.getTeacherId(), lesson.getStudentId(), lesson.getIsConfirmed(), lesson.getIsPaid());
+        String selectedStatement = String.format("INSERT INTO Lessons (dateTime, isOnline, teacherId, studentId, isConfirmed, isPaid) VALUES ('%s', %b, '%d', '%d', %b, %b)", formattedDateTime, lesson.getIsOnline(), lesson.getTeacherId(), lesson.getStudentId(), lesson.getIsConfirmed(), lesson.getIsPaid());
+        stmt.executeUpdate(selectedStatement);
     }
 
     public static ResultSet checkCredentials(Statement stmt, String email, String password) throws SQLException {
@@ -82,7 +77,7 @@ public class Query {
         stmt.executeUpdate(query);
     }
 
-    public static ResultSet LessonByAdmin(Statement stmt, int adminId) throws SQLException {
+    public static ResultSet lessonByAdmin(Statement stmt, int adminId) throws SQLException {
         String query = "SELECT * FROM lessons INNER JOIN Teachers ON Lessons.teacherId = Teachers.teacherId INNER JOIN Users ON Lessons.studentId = users.userId WHERE Teachers.adminId = " + adminId;
         return stmt.executeQuery(query);
     }

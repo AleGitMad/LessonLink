@@ -46,7 +46,7 @@ public class Review {
         this.teacherId = teacherId;
     }
 
-    public Review() {};
+    public Review() {}
 
     public Review(int reviewId, int stars, Date date, String comment, int teacherId) {
         this.reviewId = reviewId;

@@ -1,6 +1,5 @@
 package com.example.lessonlink.model.dao;
 
-import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.User;
 import com.example.lessonlink.model.service.Connector;
 import com.example.lessonlink.model.service.Query;

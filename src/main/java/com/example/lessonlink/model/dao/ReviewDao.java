@@ -91,7 +91,7 @@ public class ReviewDao {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = Query.findReviews(stmt, teacherId);
             while (rs.next()) {
-                reviews.add(extractReview(conn, rs));
+                reviews.add(extractReview(rs));
             }
         } catch (Exception se) {
             se.printStackTrace();
@@ -107,7 +107,7 @@ public class ReviewDao {
         return reviews;
     }
 
-    private Review extractReview(Connection conn, ResultSet rs) throws SQLException {
+    private Review extractReview(ResultSet rs) throws SQLException {
         return new Review(rs.getInt("reviewId"),
                 rs.getInt("stars"),
                 rs.getDate("date"),
