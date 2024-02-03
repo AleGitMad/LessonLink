@@ -7,6 +7,7 @@ import com.example.lessonlink.view2.utility.LinePrinter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 
 public class CreateTeacherControllerG2 {
     private String toPrint;
@@ -23,7 +24,7 @@ public class CreateTeacherControllerG2 {
             insertTeacher();
         }
         else{
-            toPrint = "Insertion successful";
+            toPrint = "Great! Now we will evaluate the fare for you";
             LinePrinter.getInstance().print(toPrint);
             profileTeacherBean.setDecorations();
         }
@@ -31,7 +32,42 @@ public class CreateTeacherControllerG2 {
         AddTeacherController addTeacherController = new AddTeacherController();
         addTeacherController.addTeacher(profileTeacherBean);
 
-        toPrint = "";
+        toPrint = "The fare evaluated is: " + profileTeacherBean.fare() + " €/h";
+        LinePrinter.getInstance().print(toPrint);
+
+        toPrint = "Would you like to use the evaluated fare? Press 0 if you do, 1 otherwise";
+        LinePrinter.getInstance().print(toPrint);
+
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            if(reader.readLine().equals("0")) {
+                profileTeacherBean.setFare(profileTeacherBean.fare());
+                if (!profileTeacherBean.fareValidate()){
+                    toPrint = "Insertion failed . . . repeating steps";
+                    LinePrinter.getInstance().print(toPrint);
+                    insertTeacher();
+                }
+            }else{
+                toPrint = "It seems you didnt use our Evaluator :( , type in the price you want to use";
+                LinePrinter.getInstance().print(toPrint);
+
+                profileTeacherBean.setFare(reader.readLine());
+                if (!profileTeacherBean.fareValidate()){
+                    toPrint = "Insertion failed . . . repeating steps";
+                    LinePrinter.getInstance().print(toPrint);
+                    insertTeacher();
+                }
+            }
+
+            addTeacherController.confirmTeacher(profileTeacherBean);
+        }catch(IOException e){
+            LinePrinter.getInstance().print("Something went wrong");
+            insertTeacher();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
 
     }
 
@@ -113,7 +149,7 @@ public class CreateTeacherControllerG2 {
                     break;
             }
 
-            toPrint = "Insert subject 2: 1-Math, 2-History, 3-English, 4-Physics, 5-Geography...";
+            toPrint = "Insert subject 2: 1-Math, 2-History, 3-English, 4-Physics, 5-Geography or 6-None...";
             LinePrinter.getInstance().print(toPrint);
             switch (reader.readLine()){
                 case "1":
@@ -131,6 +167,8 @@ public class CreateTeacherControllerG2 {
                 case "5":
                     profileTeacherBean.setSubject2(subjects[4]);
                     break;
+                case "6":
+                    break;
                 default:
                     toPrint = error;
                     LinePrinter.getInstance().print(toPrint);
@@ -138,7 +176,7 @@ public class CreateTeacherControllerG2 {
                     break;
             }
 
-            toPrint = "Insert subject 3: 1-Math, 2-History, 3-English, 4-Physics, 5-Geography...";
+            toPrint = "Insert subject 3: 1-Math, 2-History, 3-English, 4-Physics, 5-Geography or 6-None...";
             LinePrinter.getInstance().print(toPrint);
             switch (reader.readLine()){
                 case "1":
@@ -155,6 +193,8 @@ public class CreateTeacherControllerG2 {
                     break;
                 case "5":
                     profileTeacherBean.setSubject3(subjects[4]);
+                    break;
+                case "6":
                     break;
                 default:
                     toPrint = error;
