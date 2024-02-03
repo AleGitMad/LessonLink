@@ -26,7 +26,7 @@ public class TeacherDao {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = Query.findTeachers(stmt, subject, city, isOnline);
             while (rs.next()) {
-                teachers.add(extractTeacher(conn, rs));
+                teachers.add(extractTeacher(rs));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -42,7 +42,7 @@ public class TeacherDao {
         return teachers;
     }
 
-    private Teacher extractTeacher(Connection conn, ResultSet rs) throws SQLException, FailedResearchException {
+    private Teacher extractTeacher(ResultSet rs) throws SQLException, FailedResearchException {
         Teacher teacher = new Teacher(rs.getInt(TEACHER_ID),
                 rs.getString("name"),
                 rs.getString("subject1"),

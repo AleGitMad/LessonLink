@@ -2,7 +2,6 @@ package com.example.lessonlink.view2;
 
 import com.example.lessonlink.controller.BookLessonController;
 import com.example.lessonlink.exceptions.FailedResearchException;
-import com.example.lessonlink.view1.SearchPageControllerG;
 import com.example.lessonlink.view1.bean.LessonBean;
 import com.example.lessonlink.view2.utility.ErrorPrinter;
 import com.example.lessonlink.view2.utility.LinePrinter;

@@ -1,7 +1,6 @@
 package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.LoginController;
-import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.view1.bean.AccountBean;
 import com.example.lessonlink.view1.bean.LoginBean;
 import javafx.fxml.FXML;
@@ -48,34 +47,35 @@ public class LoginControllerG {
 
             try {
                 accountBean = loginController.login(loginBean);
-
-                if (accountBean.getRole().equals("Student")) {
-                    if (accountType == 0) {
-                        fxmlLoader = FxmlLoader.setPage("StudentHomepage");
-                    } else {
-                        showErrorMessage("Please go to the admin login page.");
-                    }
-
-                }else if(accountBean.getRole().equals("Admin")) {
-                    if (accountType == 1) {
-                        fxmlLoader = FxmlLoader.setPage("AdminHomepage");
-                    }
-                    showErrorMessage("Please go to the student login page.");
-                }
-
+                studentOrAdminLogin();
             } catch (FailedLoginException e) {
                 showErrorMessage(e.getMessage());
             } catch (SQLException e) {
-                //not handled
+                e.printStackTrace();
             }
-            //TODO: exception handling
 
         } else{
             showErrorMessage("Incorrect email or password. Try again");
         }
     }
 
-    public void showErrorMessage(String message) {
+    private void studentOrAdminLogin() {
+        if (accountBean.getRole().equals("Student")) {
+            if (accountType == 0) {
+                fxmlLoader = FxmlLoader.setPage("StudentHomepage");
+            } else {
+                showErrorMessage("Please go to the admin login page.");
+            }
+
+        }else if(accountBean.getRole().equals("Admin")) {
+            if (accountType == 1) {
+                fxmlLoader = FxmlLoader.setPage("AdminHomepage");
+            }
+            showErrorMessage("Please go to the student login page.");
+        }
+    }
+
+    private void showErrorMessage(String message) {
         incorrectLabel.setText(message);
         incorrectLabel.setVisible(true);
     }

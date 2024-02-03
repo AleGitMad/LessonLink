@@ -21,9 +21,8 @@ public class Connector {
             String pass = properties.getProperty("LOGIN_PASS");
 
             conn = DriverManager.getConnection(connectionUrl, user, pass);
-        }catch(IOException | SQLException e){
+        }catch(Exception e){
             e.printStackTrace();
-            //TODO: logging for exception
         }
 
     }

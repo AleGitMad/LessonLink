@@ -42,7 +42,7 @@ public class FxmlLoader extends Application {
             stage1.setScene(scene);
             return loader;
         } catch(IOException e){
-            //TODO
+            e.printStackTrace();
         }
         return loader;
     }
