@@ -19,17 +19,6 @@ public class LessonBean {
     private String teacherName;
 
     private float averageRating;
-    /*
-    private int selectedTeacherId;
-
-    public int getSelectedTeacherId() {
-        return selectedTeacherId;
-    }
-
-    public void setSelectedTeacherId(int selectedTeacherId) {
-        this.selectedTeacherId = selectedTeacherId;
-    }
-    */
 
     public float getAverageRating() {
         return averageRating;

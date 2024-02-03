@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewDao {
+    private static final String STARS = "stars";
     public float getAverageRating(int teacherId) throws FailedResearchException {
         Statement stmt = null;
         Connection conn = null;
@@ -25,7 +26,7 @@ public class ReviewDao {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = Query.findReviews(stmt, teacherId);
             while (rs.next()) {
-                averageRating += rs.getInt("stars");
+                averageRating += rs.getInt(STARS);
                 reviews++;
             }
             if (reviews != 0) {
@@ -60,7 +61,7 @@ public class ReviewDao {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = Query.findReviews(stmt, teacherId);
             while (rs.next()) {
-                averageRating += rs.getInt("stars");
+                averageRating += rs.getInt(STARS);
                 reviews++;
             }
             if (reviews != 0) {
@@ -111,7 +112,7 @@ public class ReviewDao {
 
     private Review extractReview(ResultSet rs) throws SQLException {
         return new Review(rs.getInt("reviewId"),
-                rs.getInt("stars"),
+                rs.getInt(STARS),
                 rs.getDate("date"),
                 rs.getString("comment"),
                 rs.getInt("teacherId"));

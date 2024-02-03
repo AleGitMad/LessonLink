@@ -1,6 +1,5 @@
 package com.example.lessonlink.view1.bean;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 public class ReviewBean {
@@ -42,6 +41,6 @@ public class ReviewBean {
     }
 
     public boolean validate() {
-        return !(stars < 0) && !(stars > 10);
+        return (stars >= 0) && (stars <= 10);
     }
 }

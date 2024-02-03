@@ -1,8 +1,6 @@
 package com.example.lessonlink.view1.bean;
 
 
-import com.example.lessonlink.model.Lesson;
-
 import java.time.LocalDateTime;
 
 public class BookingBean {

@@ -1,6 +1,7 @@
 package com.example.lessonlink.view2;
 
 import com.example.lessonlink.controller.LoginController;
+import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.view1.FxmlLoader;
 import com.example.lessonlink.view1.bean.AccountBean;
 import com.example.lessonlink.view1.bean.LoginBean;
@@ -55,15 +56,13 @@ public class LoginControllerG2 {
 
             } catch (FailedLoginException e) {
                 ErrorPrinter.getInstance().print(e.getMessage());
-            } catch (SQLException | IOException e) {
-                //not handled
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            //TODO: exception handling
 
         } else{
             ErrorPrinter.getInstance().print("Incorrect email or password. Try again");
             login();
         }
     }
-    //TODO: login retry logic to add
 }

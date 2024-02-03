@@ -162,7 +162,7 @@ public class ResultsPageControllerG {
     private void setTeacherDetails(TeacherBean teacherBean, Label teacherNameLabel, Label reviewScoreLabel, Label fareIntLabel) {
         teacherNameLabel.setText(teacherBean.getTeacherName());
         if (teacherBean.getTeacherHasReview()) {
-            reviewScoreLabel.setText(teacherBean.getTeacherAverageRating() + "/10");
+            reviewScoreLabel.setText((float) (Math.floor(teacherBean.getTeacherAverageRating() * 10) / 10) + "/10");
         } else {
             reviewScoreLabel.setText("");
         }

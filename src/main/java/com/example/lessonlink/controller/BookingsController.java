@@ -1,15 +1,11 @@
 package com.example.lessonlink.controller;
 
 import com.example.lessonlink.exceptions.FailedResearchException;
-import com.example.lessonlink.model.Lesson;
 import com.example.lessonlink.model.LoggedUser;
-import com.example.lessonlink.model.Teacher;
 import com.example.lessonlink.model.dao.LessonDao;
 import com.example.lessonlink.model.LessonJoinUser;
-import com.example.lessonlink.model.dao.TeacherDao;
 import com.example.lessonlink.view1.bean.BookingBean;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 

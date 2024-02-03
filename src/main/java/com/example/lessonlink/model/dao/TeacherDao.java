@@ -14,9 +14,11 @@ import java.util.List;
 
 public class TeacherDao {
 
+    private static final String TEACHER_ID = "teacherId";
+
     public List<Teacher> findTeachers(String subject, String city, boolean isOnline) throws FailedResearchException {
         Statement stmt = null;
-        Connection conn = null;
+        Connection conn;
         List<Teacher> teachers = new ArrayList<>();
 
         try {
@@ -41,7 +43,7 @@ public class TeacherDao {
     }
 
     private Teacher extractTeacher(Connection conn, ResultSet rs) throws SQLException, FailedResearchException {
-        Teacher teacher = new Teacher(rs.getInt("teacherId"),
+        Teacher teacher = new Teacher(rs.getInt(TEACHER_ID),
                 rs.getString("name"),
                 rs.getString("subject1"),
                 rs.getString("subject2"),
@@ -51,8 +53,8 @@ public class TeacherDao {
                 rs.getString("qualification"),
                 rs.getBoolean("availableOnline"));
         ReviewDao reviewDao = new ReviewDao();
-        if (reviewDao.getAverageRating(rs.getInt("teacherId")) != -1) {
-            teacher.setAverageRating(reviewDao.getAverageRating(rs.getInt("teacherId")));
+        if (reviewDao.getAverageRating(rs.getInt(TEACHER_ID)) != -1) {
+            teacher.setAverageRating(reviewDao.getAverageRating(rs.getInt(TEACHER_ID)));
             teacher.setHasReviews(true);
         } else {
             teacher.setHasReviews(false);

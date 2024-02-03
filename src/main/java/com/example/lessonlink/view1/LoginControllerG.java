@@ -28,6 +28,11 @@ public class LoginControllerG {
     FXMLLoader fxmlLoader;
 
     AccountBean accountBean;
+    private int accountType = -1;   // 0 = student, 1 = admin
+
+    public void setAccountType(int type) {
+        accountType = type;
+    }
 
     @FXML
     void setHomePage() {
@@ -45,10 +50,17 @@ public class LoginControllerG {
                 accountBean = loginController.login(loginBean);
 
                 if (accountBean.getRole().equals("Student")) {
-                    fxmlLoader = FxmlLoader.setPage("StudentHomepage");
+                    if (accountType == 0) {
+                        fxmlLoader = FxmlLoader.setPage("StudentHomepage");
+                    } else {
+                        showErrorMessage("Please go to the admin login page.");
+                    }
 
                 }else if(accountBean.getRole().equals("Admin")) {
-                    fxmlLoader = FxmlLoader.setPage("AdminHomepage");
+                    if (accountType == 1) {
+                        fxmlLoader = FxmlLoader.setPage("AdminHomepage");
+                    }
+                    showErrorMessage("Please go to the student login page.");
                 }
 
             } catch (FailedLoginException e) {

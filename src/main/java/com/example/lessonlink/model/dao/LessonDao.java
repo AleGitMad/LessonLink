@@ -5,6 +5,7 @@ import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.Lesson;
 import com.example.lessonlink.model.LessonJoinTeacher;
 import com.example.lessonlink.model.LessonJoinUser;
+import com.example.lessonlink.model.Teacher;
 import com.example.lessonlink.model.service.Connector;
 import com.example.lessonlink.model.service.Query;
 
@@ -17,9 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LessonDao {
+
+    private static final String TEACHER_ID = "teacherId";
+
     public List<LessonJoinTeacher> findStudentLessons(int studentId) throws FailedResearchException {
         Statement stmt = null;
-        Connection conn = null;
+        Connection conn;
         List<LessonJoinTeacher> lessons = new ArrayList<>();
 
         try {
@@ -44,19 +48,27 @@ public class LessonDao {
     }
 
     private LessonJoinTeacher extractLesson(ResultSet rs) throws SQLException {
-        return new LessonJoinTeacher(rs.getInt("lessonId"),
+
+        Lesson lesson = new Lesson(rs.getInt("lessonId"),
                 rs.getTimestamp("dateTime").toLocalDateTime(),
                 rs.getBoolean("isOnline"),
-                rs.getInt("teacherId"),
+                rs.getInt(TEACHER_ID),
                 rs.getInt("studentId"),
                 rs.getBoolean("isConfirmed"),
-                rs.getBoolean("isPaid"),
-                rs.getString("teachers.name"));
+                rs.getBoolean("isPaid"));
+        Teacher teacher = new Teacher();
+        teacher.setName(rs.getString("teachers.name"));
+        teacher.setTeacherId(rs.getInt(TEACHER_ID));
+
+        return new LessonJoinTeacher.Builder()
+                .lesson(lesson)
+                .teacher(teacher)
+                .build();
     }
 
     public boolean findTeacherLessons(int teacherId, LocalDateTime dateTime) throws FailedResearchException {
         Statement stmt = null;
-        Connection conn = null;
+        Connection conn;
 
         try {
             conn = Connector.getInstance().getConnection();
@@ -137,7 +149,7 @@ public class LessonDao {
                     rs.getInt("lessonId"),
                     rs.getBoolean("isOnline"),
                     rs.getBoolean("isPaid"),
-                    rs.getInt("teacherId"),
+                    rs.getInt(TEACHER_ID),
                     rs.getInt("studentId"));
     }
 

@@ -1,7 +1,11 @@
 package com.example.lessonlink.view1;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+
+import java.util.Objects;
 
 public class HomeControllerG {
     @FXML
@@ -11,10 +15,13 @@ public class HomeControllerG {
     private Button adminLoginButton;
 
     @FXML
-    void setLoginPage() {
-        FxmlLoader.setPage("login");
+    void setLoginPage(ActionEvent event) {
+        FXMLLoader loader = FxmlLoader.setPage("login");
+        LoginControllerG loginControllerG = loader.getController();
+        if (Objects.equals(((Button) event.getSource()).getId(), "studentLoginButton"))
+            loginControllerG.setAccountType(0);
+        else
+            loginControllerG.setAccountType(1);
     }
-
-    //TODO: distinguish between student and admin login
 
 }

@@ -1,6 +1,7 @@
 package com.example.lessonlink.view2;
 
 import com.example.lessonlink.controller.BookLessonController;
+import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.Teacher;
 import com.example.lessonlink.model.observer.Observer;
 import com.example.lessonlink.view1.bean.LessonBean;
@@ -32,7 +33,7 @@ public class HistoryPageControllerG2 implements Observer {
         this.bookLessonController = bookLessonController;
     }
 
-    public void showHistory() throws IOException {
+    public void showHistory() throws IOException, FailedResearchException {
 
         //sorting
         if (sortByDate) {
@@ -159,7 +160,7 @@ public class HistoryPageControllerG2 implements Observer {
         }
     }
 
-    private void historyEnd() throws IOException {
+    private void historyEnd() throws IOException, FailedResearchException {
         toPrint = "Press 0 to return to homepage, anything else to close app\n";
         LinePrinter.getInstance().print(toPrint);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
