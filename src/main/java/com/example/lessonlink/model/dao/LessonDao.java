@@ -49,21 +49,16 @@ public class LessonDao {
 
     private LessonJoinTeacher extractLesson(ResultSet rs) throws SQLException {
 
-        Lesson lesson = new Lesson(rs.getInt("lessonId"),
+        LessonJoinTeacher lessonJoinTeacher = new LessonJoinTeacher();
+        lessonJoinTeacher.initLesson(rs.getInt("lessonId"),
                 rs.getTimestamp("dateTime").toLocalDateTime(),
                 rs.getBoolean("isOnline"),
                 rs.getInt(TEACHER_ID),
                 rs.getInt("studentId"),
                 rs.getBoolean("isConfirmed"),
                 rs.getBoolean("isPaid"));
-        Teacher teacher = new Teacher();
-        teacher.setName(rs.getString("teachers.name"));
-        teacher.setTeacherId(rs.getInt(TEACHER_ID));
-
-        return new LessonJoinTeacher.Builder()
-                .lesson(lesson)
-                .teacher(teacher)
-                .build();
+        lessonJoinTeacher.initTeacher(rs.getInt(TEACHER_ID), rs.getString("teachers.name"));
+        return lessonJoinTeacher;
     }
 
     public boolean findTeacherLessons(int teacherId, LocalDateTime dateTime) throws FailedResearchException {
@@ -142,15 +137,17 @@ public class LessonDao {
     }
 
     private LessonJoinUser extractLessonJoinAdmin(ResultSet rs) throws SQLException {
-            return new LessonJoinUser(rs.getString("users.name"),
-                    rs.getString("teachers.name"),
+            LessonJoinUser lessonJoinUser = new LessonJoinUser();
+            lessonJoinUser.initLesson(rs.getInt("lessonId"),
                     rs.getTimestamp("dateTime").toLocalDateTime(),
-                    rs.getBoolean("isConfirmed"),
-                    rs.getInt("lessonId"),
                     rs.getBoolean("isOnline"),
-                    rs.getBoolean("isPaid"),
                     rs.getInt(TEACHER_ID),
-                    rs.getInt("studentId"));
+                    rs.getInt("studentId"),
+                    rs.getBoolean("isConfirmed"),
+                    rs.getBoolean("isPaid"));
+            lessonJoinUser.initTeacher(rs.getString("teachers.name"));
+            lessonJoinUser.initUser(rs.getString("users.name"));
+        return lessonJoinUser;
     }
 
     public void updateLesson(Lesson lesson){

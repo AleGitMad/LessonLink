@@ -63,7 +63,7 @@ public class LoginController {
                 UserDao userDao = myFactory.createDAO();
                 userDao.setUser(student, loginBean.getEmail());
             }
-            //TODO: check se polimorfismo vuole nome classe variabile uguale
+            //TODO: check polimorfismo
             accountBean.setName(student.getName());
             accountBean.setRole(role);
         }

@@ -1,6 +1,7 @@
 package com.example.lessonlink.model;
 
 import com.example.lessonlink.model.decorator.Educator;
+import javafx.util.Builder;
 
 public class Teacher extends Educator {
 
@@ -11,16 +12,19 @@ public class Teacher extends Educator {
     private boolean hasReviews;
     private int totalReviews;
 
-    public Teacher(int teacherId, String name, String subject1, String subject2, String subject3, int fare, String city, String qualification, boolean availableOnline) {
+    //two methods to reduce the number of parameters in the constructor
+    public void initTeacherInfo(int teacherId, String name, int fare, String city, String qualification, boolean availableOnline) {
         this.teacherId = teacherId;
         this.name = name;
-        this.subject1 = subject1;
-        this.subject2 = subject2;
-        this.subject3 = subject3;
         this.fare = fare;
         this.city = city;
         this.qualification = qualification;
         this.availableOnline = availableOnline;
+    }
+    public void initTeacherSubjects(String subject1, String subject2, String subject3) {
+        this.subject1 = subject1;
+        this.subject2 = subject2;
+        this.subject3 = subject3;
     }
 
     public Teacher() {

@@ -29,23 +29,4 @@ public class User {
     public String getEmail() {
         return email;
     }
-
-    /*
-    public void changeCredentials(String credential, String newCredential){
-        switch(credential){
-            case "email":
-                this.email = newCredential;
-                break;
-            case "firstname":
-                this.firstName = newCredential;
-                break;
-            case "lastname":
-                this.lastName = newCredential;
-                break;
-            default:
-                break;
-        }
-        notifyObservers();
-    }
-    */  //TODO: implement change credentials???
 }

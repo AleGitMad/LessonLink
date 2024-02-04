@@ -9,12 +9,8 @@ public class LessonJoinUser {
 
     private User user;
 
-    public LessonJoinUser(String username, String teachername, LocalDateTime dateTime, boolean isConfirmed, int lessonId, boolean isOnline, boolean isPaid, int teacherId, int studentId) {
-        lesson = new Lesson();
-        teacher = new Teacher();
-        user = new User();
-        this.teacher.setName(teachername);
-        this.user.setName(username);
+    //three methods to separate entities while populating the object
+    public void initLesson(int lessonId, LocalDateTime dateTime, boolean isOnline, int teacherId, int studentId, boolean isConfirmed, boolean isPaid) {
         this.lesson.setDateTime(dateTime);
         this.lesson.setIsConfirmed(isConfirmed);
         this.lesson.setLessonId(lessonId);
@@ -22,6 +18,14 @@ public class LessonJoinUser {
         this.lesson.setIsPaid(isPaid);
         this.lesson.setTeacherId(teacherId);
         this.lesson.setStudentId(studentId);
+    }
+
+    public void initTeacher(String teacherName) {
+        this.teacher.setName(teacherName);
+    }
+
+    public void initUser(String userName) {
+        this.user.setName(userName);
     }
 
 

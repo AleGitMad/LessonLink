@@ -80,4 +80,10 @@ public class LoginControllerG {
         incorrectLabel.setVisible(true);
     }
 
+    @FXML
+    void forgotPassword() {
+        incorrectLabel.setText("Not implemented yet, sorry.");
+        incorrectLabel.setVisible(true);
+    }
+
 }

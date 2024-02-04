@@ -43,15 +43,19 @@ public class TeacherDao {
     }
 
     private Teacher extractTeacher(ResultSet rs) throws SQLException, FailedResearchException {
-        Teacher teacher = new Teacher(rs.getInt(TEACHER_ID),
+        Teacher teacher = new Teacher();
+        teacher.initTeacherInfo(
+                rs.getInt(TEACHER_ID),
                 rs.getString("name"),
-                rs.getString("subject1"),
-                rs.getString("subject2"),
-                rs.getString("subject3"),
                 rs.getInt("fare"),
                 rs.getString("city"),
                 rs.getString("qualification"),
                 rs.getBoolean("availableOnline"));
+        teacher.initTeacherSubjects(
+                rs.getString("subject1"),
+                rs.getString("subject2"),
+                rs.getString("subject3"));
+
         ReviewDao reviewDao = new ReviewDao();
         if (reviewDao.getAverageRating(rs.getInt(TEACHER_ID)) != -1) {
             teacher.setAverageRating(reviewDao.getAverageRating(rs.getInt(TEACHER_ID)));
