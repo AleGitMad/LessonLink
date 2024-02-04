@@ -3,11 +3,11 @@ package com.example.lessonlink.model;
 import java.time.LocalDateTime;
 
 public class LessonJoinUser {
-    private Lesson lesson;
+    private Lesson lesson = new Lesson();
 
-    private Teacher teacher;
+    private Teacher teacher = new Teacher();
 
-    private User user;
+    private User user = new User();
 
     //three methods to separate entities while populating the object
     public void initLesson(int lessonId, LocalDateTime dateTime, boolean isOnline, int teacherId, int studentId, boolean isConfirmed, boolean isPaid) {

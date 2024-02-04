@@ -109,7 +109,7 @@ public class ProfileTeacherBean {
     }
 
     public boolean fareValidate() {
-        return fare != null && fare.matches("\\d+") && fare.length() < 5;
+        return fare != null && fare.matches("\\d+") && fare.length() < 3;
     }
 
     public void setDecorations() {

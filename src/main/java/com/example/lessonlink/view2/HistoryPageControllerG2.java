@@ -102,7 +102,7 @@ public class HistoryPageControllerG2 implements Observer {
                 try {
                     studentHomePageControllerG2.setName(bookLessonController.getAccountBean().getName());
                 } catch (FailedResearchException e) {
-                    throw new RuntimeException(e);
+                    e.printStackTrace();
                 }
                 break;
             default:
@@ -180,7 +180,7 @@ public class HistoryPageControllerG2 implements Observer {
             try {
                 studentHomePageControllerG2.setName(bookLessonController.getAccountBean().getName());
             } catch (FailedResearchException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         } else {
             System.exit(0);

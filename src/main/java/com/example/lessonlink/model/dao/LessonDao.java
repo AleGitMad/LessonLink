@@ -137,7 +137,7 @@ public class LessonDao {
             lessonJoinUser.initLesson(rs.getInt("lessonId"),
                     rs.getTimestamp("dateTime").toLocalDateTime(),
                     rs.getBoolean("isOnline"),
-                    rs.getInt(TEACHER_ID),
+                    rs.getInt("teacherId"),
                     rs.getInt("studentId"),
                     rs.getBoolean("isConfirmed"),
                     rs.getBoolean("isPaid"));
