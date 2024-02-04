@@ -2,7 +2,9 @@ package com.example.lessonlink.view2;
 
 import com.example.lessonlink.controller.BookingsController;
 import com.example.lessonlink.exceptions.FailedResearchException;
+import com.example.lessonlink.exceptions.FailedUpdateException;
 import com.example.lessonlink.view1.bean.BookingBean;
+import com.example.lessonlink.view2.utility.ErrorPrinter;
 import com.example.lessonlink.view2.utility.LinePrinter;
 
 import java.io.BufferedReader;
@@ -11,7 +13,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 public class ActiveBookingsControllerG2 {
-    public void showActiveBookings() {
+    public void showActiveBookings() throws FailedUpdateException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         BookingsController bookingsController = new BookingsController();
         List<BookingBean> bookingBeanList;
@@ -58,7 +60,12 @@ public class ActiveBookingsControllerG2 {
 
         if (choice != 0 && (!bookingBeanList.get(choice - 1).getConfirmed())) {
                 BookingBean bookingBean = bookingBeanList.get(choice - 1);
-                bookingsController.sendEmail(bookingBean);
+                try {
+                    bookingsController.sendEmail(bookingBean);
+                } catch (FailedUpdateException e) {
+                    ErrorPrinter.getInstance().print(e.getMessage());
+                    showActiveBookings();
+                }
                 toPrint = "Booking confirmed";
                 LinePrinter.getInstance().print(toPrint);
                 showActiveBookings();

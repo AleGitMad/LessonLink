@@ -1,6 +1,7 @@
 package com.example.lessonlink.view2;
 
 
+import com.example.lessonlink.exceptions.FailedUpdateException;
 import com.example.lessonlink.view2.utility.LinePrinter;
 
 import java.io.BufferedReader;
@@ -8,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class AdminHomePageControllerG2 {
-    public void setName(String name) throws IOException {
+    public void setName(String name) throws IOException, FailedUpdateException {
         boolean running = true;
 
         while (running) {

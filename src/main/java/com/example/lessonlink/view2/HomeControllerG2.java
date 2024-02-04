@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 public class HomeControllerG2 {
     String toPrint;
     public void start() {
-        toPrint = "+++++++ LessonLink +++++++\nPress:\n0 to login\n1 to register";
+        toPrint = "+++++++ LessonLink +++++++\nPress:\n0 to login\n1 if you forgot your credentials";
         LinePrinter.getInstance().print(toPrint);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String role = "";
@@ -25,7 +25,7 @@ public class HomeControllerG2 {
                 loginControllerG2.login();
                 break;
             case"1":
-                loginControllerG2.register();
+                loginControllerG2.resetCredentials();
                 break;
             default:
                 toPrint = "The number you inserted is not valid";

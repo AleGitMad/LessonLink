@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lessonlink.view1.ActiveBookingsControllerG">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lessonlink.view1.ActiveBookingsControllerG">
     <children>
         <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -190,5 +190,19 @@
             </Button>
          </children>
       </Pane>
+        <Pane fx:id="errorPane" layoutX="390.0" layoutY="110.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" visible="false">
+            <children>
+                <Label fx:id="errorLabel" layoutX="108.0" layoutY="58.0" prefHeight="180.0" prefWidth="285.0" text="error" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="Calibri Bold" size="41.0" />
+                    </font>
+                </Label>
+                <Button fx:id="newSearchButton1" layoutX="153.0" layoutY="308.0" mnemonicParsing="false" onAction="#newSearchE" prefHeight="97.0" prefWidth="197.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Hide error panel" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font name="Calibri Bold" size="23.0" />
+                    </font>
+                </Button>
+            </children>
+        </Pane>
     </children>
 </Pane>

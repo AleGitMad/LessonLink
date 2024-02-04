@@ -1,6 +1,7 @@
 package com.example.lessonlink.controller;
 
 import com.example.lessonlink.exceptions.FailedResearchException;
+import com.example.lessonlink.exceptions.FailedUpdateException;
 import com.example.lessonlink.model.LoggedUser;
 import com.example.lessonlink.model.dao.LessonDao;
 import com.example.lessonlink.model.LessonJoinUser;
@@ -34,7 +35,7 @@ public class BookingsController {
         return bookingBeanList;
     }
 
-    public void sendEmail(BookingBean bookingBean) {
+    public void sendEmail(BookingBean bookingBean) throws FailedUpdateException {
         LessonDao lessonDao = new LessonDao();
         for (LessonJoinUser lessonJoinUser : lessonJoinUsers) {
             if (lessonJoinUser.getLessonId() == bookingBean.getLessonId()) {

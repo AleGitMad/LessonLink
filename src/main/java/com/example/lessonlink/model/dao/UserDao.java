@@ -26,7 +26,7 @@ public class UserDao {
                 throw new FailedLoginException("Incorrect email or password. Try again");
             }
         } catch (SQLException se) {
-            se.printStackTrace();
+            //not handled
         } catch (FailedLoginException e) {
             throw new FailedLoginException("Incorrect email or password. Try again");
         }

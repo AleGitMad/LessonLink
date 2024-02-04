@@ -2,6 +2,7 @@ package com.example.lessonlink.view2;
 
 import com.example.lessonlink.controller.LoginController;
 import com.example.lessonlink.exceptions.FailedResearchException;
+import com.example.lessonlink.exceptions.FailedUpdateException;
 import com.example.lessonlink.view1.FxmlLoader;
 import com.example.lessonlink.view1.bean.AccountBean;
 import com.example.lessonlink.view1.bean.LoginBean;
@@ -18,7 +19,7 @@ public class LoginControllerG2 {
     private String toPrint;
     private LoginController loginController = new LoginController();
 
-    public void register() {
+    public void resetCredentials() {
         toPrint = "Not implemented yet, stay tuned!\n\n";
         LinePrinter.getInstance().print(toPrint);
         HomeControllerG2 homeControllerG2 = new HomeControllerG2();
@@ -56,17 +57,13 @@ public class LoginControllerG2 {
 
             } catch (FailedLoginException e) {
                 ErrorPrinter.getInstance().print(e.getMessage());
-            } catch (SQLException | IOException e) {
+            } catch (Exception e) {
                 //not handled
-            } catch (FailedResearchException e) {
-                throw new RuntimeException(e);
             }
-            //TODO: exception handling
 
         } else{
             ErrorPrinter.getInstance().print("Incorrect email or password. Try again");
             login();
         }
     }
-    //TODO: login retry logic to add
 }

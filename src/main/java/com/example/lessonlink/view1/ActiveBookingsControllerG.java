@@ -1,6 +1,7 @@
 package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.BookingsController;
+import com.example.lessonlink.exceptions.FailedUpdateException;
 import com.example.lessonlink.view1.bean.BookingBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,7 +55,10 @@ public class ActiveBookingsControllerG {
     public Button sendButton3;
     @FXML
     public Button sendButton4;
-
+    @FXML
+    public Pane errorPane;
+    @FXML
+    public Label errorLabel;
 
     private BookingsController bookingsController;
     private List<BookingBean> bookingBeans;
@@ -81,33 +85,37 @@ public class ActiveBookingsControllerG {
     }
 
 
-    public void sendEmail(ActionEvent actionEvent) {
+    public void sendEmail(ActionEvent actionEvent) throws FailedUpdateException {
         Button button = (Button) actionEvent.getSource();
         String buttonId = button.getId();
-        BookingBean bookingBean;
+        BookingBean bookingBean = null;
 
         switch (buttonId) {
             case "sendButton1":
                 bookingBean = bookingBeans.getFirst();
-                bookingsController.sendEmail(bookingBean);
                 sendButton1.setVisible(false);
                 break;
             case "sendButton2":
                 bookingBean = bookingBeans.get(1);
-                bookingsController.sendEmail(bookingBean);
                 sendButton2.setVisible(false);
                 break;
             case "sendButton3":
                 bookingBean = bookingBeans.get(2);
-                bookingsController.sendEmail(bookingBean);
                 sendButton3.setVisible(false);
                 break;
             case "sendButton4":
                 bookingBean = bookingBeans.get(3);
-                bookingsController.sendEmail(bookingBean);
                 sendButton4.setVisible(false);
                 break;
             default:
+                break;
+        }
+
+        try {
+            bookingsController.sendEmail(bookingBean);
+        } catch (FailedUpdateException e) {
+            errorPane.setVisible(true);
+            errorLabel.setText(e.getMessage());
         }
     }
 
@@ -151,5 +159,9 @@ public class ActiveBookingsControllerG {
                 sendButton4.setVisible(false);
             }
         }
+    }
+    @FXML
+    void newSearchE(ActionEvent event) {
+        errorPane.setVisible(false);
     }
 }

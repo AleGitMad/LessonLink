@@ -2,6 +2,7 @@ package com.example.lessonlink.model.dao;
 
 import com.example.lessonlink.exceptions.FailedInsertException;
 import com.example.lessonlink.exceptions.FailedResearchException;
+import com.example.lessonlink.exceptions.FailedUpdateException;
 import com.example.lessonlink.model.Lesson;
 import com.example.lessonlink.model.LessonJoinTeacher;
 import com.example.lessonlink.model.LessonJoinUser;
@@ -32,9 +33,8 @@ public class LessonDao {
             while (rs.next()) {
                 lessons.add(extractLesson(rs));
             }
-        } catch (Exception se) {
-            se.printStackTrace();
-            throw new FailedResearchException("An error while searching lessons occurred.");
+        } catch (Exception e) {
+            throw new FailedResearchException("An error while retrieving lessons occurred.");
         } finally {
             try {
                 if (stmt != null)
@@ -71,8 +71,7 @@ public class LessonDao {
             if (rs.first()) {
                 return false;
             }
-        } catch (Exception se) {
-            se.printStackTrace();
+        } catch (Exception e) {
             throw new FailedResearchException("An error during research occurred.");
         } finally {
             try {
@@ -94,7 +93,6 @@ public class LessonDao {
             stmt = conn.createStatement();
             Query.insertLesson(stmt, lesson);
         } catch (Exception e) {
-            e.printStackTrace();
             throw new FailedInsertException("An error during lesson insertion occurred.");
         } finally {
             try {
@@ -121,8 +119,7 @@ public class LessonDao {
             while (rs.next()) {
                 lessonsJoinAdmin.add(extractLessonJoinAdmin(rs));
             }
-        } catch (Exception se) {
-            se.printStackTrace();
+        } catch (Exception e) {
             throw new FailedResearchException("An error during research occurred.");
         } finally {
             try {
@@ -149,7 +146,7 @@ public class LessonDao {
         return lessonJoinUser;
     }
 
-    public void updateLesson(Lesson lesson){
+    public void updateLesson(Lesson lesson) throws FailedUpdateException{
         Statement stmt = null;
         Connection conn = null;
 
@@ -158,8 +155,8 @@ public class LessonDao {
             stmt = conn.createStatement();
 
             Query.updateLesson(stmt, lesson);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new FailedUpdateException("An error during lesson update occurred.");
         } finally {
             try {
                 if (stmt != null)
