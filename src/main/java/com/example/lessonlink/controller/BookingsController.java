@@ -21,16 +21,6 @@ public class BookingsController {
 
         for (LessonJoinUser lessonJoinUser : lessonJoinUsers) {
             BookingBean bookingBean = new BookingBean();
-//            Lesson lesson = new Lesson();
-//
-//            lesson.setDateTime(lessonJoinUser.getDateTime());
-//            lesson.setIsConfirmed(lessonJoinUser.getConfirmed());
-//            lesson.setLessonId(lessonJoinUser.getLessonId());
-//            lesson.setIsOnline(lessonJoinUser.getOnline());
-//            lesson.setIsPaid(lessonJoinUser.getPaid());
-//            lesson.setTeacherId(lessonJoinUser.getTeacherId());
-//            lesson.setStudentId(lessonJoinUser.getStudentId());
-
 
             bookingBean.setTeacherName(lessonJoinUser.getTeacher());
             bookingBean.setStudentName(lessonJoinUser.getStudent());
@@ -53,9 +43,5 @@ public class BookingsController {
                 break;
             }
         }
-//        Lesson lesson = lessonJoinUsers.get(bookingBean.getLessonId()).getLesson();
-//        lesson.setIsConfirmed(true);
-//
-//        lessonDao.updateLesson(lesson);
     }
 }

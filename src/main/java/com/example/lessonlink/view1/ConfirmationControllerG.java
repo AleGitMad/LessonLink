@@ -70,7 +70,7 @@ public class ConfirmationControllerG {
         try {
             addTeacherController.confirmTeacher(profileTeacherBean);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         FxmlLoader.setPage("AdminHomepage");
     }

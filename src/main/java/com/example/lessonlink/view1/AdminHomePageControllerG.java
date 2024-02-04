@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
 
 import java.util.List;
 
@@ -24,7 +23,6 @@ public class AdminHomePageControllerG {
     @FXML
     public void initialize() {
         userNameLabel.setText(addTeacherController.getAccountBean().getName());
-        //userNameLabel.setText("admin");
     }
 
     @FXML
@@ -51,7 +49,7 @@ public class AdminHomePageControllerG {
         try {
             bookingBeanList = bookingsController.getActiveBookings();
         } catch (FailedResearchException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         activeBookingsControllerG.setData(bookingBeanList);
     }

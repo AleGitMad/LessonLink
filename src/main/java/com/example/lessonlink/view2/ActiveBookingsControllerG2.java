@@ -21,7 +21,9 @@ public class ActiveBookingsControllerG2 {
         try {
             bookingBeanList = bookingsController.getActiveBookings();
         } catch (FailedResearchException e) {
-            throw new RuntimeException(e);
+            toPrint = "No active bookings found";
+            LinePrinter.getInstance().print(toPrint);
+            return;
         }
 
         printList(bookingBeanList);
@@ -64,24 +66,24 @@ public class ActiveBookingsControllerG2 {
     }
 
     private void printList(List<BookingBean> bookingBeanList) {
-        String toPrint;
         String borderTop = "╔════════════════════════════════════════╗";
         String borderBottom = "╚════════════════════════════════════════╝";
         String dataSeparator = "╠════════════════════════════════════════╣";
         for (int i = 0; i < bookingBeanList.size(); i++) {
             BookingBean bookingBean = bookingBeanList.get(i);
-            toPrint = borderTop + "\n";
-            toPrint += "║ Booking " + String.format("%-31s", (i+1)) + "║\n";
-            toPrint += dataSeparator + "\n";
-            toPrint += "║ Teacher: " + String.format("%-30s", bookingBean.getTeacher()) + "║\n";
-            toPrint += dataSeparator + "\n";
-            toPrint += "║ Student: " + String.format("%-30s", bookingBean.getStudent()) + "║\n";
-            toPrint += dataSeparator + "\n";
-            toPrint += "║ Date: " + String.format("%-33s", bookingBean.getDateTime()) + "║\n";
-            toPrint += dataSeparator + "\n";
-            toPrint += "║ Confirmed: " + String.format("%-28s", bookingBean.getConfirmed()) + "║\n";
-            toPrint += borderBottom;
-            LinePrinter.getInstance().print(toPrint);
+            StringBuilder toPrint = new StringBuilder();
+            toPrint.append(borderTop).append("\n");
+            toPrint.append("║ Booking ").append(String.format("%-31s", (i+1))).append("║\n");
+            toPrint.append(dataSeparator).append("\n");
+            toPrint.append("║ Teacher: ").append(String.format("%-30s", bookingBean.getTeacher())).append("║\n");
+            toPrint.append(dataSeparator).append("\n");
+            toPrint.append("║ Student: ").append(String.format("%-30s", bookingBean.getStudent())).append("║\n");
+            toPrint.append(dataSeparator).append("\n");
+            toPrint.append("║ Date: ").append(String.format("%-33s", bookingBean.getDateTime())).append("║\n");
+            toPrint.append(dataSeparator).append("\n");
+            toPrint.append("║ Confirmed: ").append(String.format("%-28s", bookingBean.getConfirmed())).append("║\n");
+            toPrint.append(borderBottom);
+            LinePrinter.getInstance().print(toPrint.toString());
         }
     }
 }

@@ -2,10 +2,12 @@ package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.AddTeacherController;
 import com.example.lessonlink.view1.bean.ProfileTeacherBean;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 //This controller will control the CreateTeacher.fxml and EvaluatorPage.fxml files
 public class CreateTeacherControllerG {
@@ -26,17 +28,20 @@ public class CreateTeacherControllerG {
     @FXML
     private TextField nameField;
 
-    private ProfileTeacherBean profileTeacherBean;
-    private AddTeacherController addTeacherController;
+    private static final List<String> SUBJECTS = Arrays.asList("Math", "History", "English", "Physics", "Geography");
+    private static final List<String> CITIES = Arrays.asList("Rome", "Milan", "Bergamo", "Tivoli");
+    private static final List<String> QUALIFICATIONS = Arrays.asList("High School", "Bachelor", "Master");
+    private static final List<String> ONLINE_OPTIONS = Arrays.asList("Yes", "No");
+
 
     @FXML
     public void initialize() {
-        subjectBox1.getItems().addAll("Math", "History", "English", "Physics", "Geography");
-        subjectBox2.getItems().addAll("Math", "History", "English", "Physics", "Geography");
-        subjectBox3.getItems().addAll("Math", "History", "English", "Physics", "Geography");
-        cityBox.getItems().addAll("Rome", "Milan", "Bergamo", "Tivoli");
-        qualificationBox.getItems().addAll("High School", "Bachelor", "Master");
-        onlineBox.getItems().addAll("Yes", "No");
+        subjectBox1.getItems().addAll(SUBJECTS);
+        subjectBox2.getItems().addAll(SUBJECTS);
+        subjectBox3.getItems().addAll(SUBJECTS);
+        cityBox.getItems().addAll(CITIES);
+        qualificationBox.getItems().addAll(QUALIFICATIONS);
+        onlineBox.getItems().addAll(ONLINE_OPTIONS);
     }
 
     @FXML
@@ -50,9 +55,9 @@ public class CreateTeacherControllerG {
     }
 
     @FXML
-    void goToEvaluatorPage(ActionEvent event) {
-        profileTeacherBean = new ProfileTeacherBean();
-        addTeacherController = new AddTeacherController();
+    void goToEvaluatorPage() {
+        ProfileTeacherBean profileTeacherBean = new ProfileTeacherBean();
+        AddTeacherController addTeacherController = new AddTeacherController();
 
         profileTeacherBean.setName(nameField.getText());
         profileTeacherBean.setCity(cityBox.getValue());

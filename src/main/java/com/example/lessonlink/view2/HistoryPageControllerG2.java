@@ -33,7 +33,7 @@ public class HistoryPageControllerG2 implements Observer {
         this.bookLessonController = bookLessonController;
     }
 
-    public void showHistory() throws IOException, FailedResearchException {
+    public void showHistory() throws IOException {
 
         //sorting
         if (sortByDate) {
@@ -98,7 +98,11 @@ public class HistoryPageControllerG2 implements Observer {
                 break;
             case "0":
                 StudentHomePageControllerG2 studentHomePageControllerG2 = new StudentHomePageControllerG2();
-                studentHomePageControllerG2.setName(bookLessonController.getAccountBean().getName());
+                try {
+                    studentHomePageControllerG2.setName(bookLessonController.getAccountBean().getName());
+                } catch (FailedResearchException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             default:
                 int lessonIndex = Integer.parseInt(choice) - 1;
@@ -160,7 +164,7 @@ public class HistoryPageControllerG2 implements Observer {
         }
     }
 
-    private void historyEnd() throws IOException, FailedResearchException {
+    private void historyEnd() throws IOException {
         toPrint = "Press 0 to return to homepage, anything else to close app\n";
         LinePrinter.getInstance().print(toPrint);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -172,7 +176,11 @@ public class HistoryPageControllerG2 implements Observer {
         }
         if (choice.equals("0")) {
             StudentHomePageControllerG2 studentHomePageControllerG2 = new StudentHomePageControllerG2();
-            studentHomePageControllerG2.setName(bookLessonController.getAccountBean().getName());
+            try {
+                studentHomePageControllerG2.setName(bookLessonController.getAccountBean().getName());
+            } catch (FailedResearchException e) {
+                throw new RuntimeException(e);
+            }
         } else {
             System.exit(0);
         }

@@ -12,14 +12,16 @@ import java.sql.SQLException;
 public class CreateTeacherControllerG2 {
     private String toPrint;
 
+
     public void insertTeacher(){
+        String error = "Insertion failed . . . repeating steps";
         toPrint = "Inserting teacher";
         LinePrinter.getInstance().print(toPrint);
 
         ProfileTeacherBean profileTeacherBean = fillBean();
 
         if(!profileTeacherBean.validate()){
-            toPrint = "Insertion failed . . . repeating steps";
+            toPrint = error;
             LinePrinter.getInstance().print(toPrint);
             insertTeacher();
         }
@@ -43,7 +45,7 @@ public class CreateTeacherControllerG2 {
             if(reader.readLine().equals("0")) {
                 profileTeacherBean.setFare(profileTeacherBean.fare());
                 if (!profileTeacherBean.fareValidate()){
-                    toPrint = "Insertion failed . . . repeating steps";
+                    toPrint = error;
                     LinePrinter.getInstance().print(toPrint);
                     insertTeacher();
                 }
@@ -53,7 +55,7 @@ public class CreateTeacherControllerG2 {
 
                 profileTeacherBean.setFare(reader.readLine());
                 if (!profileTeacherBean.fareValidate()){
-                    toPrint = "Insertion failed . . . repeating steps";
+                    toPrint = error;
                     LinePrinter.getInstance().print(toPrint);
                     insertTeacher();
                 }
@@ -64,7 +66,8 @@ public class CreateTeacherControllerG2 {
             LinePrinter.getInstance().print("Something went wrong");
             insertTeacher();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            LinePrinter.getInstance().print("Something went wrong on the database side . . . repeating steps");
+            insertTeacher();
         }
 
 

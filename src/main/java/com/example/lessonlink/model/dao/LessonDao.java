@@ -5,7 +5,6 @@ import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.Lesson;
 import com.example.lessonlink.model.LessonJoinTeacher;
 import com.example.lessonlink.model.LessonJoinUser;
-import com.example.lessonlink.model.Teacher;
 import com.example.lessonlink.model.service.Connector;
 import com.example.lessonlink.model.service.Query;
 
