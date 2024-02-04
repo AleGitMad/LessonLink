@@ -1,12 +1,12 @@
 package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.BookLessonController;
-import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.view1.bean.LessonBean;
 import com.example.lessonlink.view1.bean.TeacherBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 import java.util.List;
@@ -19,6 +19,11 @@ public class PaymentPageControllerG {
     private Pane redirectPane;
     @FXML
     private Pane confirmPane;
+    @FXML
+    private Pane errorPane;
+    @FXML
+    private Label errorLabel;
+
     private List<TeacherBean> teacherBeans;
     private LessonBean lessonBean;
 
@@ -46,7 +51,8 @@ public class PaymentPageControllerG {
                     lessonBean.setIsPaid(true);
                     bookLessonController.insertLesson(lessonBean);
                 } catch (Exception e) {
-                    //not handled
+                    errorPane.setVisible(true);
+                    errorLabel.setText(e.getMessage());
                 }
                 showConfirmPane(event);
             }
@@ -61,7 +67,8 @@ public class PaymentPageControllerG {
             lessonBean.setIsPaid(false);
             bookLessonController.insertLesson(lessonBean);
         } catch (Exception e) {
-            //not handled
+            errorPane.setVisible(true);
+            errorLabel.setText(e.getMessage());
         }
         confirmPane.setVisible(true);
     }
