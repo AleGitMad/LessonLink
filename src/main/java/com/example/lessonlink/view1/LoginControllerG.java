@@ -51,7 +51,7 @@ public class LoginControllerG {
             } catch (FailedLoginException e) {
                 showErrorMessage(e.getMessage());
             } catch (SQLException e) {
-                e.printStackTrace();
+                //not handled
             }
 
         } else{

@@ -1,11 +1,14 @@
 package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.AddTeacherController;
+import com.example.lessonlink.exceptions.FailedInsertException;
 import com.example.lessonlink.view1.bean.ProfileTeacherBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+
 import java.sql.SQLException;
 
 //This controller will control the CreateTeacher.fxml and EvaluatorPage.fxml files
@@ -26,6 +29,10 @@ public class ConfirmationControllerG {
     public Label city;
     @FXML
     public Label qualification;
+    @FXML
+    public Pane errorPane;
+    @FXML
+    public Label errorLabel;
 
 
     private AddTeacherController addTeacherController;
@@ -69,9 +76,15 @@ public class ConfirmationControllerG {
     public void createProfile() {
         try {
             addTeacherController.confirmTeacher(profileTeacherBean);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (FailedInsertException e) {
+            errorPane.setVisible(true);
+            errorLabel.setText(e.getMessage());
         }
         FxmlLoader.setPage("AdminHomepage");
+    }
+
+    @FXML
+    void hidePanel() {
+        errorPane.setVisible(false);
     }
 }

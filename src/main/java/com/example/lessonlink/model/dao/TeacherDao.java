@@ -1,5 +1,6 @@
 package com.example.lessonlink.model.dao;
 
+import com.example.lessonlink.exceptions.FailedInsertException;
 import com.example.lessonlink.exceptions.FailedResearchException;
 import com.example.lessonlink.model.Teacher;
 import com.example.lessonlink.model.service.Connector;
@@ -29,14 +30,13 @@ public class TeacherDao {
                 teachers.add(extractTeacher(rs));
             }
         } catch (Exception e) {
-            e.printStackTrace();
             throw new FailedResearchException("An error during teachers research occurred.");
         } finally {
             try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                //not handled
             }
         }
         return teachers;
@@ -68,7 +68,7 @@ public class TeacherDao {
         return teacher;
     }
 
-    public void saveTeacher(Teacher teacher) throws SQLException {
+    public void saveTeacher(Teacher teacher) throws FailedInsertException {
         Statement stmt = null;
         Connection conn = null;
 
@@ -78,7 +78,7 @@ public class TeacherDao {
 
             Query.insertTeacher(stmt, teacher);
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new FailedInsertException("An error during teacher insertion occurred.");
         } finally {
             try {
                 if (stmt != null)

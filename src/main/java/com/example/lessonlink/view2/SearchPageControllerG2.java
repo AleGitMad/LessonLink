@@ -47,7 +47,7 @@ public class SearchPageControllerG2 {
         try {
             role = reader.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            //not handled
         }
         switch(role){
             case"1":
@@ -84,7 +84,7 @@ public class SearchPageControllerG2 {
         try {
             role = reader.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            //not handled
         }
         switch (role) {
             case "1":

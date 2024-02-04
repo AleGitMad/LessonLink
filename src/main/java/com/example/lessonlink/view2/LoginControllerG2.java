@@ -37,7 +37,7 @@ public class LoginControllerG2 {
             LinePrinter.getInstance().print(toPrint);
             loginBean.setPassword(reader.readLine());
         } catch (IOException e) {
-            e.printStackTrace();
+            //not handled
         }
 
         if(loginBean.validation()){

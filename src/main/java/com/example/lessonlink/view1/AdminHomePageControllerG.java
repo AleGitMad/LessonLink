@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 import java.util.List;
 
@@ -17,6 +18,10 @@ public class AdminHomePageControllerG {
     private Label userNameLabel;
     @FXML
     private Button modifyLabel;
+    @FXML
+    private Pane errorPane;
+    @FXML
+    private Label errorLabel;
 
     AddTeacherController addTeacherController = new AddTeacherController();
 
@@ -49,9 +54,14 @@ public class AdminHomePageControllerG {
         try {
             bookingBeanList = bookingsController.getActiveBookings();
         } catch (FailedResearchException e) {
-            e.printStackTrace();
+            errorLabel.setText(e.getMessage());
+            errorPane.setVisible(true);
         }
         activeBookingsControllerG.setData(bookingBeanList);
     }
 
+    @FXML
+    void hidePanel() {
+        errorPane.setVisible(false);
+    }
 }

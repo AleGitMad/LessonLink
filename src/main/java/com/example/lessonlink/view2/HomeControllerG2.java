@@ -18,7 +18,7 @@ public class HomeControllerG2 {
         try {
             role = reader.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            //not handled
         }
         switch(role){
             case"0":

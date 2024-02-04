@@ -34,8 +34,7 @@ public class ReviewDao {
             } else {
                 averageRating = -1;
             }
-        } catch (Exception se) {
-            se.printStackTrace();
+        } catch (Exception e) {
             throw new FailedResearchException("An error during research occurred.");
         } finally {
             try {
@@ -69,8 +68,7 @@ public class ReviewDao {
             } else {
                 averageRating = -1;
             }
-        } catch (Exception se) {
-            se.printStackTrace();
+        } catch (Exception e) {
             throw new FailedResearchException("An error during reviews research occurred.");
         } finally {
             try {
@@ -96,8 +94,7 @@ public class ReviewDao {
             while (rs.next()) {
                 reviews.add(extractReview(rs));
             }
-        } catch (Exception se) {
-            se.printStackTrace();
+        } catch (Exception e) {
             throw new FailedResearchException("An error during research occurred.");
         } finally {
             try {
@@ -127,14 +124,13 @@ public class ReviewDao {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             Query.insertReview(stmt, review);
         } catch (Exception e) {
-            e.printStackTrace();
             throw new FailedInsertException("An error during review insertion occurred.");
         } finally {
             try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                //not handled
             }
         }
     }

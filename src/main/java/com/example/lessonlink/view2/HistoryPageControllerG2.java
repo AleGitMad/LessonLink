@@ -6,6 +6,7 @@ import com.example.lessonlink.model.Teacher;
 import com.example.lessonlink.model.observer.Observer;
 import com.example.lessonlink.view1.bean.LessonBean;
 import com.example.lessonlink.view1.bean.ReviewBean;
+import com.example.lessonlink.view2.utility.ErrorPrinter;
 import com.example.lessonlink.view2.utility.LinePrinter;
 
 import java.io.BufferedReader;
@@ -124,7 +125,7 @@ public class HistoryPageControllerG2 implements Observer {
         try {
             rating = reader.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            //not handled
         }
         reviewBean.setStars(Integer.parseInt(rating));
         toPrint = "Insert your comment (press enter to skip): ";
@@ -133,7 +134,7 @@ public class HistoryPageControllerG2 implements Observer {
         try {
             comment = reader.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            //not handled
         }
         if (!comment.isEmpty()) {
             reviewBean.setComment(comment);
@@ -155,7 +156,7 @@ public class HistoryPageControllerG2 implements Observer {
                 historyEnd();
 
             } catch (Exception e) {
-                e.printStackTrace();
+                ErrorPrinter.getInstance().print(e.getMessage());
             }
         } else {
             toPrint = "The number you inserted is not valid";
@@ -172,7 +173,7 @@ public class HistoryPageControllerG2 implements Observer {
         try {
             choice = reader.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            //not handled
         }
         if (choice.equals("0")) {
             StudentHomePageControllerG2 studentHomePageControllerG2 = new StudentHomePageControllerG2();

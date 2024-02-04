@@ -60,7 +60,7 @@ public class ResultsPageControllerG2 {
         try {
             role = reader.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            //not handled
         }
         switch(role){
             case"1":
@@ -112,7 +112,7 @@ public class ResultsPageControllerG2 {
             lessonBean.setLessonDate(date);
             selectTime(lessonBean);
         } catch (IOException e) {
-            e.printStackTrace();
+            //not handled
         } catch (DateTimeParseException e) {
             toPrint = "The date you inserted is not valid. Please use the format yyyy-mm-dd.";
             ErrorPrinter.getInstance().print(toPrint);
@@ -134,7 +134,7 @@ public class ResultsPageControllerG2 {
             lessonBean.setLessonTime(formattedTime);
             checkSlotAvailability(lessonBean);
         } catch (IOException e) {
-            e.printStackTrace();
+            //not handled
         } catch (DateTimeParseException e) {
             toPrint = "The time you inserted is not valid. Please use the format hh:mm.";
             ErrorPrinter.getInstance().print(toPrint);
@@ -165,7 +165,7 @@ public class ResultsPageControllerG2 {
             ErrorPrinter.getInstance().print(e.getMessage());
             selectDate(lessonBean);
         } catch (IOException e) {
-            e.printStackTrace();
+            //not handled
         }
     }
 

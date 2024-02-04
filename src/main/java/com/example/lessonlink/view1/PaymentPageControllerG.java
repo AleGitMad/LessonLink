@@ -46,7 +46,7 @@ public class PaymentPageControllerG {
                     lessonBean.setIsPaid(true);
                     bookLessonController.insertLesson(lessonBean);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    //not handled
                 }
                 showConfirmPane(event);
             }
@@ -61,7 +61,7 @@ public class PaymentPageControllerG {
             lessonBean.setIsPaid(false);
             bookLessonController.insertLesson(lessonBean);
         } catch (Exception e) {
-            e.printStackTrace();
+            //not handled
         }
         confirmPane.setVisible(true);
     }

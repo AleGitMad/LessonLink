@@ -49,5 +49,19 @@
             <Image url="@../images/logoutIcon.png" />
          </image>
       </ImageView>
+        <Pane fx:id="errorPane" layoutX="390.0" layoutY="110.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" visible="false">
+            <children>
+                <Label fx:id="errorLabel" layoutX="108.0" layoutY="58.0" prefHeight="180.0" prefWidth="285.0" text="error" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="Calibri Bold" size="41.0" />
+                    </font>
+                </Label>
+                <Button fx:id="newSearchButton1" layoutX="153.0" layoutY="308.0" mnemonicParsing="false" onAction="#hidePanel" prefHeight="97.0" prefWidth="197.0" style="-fx-background-color: #3C64B1; -fx-background-radius: 0;" text="Make a new research" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font name="Calibri Bold" size="23.0" />
+                    </font>
+                </Button>
+            </children>
+        </Pane>
     </children>
 </Pane>

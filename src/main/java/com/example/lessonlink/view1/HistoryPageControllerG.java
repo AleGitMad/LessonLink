@@ -98,6 +98,8 @@ public class HistoryPageControllerG implements Observer {
 
     @FXML
     private Pane errorPane;
+    @FXML
+    private Label errorLabel;
 
     @FXML
     private Button confirmReviewButton;
@@ -358,7 +360,8 @@ public class HistoryPageControllerG implements Observer {
                 yourComment.setVisible(false);
                 yourComment.clear();
             } catch (Exception e) {
-                e.printStackTrace();
+                errorPane.setVisible(true);
+                errorLabel.setText(e.getMessage());
             }
         } else {
             errorPane.setVisible(true);

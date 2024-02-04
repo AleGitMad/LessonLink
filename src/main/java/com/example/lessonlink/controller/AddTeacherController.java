@@ -1,5 +1,6 @@
 package com.example.lessonlink.controller;
 
+import com.example.lessonlink.exceptions.FailedInsertException;
 import com.example.lessonlink.model.LoggedUser;
 import com.example.lessonlink.model.dao.TeacherDao;
 import com.example.lessonlink.model.decorator.DecorateFare;
@@ -28,14 +29,10 @@ public class AddTeacherController {
     }
 
 
-    public void confirmTeacher(ProfileTeacherBean profileTeacherBean) throws SQLException {
+    public void confirmTeacher(ProfileTeacherBean profileTeacherBean) throws FailedInsertException {
         teacher.setFare(profileTeacherBean.getFareC());
         TeacherDao teacherDao = new TeacherDao();
-        try {
-            teacherDao.saveTeacher(teacher);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        teacherDao.saveTeacher(teacher);
     }
 
     private void fillTeacher(Teacher teacher, ProfileTeacherBean profileTeacherBean){

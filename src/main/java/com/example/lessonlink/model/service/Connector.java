@@ -21,7 +21,7 @@ public class Connector {
 
             conn = DriverManager.getConnection(connectionUrl, user, pass);
         }catch(Exception e){
-            e.printStackTrace();
+            //not handled
         }
 
     }
@@ -32,7 +32,7 @@ public class Connector {
             try {
                 instance = new Connector();
             }catch (SQLException e){
-                e.printStackTrace();
+                //not handled
             }
         }
         return instance;

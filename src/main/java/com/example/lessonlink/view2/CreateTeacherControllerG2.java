@@ -2,12 +2,12 @@ package com.example.lessonlink.view2;
 
 import com.example.lessonlink.controller.AddTeacherController;
 import com.example.lessonlink.view1.bean.ProfileTeacherBean;
+import com.example.lessonlink.view2.utility.ErrorPrinter;
 import com.example.lessonlink.view2.utility.LinePrinter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.SQLException;
 
 public class CreateTeacherControllerG2 {
     private String toPrint;
@@ -62,14 +62,10 @@ public class CreateTeacherControllerG2 {
             }
 
             addTeacherController.confirmTeacher(profileTeacherBean);
-        }catch(IOException e){
-            LinePrinter.getInstance().print("Something went wrong");
-            insertTeacher();
-        } catch (SQLException e) {
-            LinePrinter.getInstance().print("Something went wrong on the database side . . . repeating steps");
+        }catch(Exception e){
+            ErrorPrinter.getInstance().print(e.getMessage());
             insertTeacher();
         }
-
 
 
     }

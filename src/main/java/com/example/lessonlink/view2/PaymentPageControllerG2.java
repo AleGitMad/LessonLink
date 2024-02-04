@@ -28,7 +28,7 @@ public class PaymentPageControllerG2 {
         try {
             choice = reader.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            //not handled
         }
         switch(choice){
             case("0"):
