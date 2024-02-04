@@ -86,7 +86,7 @@ public class LessonDao {
 
     public void insertLesson(Lesson lesson) throws FailedInsertException {
         Statement stmt = null;
-        Connection conn = null;
+        Connection conn;
 
         try {
             conn = Connector.getInstance().getConnection();
@@ -109,7 +109,7 @@ public class LessonDao {
         List<LessonJoinUser> lessonsJoinAdmin = new ArrayList<>();
 
         Statement stmt = null;
-        Connection conn = null;
+        Connection conn;
 
 
         try {
@@ -137,7 +137,7 @@ public class LessonDao {
             lessonJoinUser.initLesson(rs.getInt("lessonId"),
                     rs.getTimestamp("dateTime").toLocalDateTime(),
                     rs.getBoolean("isOnline"),
-                    rs.getInt("teacherId"),
+                    rs.getInt(TEACHER_ID),
                     rs.getInt("studentId"),
                     rs.getBoolean("isConfirmed"),
                     rs.getBoolean("isPaid"));
@@ -148,7 +148,7 @@ public class LessonDao {
 
     public void updateLesson(Lesson lesson) throws FailedUpdateException{
         Statement stmt = null;
-        Connection conn = null;
+        Connection conn;
 
         try {
             conn = Connector.getInstance().getConnection();
