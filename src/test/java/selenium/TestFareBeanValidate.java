@@ -22,11 +22,9 @@ class TestFareBeanValidate {
         WebDriver driver = new EdgeDriver();
 
         // // Get a future date from random.org
-        driver.get("sito");
-        WebElement dateElement = driver.findElement(By.xpath("//p[contains(@style, '2em')]"));
-        String dateString = dateElement.getText();
-        String fare = "10";
-        LocalDate date = LocalDate.parse(dateString, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        driver.get("https://www.superprof.it/lezione/matematica/italia/");
+        WebElement fareElement = driver.findElement(By.xpath("/html/body/div[2]/div[2]/div[4]/div[1]/div/div[1]/a/div/div[2]/div/ul/li[1]/span[2]"));
+        String fare = fareElement.getText().substring(0, fareElement.getText().length() - 5);
 
         // Close the driver
         driver.quit();
