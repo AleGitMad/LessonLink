@@ -9,8 +9,6 @@ import com.example.lessonlink.model.Teacher;
 import com.example.lessonlink.view1.bean.AccountBean;
 import com.example.lessonlink.view1.bean.ProfileTeacherBean;
 
-import java.sql.SQLException;
-
 public class AddTeacherController {
     private final Teacher teacher = new Teacher();
 

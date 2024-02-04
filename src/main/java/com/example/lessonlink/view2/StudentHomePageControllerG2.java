@@ -56,7 +56,7 @@ public class StudentHomePageControllerG2 {
         }
     }
 
-    public void setHistoryPage(List<LessonBean> lessonBeans) throws IOException, FailedResearchException {
+    public void setHistoryPage(List<LessonBean> lessonBeans) throws IOException {
         HistoryPageControllerG2 historyPageControllerG2 = new HistoryPageControllerG2();
         historyPageControllerG2.setLessonBeans(lessonBeans);
         historyPageControllerG2.setBookLessonController(bookLessonController);
