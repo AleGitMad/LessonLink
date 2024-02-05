@@ -35,7 +35,8 @@ public class AdminHomePageControllerG {
     }
     @FXML
     void modify(){
-        modifyLabel.setVisible(false);
+        errorLabel.setText("Not implemented yet. Stay Tuned");
+        errorPane.setVisible(true);
     }
     @FXML
     void addTeacher(ActionEvent event) {
