@@ -1,6 +1,7 @@
 package com.example.lessonlink.view2;
 
 import com.example.lessonlink.controller.LoginController;
+import com.example.lessonlink.exceptions.FailedFileAccessException;
 import com.example.lessonlink.view1.bean.AccountBean;
 import com.example.lessonlink.view1.bean.LoginBean;
 import com.example.lessonlink.view2.utility.ErrorPrinter;
@@ -51,7 +52,7 @@ public class LoginControllerG2 {
                     adminHomePageControllerG2.setName(accountBean.getName());
                 }
 
-            } catch (FailedLoginException e) {
+            } catch (FailedLoginException | FailedFileAccessException e) {
                 ErrorPrinter.getInstance().print(e.getMessage());
             } catch (Exception e) {
                 //not handled

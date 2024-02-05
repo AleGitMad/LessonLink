@@ -1,6 +1,7 @@
 package com.example.lessonlink.view1;
 
 import com.example.lessonlink.controller.LoginController;
+import com.example.lessonlink.exceptions.FailedFileAccessException;
 import com.example.lessonlink.view1.bean.AccountBean;
 import com.example.lessonlink.view1.bean.LoginBean;
 import javafx.fxml.FXML;
@@ -48,7 +49,7 @@ public class LoginControllerG {
             try {
                 accountBean = loginController.login(loginBean);
                 studentOrAdminLogin();
-            } catch (FailedLoginException e) {
+            } catch (FailedLoginException | FailedFileAccessException e) {
                 showErrorMessage(e.getMessage());
             } catch (SQLException e) {
                 //not handled

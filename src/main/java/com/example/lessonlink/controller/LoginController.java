@@ -1,5 +1,6 @@
 package com.example.lessonlink.controller;
 
+import com.example.lessonlink.exceptions.FailedFileAccessException;
 import com.example.lessonlink.model.Admin;
 import com.example.lessonlink.model.LoggedUser;
 import com.example.lessonlink.model.Student;
@@ -13,7 +14,7 @@ import javax.security.auth.login.FailedLoginException;
 import java.sql.SQLException;
 
 public class LoginController {
-    public AccountBean login(LoginBean loginBean) throws FailedLoginException, SQLException {
+    public AccountBean login(LoginBean loginBean) throws FailedLoginException, SQLException, FailedFileAccessException {
 
         Admin admin;
         Student student;

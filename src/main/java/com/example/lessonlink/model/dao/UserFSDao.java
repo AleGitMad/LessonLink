@@ -1,12 +1,13 @@
 package com.example.lessonlink.model.dao;
 
+import com.example.lessonlink.exceptions.FailedFileAccessException;
 import com.example.lessonlink.model.User;
 
 import javax.security.auth.login.FailedLoginException;
 import java.io.*;
 
 public class UserFSDao {
-    public String checkCredentials(String email, String password) throws FailedLoginException {
+    public String checkCredentials(String email, String password) throws FailedLoginException, FailedFileAccessException {
         File file = new File("src/main/res/Users.txt");
         String str;
 
@@ -30,7 +31,7 @@ public class UserFSDao {
 
         }catch (IOException e){
 
-            throw new FailedLoginException("Failed Login");
+            throw new FailedFileAccessException("The user file is inaccessible. Reason: ",e.getCause());
         }
     }
 
