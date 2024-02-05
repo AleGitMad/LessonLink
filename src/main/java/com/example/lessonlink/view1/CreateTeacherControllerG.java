@@ -65,8 +65,8 @@ public class CreateTeacherControllerG {
                 errorLabel.setText("Error: Session expired. No data entered.");
             }
         };
-        // Set the timer to 2 minutes
-        timer.schedule(task, 2 * 60 * 1000);
+        // Set the timer to 5 minutes
+        timer.schedule(task, 300000);
     }
 
     @FXML

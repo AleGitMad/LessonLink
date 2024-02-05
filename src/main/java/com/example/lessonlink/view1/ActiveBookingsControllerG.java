@@ -146,7 +146,7 @@ public class ActiveBookingsControllerG {
             teacherName3.setText(bookingBeanList.get(2).getTeacher());
             studentName3.setText(bookingBeanList.get(2).getStudent());
             date3.setText(bookingBeanList.get(2).getDateTime());
-            if(bookingBeanList.get(3).getConfirmed()){
+            if(bookingBeanList.get(2).getConfirmed()){
                 sendButton3.setVisible(false);
             }
         }
@@ -155,7 +155,7 @@ public class ActiveBookingsControllerG {
             teacherName4.setText(bookingBeanList.get(3).getTeacher());
             studentName4.setText(bookingBeanList.get(3).getStudent());
             date4.setText(bookingBeanList.get(3).getDateTime());
-            if(bookingBeanList.get(4).getConfirmed()){
+            if(bookingBeanList.get(3).getConfirmed()){
                 sendButton4.setVisible(false);
             }
         }
