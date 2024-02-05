@@ -5,6 +5,8 @@ import com.example.lessonlink.view1.bean.ProfileTeacherBean;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/* Leonardo Simoni 0293067 */
+
 class TestProfileTeacherBean {
     @org.junit.jupiter.api.Test
     void testBean(){
@@ -17,5 +19,4 @@ class TestProfileTeacherBean {
 
         assertTrue(profileTeacherBean.validate());
     }
-
 }

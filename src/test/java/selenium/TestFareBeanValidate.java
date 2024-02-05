@@ -14,6 +14,9 @@ import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/* Leonardo Simoni 0293067 */
+
+
 class TestFareBeanValidate {
     @Test
     void testValidate() {

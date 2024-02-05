@@ -9,6 +9,8 @@ import org.openqa.selenium.interactions.Actions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/* Leonardo Simoni 0293067 */
+
 public class TestDivision {
     private WebDriver driver;
     JavascriptExecutor js;

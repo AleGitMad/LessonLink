@@ -19,6 +19,8 @@ import static org.junit.jupiter.api.Assertions.*;
    The test is set up to be successful.
  */
 
+/* Leonardo Simoni 0293067 */
+
 class TestActiveBookings {
     @org.junit.jupiter.api.Test
     void existingData() throws Exception {

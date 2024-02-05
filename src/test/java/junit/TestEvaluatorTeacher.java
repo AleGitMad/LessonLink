@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
    fare coincides with the expected one. The test is set up to be successful.
  */
 
-
+/* Leonardo Simoni 0293067 */
 
 class TestEvaluatorTeacher {
     @org.junit.jupiter.api.Test
