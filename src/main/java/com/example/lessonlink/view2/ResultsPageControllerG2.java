@@ -38,7 +38,7 @@ public class ResultsPageControllerG2 {
                 if (!t2.getTeacherHasReview()) return -1;
                 return Double.compare(t2.getTeacherAverageRating(), t1.getTeacherAverageRating());
             } else {
-                return Double.compare(t1.getTeacherAverageRating(), t2.getTeacherAverageRating());
+                return Double.compare(t1.getTeacherFare(), t2.getTeacherFare());
             }
         });
 
