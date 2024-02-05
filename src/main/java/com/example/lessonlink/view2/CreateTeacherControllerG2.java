@@ -99,7 +99,7 @@ public class CreateTeacherControllerG2 {
                     break;
                 default:
                     toPrint = error;
-                    LinePrinter.getInstance().print(toPrint);
+                    ErrorPrinter.getInstance().print(toPrint);
                     fillBean();
                     break;
             }
@@ -118,7 +118,7 @@ public class CreateTeacherControllerG2 {
                     break;
                 default:
                     toPrint = error;
-                    LinePrinter.getInstance().print(toPrint);
+                    ErrorPrinter.getInstance().print(toPrint);
                     fillBean();
                     break;
             }
@@ -143,7 +143,7 @@ public class CreateTeacherControllerG2 {
                     break;
                 default:
                     toPrint = error;
-                    LinePrinter.getInstance().print(toPrint);
+                    ErrorPrinter.getInstance().print(toPrint);
                     fillBean();
                     break;
             }
@@ -170,7 +170,7 @@ public class CreateTeacherControllerG2 {
                     break;
                 default:
                     toPrint = error;
-                    LinePrinter.getInstance().print(toPrint);
+                    ErrorPrinter.getInstance().print(toPrint);
                     fillBean();
                     break;
             }
@@ -197,7 +197,7 @@ public class CreateTeacherControllerG2 {
                     break;
                 default:
                     toPrint = error;
-                    LinePrinter.getInstance().print(toPrint);
+                    ErrorPrinter.getInstance().print(toPrint);
                     fillBean();
                     break;
             }
@@ -213,13 +213,13 @@ public class CreateTeacherControllerG2 {
                     break;
                 default:
                     toPrint = error;
-                    LinePrinter.getInstance().print(toPrint);
+                    ErrorPrinter.getInstance().print(toPrint);
                     fillBean();
                     break;
             }
 
         }catch (IOException e){
-            LinePrinter.getInstance().print("Insertion failed . . . repeating steps");
+            ErrorPrinter.getInstance().print(e.getMessage());
             insertTeacher();
         }
         return profileTeacherBean;

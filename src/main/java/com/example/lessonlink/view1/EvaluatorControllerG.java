@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-//This controller will control the CreateTeacher.fxml and EvaluatorPage.fxml files
 public class EvaluatorControllerG {
     @FXML
     public Button useEvaluatedButton;

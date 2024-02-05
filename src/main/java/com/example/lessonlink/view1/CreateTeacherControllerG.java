@@ -5,11 +5,13 @@ import com.example.lessonlink.view1.bean.ProfileTeacherBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
-//This controller will control the CreateTeacher.fxml and EvaluatorPage.fxml files
 public class CreateTeacherControllerG {
     @FXML
     private Label username;
@@ -28,11 +30,17 @@ public class CreateTeacherControllerG {
     @FXML
     private TextField nameField;
 
+    @FXML
+    private Pane errorPane;
+    @FXML
+    private Label errorLabel;
+
     private static final List<String> SUBJECTS = Arrays.asList("Math", "History", "English", "Physics", "Geography");
     private static final List<String> CITIES = Arrays.asList("Rome", "Milan", "Bergamo", "Tivoli");
     private static final List<String> QUALIFICATIONS = Arrays.asList("High School", "Bachelor", "Master");
     private static final List<String> ONLINE_OPTIONS = Arrays.asList("Yes", "No");
 
+    private Timer timer;
 
     @FXML
     public void initialize() {
@@ -44,6 +52,21 @@ public class CreateTeacherControllerG {
         onlineBox.getItems().addAll(ONLINE_OPTIONS);
         AddTeacherController addTeacherController = new AddTeacherController();
         username.setText(addTeacherController.getAccountBean().getName());
+
+        startTimer();
+    }
+
+    private void startTimer() {
+        timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                errorPane.setVisible(true);
+                errorLabel.setText("Error: Session expired. No data entered.");
+            }
+        };
+        // Set the timer to 5 minutes
+        timer.schedule(task, 5 * 60 * 1000);
     }
 
     @FXML
@@ -58,6 +81,12 @@ public class CreateTeacherControllerG {
 
     @FXML
     void goToEvaluatorPage() {
+
+        // Cancel the timer
+        if (timer != null) {
+            timer.cancel();
+        }
+
         ProfileTeacherBean profileTeacherBean = new ProfileTeacherBean();
         AddTeacherController addTeacherController = new AddTeacherController();
 

@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 
-//This controller will control the CreateTeacher.fxml and EvaluatorPage.fxml files
 public class ConfirmationControllerG {
     @FXML
     public Button useEvaluated;
