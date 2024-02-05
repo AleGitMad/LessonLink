@@ -7,6 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /* Alessandro Maddalena 0294043 */
 
+/*
+    This class tests the validate method in the ResearchBean class.
+*/
+
 class TestResearchBean {
     @Test
     void testValidate() {

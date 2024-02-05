@@ -10,6 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /* Alessandro Maddalena 0294043 */
 
+/*
+    This class tests the checkSlotAvailability method in the BookLessonController class.
+*/
+
 class TestCheckSlotAvailability {
     @Test
     void testCheckSlotAvailability() throws FailedResearchException {
