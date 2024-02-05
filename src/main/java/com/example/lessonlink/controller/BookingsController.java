@@ -5,6 +5,7 @@ import com.example.lessonlink.exceptions.FailedUpdateException;
 import com.example.lessonlink.model.LoggedUser;
 import com.example.lessonlink.model.dao.LessonDao;
 import com.example.lessonlink.model.LessonJoinUser;
+import com.example.lessonlink.view1.bean.AccountBean;
 import com.example.lessonlink.view1.bean.BookingBean;
 
 import java.util.ArrayList;
@@ -44,5 +45,12 @@ public class BookingsController {
                 break;
             }
         }
+    }
+
+    public AccountBean getAccountBean() {
+        AccountBean accountBean = new AccountBean();
+        accountBean.setName(LoggedUser.getInstance().getAdmin().getName());
+        accountBean.setRole(LoggedUser.getInstance().getRole());
+        return accountBean;
     }
 }

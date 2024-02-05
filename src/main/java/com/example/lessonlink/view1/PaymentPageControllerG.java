@@ -23,11 +23,18 @@ public class PaymentPageControllerG {
     private Pane errorPane;
     @FXML
     private Label errorLabel;
+    @FXML
+    private Label userNameLabel;
 
     private List<TeacherBean> teacherBeans;
     private LessonBean lessonBean;
 
     BookLessonController bookLessonController = new BookLessonController();
+
+    @FXML
+    public void initialize() {
+        userNameLabel.setText(bookLessonController.getAccountBean().getName());
+    }
 
     public void setTeacherBeans(List<TeacherBean> teacherBeans) {
         this.teacherBeans = teacherBeans;

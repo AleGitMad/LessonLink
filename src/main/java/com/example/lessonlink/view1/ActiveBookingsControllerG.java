@@ -82,6 +82,7 @@ public class ActiveBookingsControllerG {
     }
     public void setController(BookingsController bookingsController) {
         this.bookingsController = bookingsController;
+        userNameLabel.setText(bookingsController.getAccountBean().getName());
     }
 
 
