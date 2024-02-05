@@ -35,7 +35,7 @@ public class UserFSDao {
         }
     }
 
-    public void setUser(User user, String email) {
+    public void setUser(User user, String email) throws FailedFileAccessException {
         File file = new File("src/main/res/Users.txt");
         String str;
 
@@ -52,7 +52,7 @@ public class UserFSDao {
             }
 
         } catch (IOException e) {
-            //unhandled
+            throw new FailedFileAccessException("The user file is inaccessible. Reason: ",e.getCause());
         }
     }
 }
