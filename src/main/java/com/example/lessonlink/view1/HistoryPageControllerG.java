@@ -154,6 +154,14 @@ public class HistoryPageControllerG implements Observer {
 
     @FXML
     public void changeSortingMethod(ActionEvent actionEvent) {
+        //reset confirm panel
+        disableHighlights();
+        teacherConfirmLabel.setText("Teacher Name");
+        teacherRatingLabel.setText("Actual Rating:");
+        teacherConfirmImage.setVisible(false);
+        yourRating.getSelectionModel().clearSelection();
+        yourRating.setValue(null);
+
         sortByDate = actionEvent.getSource().equals(sortByDateButton);
         setHistoryPage();
     }
@@ -283,14 +291,18 @@ public class HistoryPageControllerG implements Observer {
     }
 
     void disableHighlightsEnableFields() {
+        disableHighlights();
+        confirmReviewButton.setVisible(true);
+        yourRating.setVisible(true);
+        yourComment.setVisible(true);
+    }
+
+    void disableHighlights() {
         resultHighlight1.setVisible(false);
         resultHighlight2.setVisible(false);
         resultHighlight3.setVisible(false);
         resultHighlight4.setVisible(false);
         resultHighlight5.setVisible(false);
-        confirmReviewButton.setVisible(true);
-        yourRating.setVisible(true);
-        yourComment.setVisible(true);
     }
 
     void enableLeaveReviewButtons() {
@@ -320,7 +332,11 @@ public class HistoryPageControllerG implements Observer {
     @FXML
     void confirmReview() {
         ReviewBean reviewBean = new ReviewBean();
-        reviewBean.setStars(yourRating.getValue());
+        if (yourRating.getValue() != null) {
+            reviewBean.setStars(yourRating.getValue());
+        } else {
+            reviewBean.setStars(-1);
+        }
         if (!yourComment.getText().isEmpty()) {
             reviewBean.setComment(yourComment.getText());
         }

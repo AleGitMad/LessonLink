@@ -262,7 +262,7 @@
          <children>
             <Label fx:id="teacherConfirmLabel" layoutX="17.0" layoutY="-7.0" prefHeight="56.0" prefWidth="140.0" text="Teacher Name">
                <font>
-                  <Font name="Calibri Bold" size="23.0" />
+                  <Font name="Calibri Bold" size="22.0" />
                </font>
             </Label>
          </children></Pane>
@@ -280,7 +280,7 @@
       <ComboBox fx:id="yourRating" layoutX="1055.0" layoutY="407.0" prefHeight="25.0" prefWidth="173.0" promptText="Your rating" style="-fx-font-family: Calibri; -fx-font-size: 15px; -fx-background-color: #FFFFFF;" />
       <Pane fx:id="errorPane" layoutX="390.0" layoutY="110.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #FFFFFF;" visible="false">
          <children>
-            <Label fx:id="errorLabel" layoutX="75.0" layoutY="58.0" prefHeight="226.0" prefWidth="369.0" text="Please select rating value before confirming" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="errorLabel" layoutX="75.0" layoutY="58.0" prefHeight="226.0" prefWidth="369.0" text="Please select a teacher and a rating before confirming" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Calibri Bold" size="41.0" />
                </font>

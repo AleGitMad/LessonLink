@@ -65,14 +65,14 @@ public class LoginControllerG {
             if (accountType == 0) {
                 fxmlLoader = FxmlLoader.setPage("StudentHomepage");
             } else {
-                showErrorMessage("Please go to the admin login page.");
+                showErrorMessage("Please go to the student login page.");
             }
 
         }else if(accountBean.getRole().equals("Admin")) {
             if (accountType == 1) {
                 fxmlLoader = FxmlLoader.setPage("AdminHomepage");
             }
-            showErrorMessage("Please go to the student login page.");
+            showErrorMessage("Please go to the admin login page.");
         }
     }
 

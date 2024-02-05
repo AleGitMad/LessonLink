@@ -41,6 +41,6 @@ public class ReviewBean {
     }
 
     public boolean validate() {
-        return (stars >= 0) && (stars <= 10);
+        return (stars >= 0) && (stars <= 10) && teacherId > 0;
     }
 }
