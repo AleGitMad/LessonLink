@@ -23,10 +23,9 @@ public class AdminHomePageControllerG {
     @FXML
     private Label errorLabel;
 
-    AddTeacherController addTeacherController = new AddTeacherController();
-
     @FXML
     public void initialize() {
+        AddTeacherController addTeacherController = new AddTeacherController();
         userNameLabel.setText(addTeacherController.getAccountBean().getName());
     }
 

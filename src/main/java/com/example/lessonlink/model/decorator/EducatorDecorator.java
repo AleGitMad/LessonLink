@@ -1,6 +1,6 @@
 package com.example.lessonlink.model.decorator;
 
-public abstract class EducatorDecorator extends Educator implements DecorateFare {
+public abstract class EducatorDecorator extends Educator {
     private Educator educator;
 
     protected EducatorDecorator(Educator educator){

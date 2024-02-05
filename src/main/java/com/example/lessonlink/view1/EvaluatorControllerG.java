@@ -37,10 +37,6 @@ public class EvaluatorControllerG {
         FxmlLoader.setPage("Home");
     }
     @FXML
-    public void setUserName(String userName) {
-        username.setText(userName);
-    }
-    @FXML
     public void setHomePage() {
         FxmlLoader.setPage("AdminHomepage");
     }
@@ -73,6 +69,7 @@ public class EvaluatorControllerG {
     }
 
     public void setFareToScreen(String fare) {
+        username.setText(addTeacherController.getAccountBean().getName());
         fareEvaluated.setText(fare + " €/h");
     }
 }

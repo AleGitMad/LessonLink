@@ -1,7 +1,6 @@
 package com.example.lessonlink.model;
 
 import com.example.lessonlink.model.decorator.Educator;
-import javafx.util.Builder;
 
 public class Teacher extends Educator {
 

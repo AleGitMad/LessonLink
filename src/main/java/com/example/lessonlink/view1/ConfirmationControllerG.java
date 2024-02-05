@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-import java.sql.SQLException;
 
 //This controller will control the CreateTeacher.fxml and EvaluatorPage.fxml files
 public class ConfirmationControllerG {
@@ -48,6 +47,7 @@ public class ConfirmationControllerG {
         qualification.setText(profileTeacherBean.qualification());
         fare.setText(profileTeacherBean.fare() + " €/h");
         this.profileTeacherBean = profileTeacherBean;
+        username.setText(addTeacherController.getAccountBean().getName());
     }
 
     @FXML

@@ -42,6 +42,8 @@ public class CreateTeacherControllerG {
         cityBox.getItems().addAll(CITIES);
         qualificationBox.getItems().addAll(QUALIFICATIONS);
         onlineBox.getItems().addAll(ONLINE_OPTIONS);
+        AddTeacherController addTeacherController = new AddTeacherController();
+        username.setText(addTeacherController.getAccountBean().getName());
     }
 
     @FXML
