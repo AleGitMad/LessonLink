@@ -6,14 +6,9 @@ import com.example.lessonlink.model.LoggedUser;
 import com.example.lessonlink.view1.bean.ProfileTeacherBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-/* This test begins with the initialization of a ProfileTeacherBean object which is then transformed into a Teacher object.
-   By doing so, given that the AddTeacherController method "addTeacher" takes a ProfileTeacherBean object in input, it is
-   able to perform the decoration knowing only what is strictly necessary about the original ProfileTeacherBean object. The other
-   attributes of the ProfileTeacherBean object are not considered in the decoration, so they are useless to the AddTeacherController.
-
-   The "addTeacher" method decorates and returns the fare of the Teacher object. The test only verifies that the "decorated"
-   fare coincides with the expected one. The test is set up to be successful.
- */
+/*
+    This class tests the addTeacher method in the AddTeacherController class.
+*/
 
 /* Leonardo Simoni 0293067 */
 

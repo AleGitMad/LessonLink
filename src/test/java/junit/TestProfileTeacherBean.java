@@ -5,6 +5,10 @@ import com.example.lessonlink.view1.bean.ProfileTeacherBean;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/*
+    This class tests the validate method in the ProfileTeacherBean class.
+ */
+
 /* Leonardo Simoni 0293067 */
 
 class TestProfileTeacherBean {

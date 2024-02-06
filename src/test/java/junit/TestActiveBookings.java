@@ -9,15 +9,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-/* This test begins with the initialization of a Student object and an Admin object. The Student object is used to set the current logged in user.
-   A LessonBean object is then created and a lesson is inserted using the BookLessonController. The Admin object is used to set the current logged in user again.
-   The BookingsController is used to get the active bookings and the last booking is retrieved.
-
-   A Lesson object is created using the fillLesson method, which takes the LessonBean object as input and sets the necessary attributes.
-
-   The test verifies that the attributes of the Lesson object in the last BookingBean object retrieved match the attributes of the Lesson object created.
-   The test is set up to be successful.
- */
+/*
+    This class tests the getActiveBookings method in the BookingsController class.
+*/
 
 /* Leonardo Simoni 0293067 */
 

@@ -1,6 +1,5 @@
 package selenium;
 
-import com.example.lessonlink.view1.bean.LessonBean;
 import com.example.lessonlink.view1.bean.ProfileTeacherBean;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -8,11 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
+/*
+    This class tests the fareValidate method in the ProfileTeacherBean class.
+*/
 
 /* Leonardo Simoni 0293067 */
 

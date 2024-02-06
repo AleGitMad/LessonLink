@@ -8,6 +8,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+/*
+    This class tests the division of two numbers in a calculator web page.
+*/
 
 /* Leonardo Simoni 0293067 */
 
